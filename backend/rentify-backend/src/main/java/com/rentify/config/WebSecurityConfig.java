@@ -40,7 +40,7 @@ public class WebSecurityConfig
                 .authorizeHttpRequests(
                         request -> request
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                                .requestMatchers("registerNewUser","authenticate","createNewRole").permitAll()
+                                .requestMatchers("/api/auth/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

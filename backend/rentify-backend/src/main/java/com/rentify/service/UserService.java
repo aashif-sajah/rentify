@@ -4,7 +4,6 @@ import com.rentify.model.Role;
 import com.rentify.model.Users;
 import com.rentify.repository.RoleRepo;
 import com.rentify.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +13,20 @@ import java.util.Set;
 @Service
 public class UserService
 {
-    @Autowired
-    private UserRepo userRepo;
+    private final UserRepo userRepo;
+    private final PasswordEncoder bCryptPasswordEncoder;
+    private final RoleRepo roleRepo;
 
-    @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
-    @Autowired
-    private RoleRepo roleRepo;
+    public UserService(UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, RoleRepo roleRepo) {
+        this.userRepo = userRepo;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.roleRepo = roleRepo;
+    }
 
     public Users registerNewUser(Users users)
     {
-        Role role = roleRepo.findById("User").get();
+        Role role = roleRepo.findById("User").orElseThrow(() -> new RuntimeException("Role not found"));
+
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         users.setRoles(roles);

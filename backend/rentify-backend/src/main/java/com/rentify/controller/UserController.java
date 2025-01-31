@@ -13,7 +13,7 @@ public class UserController
     private UserService userService;
 
 
-    @PostMapping("/registerNewUser")
+    @PostMapping("/api/auth/registerNewUser")
     public Users registerUser(@RequestBody Users users)
     {
 

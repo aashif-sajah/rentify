@@ -30,7 +30,7 @@ public class JwtService {
     private UserRepo userRepo;
 
     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
-        String userName = jwtRequest.getUserName();
+        String userName = jwtRequest.getUserEmail();
         String userPassword = jwtRequest.getUserPassword();
         authenticate(userName, userPassword);
         final UserDetails userDetails = myUserDetailsService.loadUserByUsername(userName);

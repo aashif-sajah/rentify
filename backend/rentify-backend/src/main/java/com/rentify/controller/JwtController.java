@@ -3,21 +3,20 @@ package com.rentify.controller;
 import com.rentify.model.JwtRequest;
 import com.rentify.model.JwtResponse;
 import com.rentify.service.JwtService;
-import com.rentify.service.MyUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/auth")
 public class JwtController
 {
-    @Autowired
-    private JwtService jwtService;
+    private final JwtService jwtService;
 
-        @PostMapping("/authenticate")
+    public JwtController(JwtService jwtService) {
+        this.jwtService = jwtService;
+    }
+
+    @PostMapping("/authenticate")
         public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws Exception {
             return jwtService.createJwtToken(jwtRequest);
         }

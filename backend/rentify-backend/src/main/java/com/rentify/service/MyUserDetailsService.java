@@ -2,7 +2,6 @@ package com.rentify.service;
 
 import com.rentify.model.Users;
 import com.rentify.repository.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,31 +15,33 @@ import java.util.Set;
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    private UserRepo userRepo;
+  private final UserRepo userRepo;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = userRepo.findById(username).get();
-        if (user != null) {
-            return new User(
-                    user.getUsername(),
-                    user.getUserPassword(),
-                    getAuthorities(user)
+  public MyUserDetailsService(UserRepo userRepo) {
+    this.userRepo = userRepo;
+  }
 
-            );
-        }else
-        {
-            throw new UsernameNotFoundException(username);
-        }
+  @Override
+  public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
+    // Users user = userRepo.findById(username).get();
+    Users user =
+        userRepo
+            .findByUserEmail(userEmail)
+            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    if (user != null) {
+      return new User(user.getUsername(), user.getUserPassword(), getAuthorities(user));
+
+    } else {
+      throw new UsernameNotFoundException("User not found");
     }
+  }
 
-    private Set getAuthorities(Users user) {
-        Set authorities = new HashSet();
+  private Set<SimpleGrantedAuthority> getAuthorities(Users user) {
+    Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 
-        user.getRoles().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRole()));
-        });
-        return authorities;
-    }
+    user.getRoles()
+        .forEach(
+            role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRole())));
+    return authorities;
+  }
 }

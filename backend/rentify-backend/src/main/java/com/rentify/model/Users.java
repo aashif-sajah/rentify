@@ -11,11 +11,12 @@ import java.util.Set;
 @Setter
 public class Users {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Use auto-incremented ID
-    private Long id;  // Change username as primary key to ID (recommended for scalability)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)  // Use auto-incremented ID
+    //private Long id;  // Change username as primary key to ID (recommended for scalability)
 
     @Column(unique = true, nullable = false)
+    @Id
     private String username;
 
     @Column(unique = true, nullable = false)
@@ -29,13 +30,6 @@ public class Users {
     private String businessType;
     private String profileImage;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

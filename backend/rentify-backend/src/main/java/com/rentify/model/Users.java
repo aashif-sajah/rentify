@@ -11,8 +11,11 @@ import java.util.Set;
 @Setter
 public class Users {
 
-    @Column(unique = true, nullable = false)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
+
+    @Column(unique = true, nullable = false)
     private String username;
 
     @Column(unique = true, nullable = false)
@@ -23,18 +26,21 @@ public class Users {
 
     private String userFirstName;
     private String userLastName;
-    private String businessType;
-    private String profileImage;
 
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
-                    @JoinColumn(name = "USER_ID")
+                    @JoinColumn(
+                            name = "USER_ID",
+                            referencedColumnName = "userId"
+                    )
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
+                    @JoinColumn(
+                            name = "ROLE_ID",
+                            referencedColumnName = "role")
             }
     )
     private Set<Role> roles;

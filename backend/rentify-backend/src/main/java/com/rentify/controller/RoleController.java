@@ -17,7 +17,7 @@ public class RoleController
         this.roleService = roleService;
     }
 
-    @PostMapping("/git")
+    @PostMapping("/createNewRole")
     public Role createNewRole(@RequestBody Role role)
     {
         return roleService.createRole(role);

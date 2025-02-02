@@ -23,7 +23,7 @@ public class UserService {
   }
 
   public Users registerNewUser(Users users) {
-    Role role = roleRepo.findById("User").orElseThrow(() -> new RuntimeException("Role not found"));
+    Role role = roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
 
     if (users.getRoles() == null) {
         Set<Role> roles = new HashSet<>();

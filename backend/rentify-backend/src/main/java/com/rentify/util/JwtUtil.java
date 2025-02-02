@@ -37,10 +37,12 @@ public class JwtUtil
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String getUserNameFromToken(String token)
+    public String getUserEmailFromToken(String token)
     {
         return getClaimFromToken(token, Claims::getSubject);
     }
+
+
 
     private <T> T getClaimFromToken(String token, Function<Claims,T> claimResolver)
     {
@@ -59,8 +61,8 @@ public class JwtUtil
 
     public boolean validateToken(String token, UserDetails userDetails)
     {
-        final String userName = getUserNameFromToken(token);
-        return ( userName.equals(userDetails.getUsername()) && !isTokenExpired(token) );
+        final String userEmail = getUserEmailFromToken(token);
+        return ( userEmail.equals(userDetails.getUsername()) && !isTokenExpired(token) );
     }
 
     private boolean isTokenExpired(String token)

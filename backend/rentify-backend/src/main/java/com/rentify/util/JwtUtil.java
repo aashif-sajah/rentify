@@ -52,13 +52,13 @@ public class JwtUtil {
 
   public boolean validateToken(String token, UserDetails userDetails) {
     final String userEmail = getUserEmailFromToken(token);
-    System.out.println(userEmail + ": This is from JwtUtil ValidateToken line:55");
-    System.out.println("Not is TokenExpired: " + !isTokenExpired(token) + " line:56");
-    System.out.println("User Details getUserName() before: " + userDetails.getUsername() + " line:57");
-    System.out.println("User Emails.equals(userDetails.getUserName()): " + userEmail.equals(userDetails.getUsername()) + " line:58");
+//    System.out.println(userEmail + ": This is from JwtUtil ValidateToken line:55");
+//    System.out.println("Not is TokenExpired: " + !isTokenExpired(token) + " line:56");
+//    System.out.println("User Details getUserName() before: " + userDetails.getUsername() + " line:57");
+//    System.out.println("User Emails.equals(userDetails.getUserName()): " + userEmail.equals(userDetails.getUsername()) + " line:58");
     String userDetailsExtractAndModifiedUserName = userDetails.getUsername() + "@gmail.com";
-    System.out.println("User Details getUserName() After: " + userDetailsExtractAndModifiedUserName + " line:60");
-    System.out.println("User Emails.equals(userDetails.getUserName()): " + userEmail.equals(userDetailsExtractAndModifiedUserName) + " line:61");
+//    System.out.println("User Details getUserName() After: " + userDetailsExtractAndModifiedUserName + " line:60");
+//    System.out.println("User Emails.equals(userDetails.getUserName()): " + userEmail.equals(userDetailsExtractAndModifiedUserName) + " line:61");
     return (userEmail.equals(userDetailsExtractAndModifiedUserName) && !isTokenExpired(token));
   }
 

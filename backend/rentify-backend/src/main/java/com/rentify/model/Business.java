@@ -23,6 +23,11 @@ public class Business
     @Column(nullable = false)
     private String businessType;
 
+    private String description;
+    private String address;
+    private String contactEmail;
+    private String phone;
+
     @Column(unique = true, nullable = false)
     private String storeSlug; // Unique store URL identifier
 

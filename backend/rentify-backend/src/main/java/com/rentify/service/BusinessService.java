@@ -5,6 +5,7 @@ import com.rentify.model.Users;
 import com.rentify.repository.BusinessRepo;
 import com.rentify.repository.UserRepo;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,8 +19,11 @@ public class BusinessService
     private final UserRepo userRepo;
 
 
-    public Business createBusiness(Long userId, Business business) {
-        Users owner = userRepo.findById(userId)
+    public Business createBusiness(Business business) {
+
+        String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        Users owner = userRepo.findByUserEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
 

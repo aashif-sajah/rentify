@@ -17,8 +17,8 @@ public class BusinessController
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('OWNER')")
-    public Business createBusiness(@RequestParam Long userId, @RequestBody Business business) {
-        return businessService.createBusiness(userId, business);
+    public Business createBusiness(@RequestBody Business business) {
+        return businessService.createBusiness(business);
     }
 
     @GetMapping("/{userId}")

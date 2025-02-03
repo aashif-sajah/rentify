@@ -16,13 +16,14 @@ public class BusinessController
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('OWNER')")
+    @PreAuthorize("hasRole('Owner')")
     public Business createBusiness(@RequestBody Business business) {
+        System.out.println("This is getting called");
         return businessService.createBusiness(business);
     }
 
     @GetMapping("/{userId}")
-    @PreAuthorize("hasRole('OWNER')")
+    @PreAuthorize("hasRole('Owner')")
     public Business getBusiness(@PathVariable Long userId) {
         return businessService.getBusinessByOwner(userId)
                 .orElseThrow(() -> new RuntimeException("Business not found"));

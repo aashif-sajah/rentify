@@ -1,6 +1,5 @@
 package com.rentify.config;
 
-
 import com.rentify.service.MyUserDetailsService;
 import com.rentify.util.JwtUtil;
 import jakarta.servlet.FilterChain;
@@ -18,57 +17,55 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-public class JwtAuthFilter extends OncePerRequestFilter
-{
-    private final JwtUtil jwtUtil;
+public class JwtAuthFilter extends OncePerRequestFilter {
+  private final JwtUtil jwtUtil;
 
-    private final ApplicationContext context;
+  private final ApplicationContext context;
 
-    public JwtAuthFilter(JwtUtil jwtUtil, ApplicationContext context) {
-        this.jwtUtil = jwtUtil;
-        this.context = context;
+  public JwtAuthFilter(JwtUtil jwtUtil, ApplicationContext context) {
+    this.jwtUtil = jwtUtil;
+    this.context = context;
+  }
+
+  @Override
+  protected void doFilterInternal(
+      HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+      throws ServletException, IOException {
+
+    final String header = request.getHeader("Authorization");
+    String userEmail = null;
+    String jwtToken = null;
+
+    if (header != null && header.startsWith("Bearer ")) {
+      jwtToken = header.substring(7);
+
+      try {
+        userEmail = jwtUtil.getUserEmailFromToken(jwtToken);
+
+
+      } catch (IllegalArgumentException e) {
+        System.out.println("Unable to get jwt token");
+      } catch (Throwable e) {
+        System.out.println("Jwt token is expired");
+      }
+    } else {
+      System.out.println("Jwt token is in-valid from JwtAuthFilter");
     }
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+      UserDetails userDetails =
+          context.getBean(MyUserDetailsService.class).loadUserByUsername(userEmail);
 
-       final String header = request.getHeader("Authorization");
-       String userEmail = null;
-       String jwtToken = null;
+      if (jwtUtil.validateToken(jwtToken, userDetails)) {
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+            new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities());
 
-       if (header != null && header.startsWith("Bearer "))
-       {
-           jwtToken = header.substring(7);
-
-           try{
-            userEmail = jwtUtil.getUserEmailFromToken(jwtToken);
-
-           } catch (IllegalArgumentException e) {
-               System.out.println("Unable to get jwt token");
-           } catch (Throwable e) {
-               System.out.println("Jwt token is expired");
-           }
-       } else
-       {
-           System.out.println("Jwt token is in-valid from JwtAuthFilter");
-       }
-
-       if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null)
-       {
-           UserDetails userDetails = context.getBean(MyUserDetailsService.class).loadUserByUsername(userEmail);
-
-           if (jwtUtil.validateToken(jwtToken,userDetails))
-           {
-               UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                       new UsernamePasswordAuthenticationToken(
-                       userDetails,
-                       null,
-                       userDetails.getAuthorities());
-
-               usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-               SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-           }
-       }
-       filterChain.doFilter(request, response);
+        usernamePasswordAuthenticationToken.setDetails(
+            new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+      }
     }
+    filterChain.doFilter(request, response);
+  }
 }

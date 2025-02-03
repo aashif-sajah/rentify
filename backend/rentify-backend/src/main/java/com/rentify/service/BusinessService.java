@@ -20,7 +20,6 @@ public class BusinessService
 
 
     public Business createBusiness(Business business) {
-
         String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Users owner = userRepo.findByUserEmail(userEmail)

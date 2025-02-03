@@ -4,25 +4,25 @@ import com.rentify.model.Business;
 import com.rentify.model.Users;
 import com.rentify.repository.BusinessRepo;
 import com.rentify.repository.UserRepo;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
+@AllArgsConstructor
 public class BusinessService
 {
     private final BusinessRepo businessRepo;
 
     private final UserRepo userRepo;
 
-    public BusinessService(BusinessRepo businessRepo, UserRepo userRepo) {
-        this.businessRepo = businessRepo;
-        this.userRepo = userRepo;
-    }
 
     public Business createBusiness(Long userId, Business business) {
         Users owner = userRepo.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Check if user already has a business
+
         if (businessRepo.findByOwner(owner).isPresent()) {
             throw new RuntimeException("User already has a business");
         }

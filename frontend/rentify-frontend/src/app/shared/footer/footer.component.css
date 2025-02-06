@@ -1,10 +1,17 @@
 .footer {
-  text-align: center;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
   background-color: #0057ff;
   color: white;
-  font-size: 14px;
+  border-radius: 15px;
+  margin: 10px 0px 0 20px;
+}
+
+.position{
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  bottom: 10px;
+  left: 0px;
+  width: 99%;
 }

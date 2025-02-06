@@ -5,6 +5,8 @@
   padding: 10px 20px;
   background-color: #0057ff;
   color: white;
+  border-radius: 15px;
+  margin: 10px 20px 0 20px;
 
   .logo {
     font-size: 20px;
@@ -29,16 +31,48 @@
 
     .login, .signup {
       background: none;
-      border: 1px solid white;
+      border: 2px solid white;
       padding: 5px 10px;
       color: white;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 15px;
+      width: 80px;
+      font-weight: bold;
+      transition: 0.3s ease-in-out;
     }
 
     .signup {
+      border: 1px solid white;
       background-color: white;
       color: #0057ff;
     }
+
+    .login:hover{
+      background-color: white;
+      color: #0057ff;
+      transform: scale(1.1);
+    }
+
+    .login:hover + .signup {
+      background-color: #0057ff;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .signup:hover{
+      background-color: #0057ff;
+      color: white;
+      border: 2px solid white;
+      transform: scale(1.1);
+    }
+
+
   }
 }
+
+span{
+  color: orange;
+  font-weight: bold;
+  font-size: 20px;
+}
+

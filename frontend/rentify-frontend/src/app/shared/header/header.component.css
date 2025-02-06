@@ -1,0 +1,44 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #0057ff;
+  color: white;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+
+    .login, .signup {
+      background: none;
+      border: 1px solid white;
+      padding: 5px 10px;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .signup {
+      background-color: white;
+      color: #0057ff;
+    }
+  }
+}

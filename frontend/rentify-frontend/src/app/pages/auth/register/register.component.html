@@ -1,41 +1,51 @@
-<div class="auth-container">
-  <main class="auth-form">
-    <h2>Create Account</h2>
+<div class="container">
+  <h2>Register</h2>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
 
-    <form>
-      <div class="form-group">
-        <label>Email</label>
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="e.g., campire@gmail.com">
-      </div>
-
-      <div class="form-group">
-        <label>Create Password</label>
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Must be 8+ characters">
-      </div>
-
-      <div class="form-group">
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          placeholder="Repeat password">
-      </div>
-
-      <button
-        type="submit"
-        class="primary-btn">
-        Register
-      </button>
-    </form>
-
-    <div class="auth-switch">
-      Already have an account? <a routerLink="/login">Log in</a>
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.userFirstName"
+        required #firstName="ngModel" class="form-control" />
+      <div *ngIf="firstName.invalid && firstName.touched" class="error">First Name is required</div>
     </div>
-  </main>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="user.userLastName"
+        required #lastName="ngModel" class="form-control" />
+      <div *ngIf="lastName.invalid && lastName.touched" class="error">Last Name is required</div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.userEmail"
+        required email #email="ngModel" class="form-control" />
+      <div *ngIf="email.invalid && email.touched" class="error">Valid Email is required</div>
+    </div>
+
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user.username"
+        required #username="ngModel" class="form-control" />
+      <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.userPassword"
+        required minlength="6" #password="ngModel" class="form-control" />
+      <div *ngIf="password.invalid && password.touched" class="error">
+        Password must be at least 6 characters
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
+
+  </form>
 </div>

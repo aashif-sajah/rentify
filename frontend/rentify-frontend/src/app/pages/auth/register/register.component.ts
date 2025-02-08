@@ -2,7 +2,7 @@ import { User } from './../../../models/user';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
+import { RegisterService } from '../../../core/services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -19,25 +19,36 @@ export class RegisterComponent {
     userPassword: '',
     roles: [],
   };
+  errorMessage: any;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private registerService: RegisterService, private router: Router) {}
 
   onSubmit(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
+    if (form.invalid) return;
 
-    this.authService.registerUser(this.user).subscribe({
+
+    this.registerService.register(this.user).subscribe({
       next: (response) => {
-        console.log('Registration successful:', response);
-        alert('Registration Successful! Redirecting to login...');
-        this.router.navigate(['/login']); // Redirect to login page
+        alert(response.userEmail + ' has been registered successfully!'); // Alert user of successful registration
+        this.router.navigate(['/login']); // Redirect to login after successful registration
       },
       error: (error) => {
-        console.error('Registration failed:', error);
-        alert('Registration failed. Try again.');
+        this.errorMessage = error.message;
+        console.error('There was an error!', error);
+        this.reSetForm();
       },
     });
   }
+
+  reSetForm(){
+    this.user = {
+      userFirstName: '',
+      userLastName: '',
+      userEmail: '',
+      username: '',
+      userPassword: '',
+      roles: [],
+  }
+}
 
 }

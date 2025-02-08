@@ -1,51 +1,72 @@
-<div class="container">
+<div class="register-container">
   <h2>Register</h2>
   <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
+
+     <!-- User Name -->
+     <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="user.username"
+        required
+        minlength="2"
+        #username="ngModel">
+    </div>
 
     <!-- First Name -->
     <div class="form-group">
       <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.userFirstName"
-        required #firstName="ngModel" class="form-control" />
-      <div *ngIf="firstName.invalid && firstName.touched" class="error">First Name is required</div>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="user.userFirstName"
+        required
+        minlength="2"
+        #firstName="ngModel">
     </div>
 
     <!-- Last Name -->
     <div class="form-group">
       <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" [(ngModel)]="user.userLastName"
-        required #lastName="ngModel" class="form-control" />
-      <div *ngIf="lastName.invalid && lastName.touched" class="error">Last Name is required</div>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="user.userLastName"
+        required
+        minlength="2"
+        #lastName="ngModel">
     </div>
 
     <!-- Email -->
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" [(ngModel)]="user.userEmail"
-        required email #email="ngModel" class="form-control" />
-      <div *ngIf="email.invalid && email.touched" class="error">Valid Email is required</div>
-    </div>
-
-    <!-- Username -->
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" [(ngModel)]="user.username"
-        required #username="ngModel" class="form-control" />
-      <div *ngIf="username.invalid && username.touched" class="error">Username is required</div>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="user.userEmail"
+        required
+        email
+        #email="ngModel">
     </div>
 
     <!-- Password -->
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" [(ngModel)]="user.userPassword"
-        required minlength="6" #password="ngModel" class="form-control" />
-      <div *ngIf="password.invalid && password.touched" class="error">
-        Password must be at least 6 characters
-      </div>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="user.userPassword"
+        required
+        minlength="6"
+        #password="ngModel">
     </div>
 
-    <!-- Submit Button -->
-    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button>
-
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
   </form>
 </div>

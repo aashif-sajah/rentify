@@ -1,26 +1,31 @@
 import { User } from './../../../models/user';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule,RouterLink],
+  imports: [FormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
-export class RegisterComponent
-{
+export class RegisterComponent {
   user: User = {
     userFirstName: '',
     userLastName: '',
     userEmail: '',
     username: '',
     userPassword: '',
-    roles: [{ role: 'USER', roleDescription: 'Standard User' }],
+    roles: [],
   };
 
-  
+  constructor(private authService: AuthService, private router: Router) {}
 
+  onSubmit(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+  }
 
 }

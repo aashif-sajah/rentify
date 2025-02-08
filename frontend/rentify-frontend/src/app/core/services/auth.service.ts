@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtResponse } from '../../models/jwt-response';
 
@@ -12,31 +12,50 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  login(userEmail: string, password: string) {
+  login(userEmail: string, password: string): Observable<JwtResponse> {
     return this.http
       .post<JwtResponse>(`${this.apiUrl}/authenticate`, { userEmail, password })
       .pipe(
-        tap((res) => {
-          localStorage.setItem('token', res.jwtToken);
-          if (res.businessAvailable) {
-            this.router.navigate(['/dashboard']);
-          } else {
-            this.router.navigate(['/business-setup']);
+        catchError((error) => {
+          let errorMessage = 'Unknown error occurred';
+          if (error.status === 401) {
+            errorMessage = error.error?.message || 'Invalid credentials';
           }
+          return throwError(() => new Error(errorMessage));
         })
       );
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+
+  public setRole(roles: String[]) {
+    localStorage.setItem('roles', JSON.stringify(roles));
   }
 
-  isLoggedIn(): boolean {
-    return !!this.getToken();
+  public getRole(): { role: string; roleDescription: string }[] {
+    const roles = localStorage.getItem('roles');
+    return roles ? JSON.parse(roles) : [];
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+  public setToken(token: string) {
+    localStorage.setItem('jwtToken', token);
   }
+
+  public getToken(): string {
+    return localStorage.getItem('jwtToken') || '';
+  }
+
+  public clearRole() {
+    localStorage.clear();
+  }
+
+  public isLoggedIn(): boolean {
+    const token = this.getToken();
+    const roles = this.getRole();
+    return !!token && roles.length > 0;
+  }
+
+  public hasRole(role: string): boolean {
+    return this.getRole().some((r) => r.role === role);
+  }
+
 }

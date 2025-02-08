@@ -26,6 +26,18 @@ export class RegisterComponent {
     if (form.invalid) {
       return;
     }
+
+    this.authService.registerUser(this.user).subscribe({
+      next: (response) => {
+        console.log('Registration successful:', response);
+        alert('Registration Successful! Redirecting to login...');
+        this.router.navigate(['/login']); // Redirect to login page
+      },
+      error: (error) => {
+        console.error('Registration failed:', error);
+        alert('Registration failed. Try again.');
+      },
+    });
   }
 
 }

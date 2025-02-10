@@ -10,11 +10,11 @@ import { JwtResponse } from '../../models/jwt-response';
 export class AuthService {
   private apiUrl = 'http://localhost:8080/api/auth';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  login(userEmail: string, password: string): Observable<JwtResponse> {
+  login(userEmail: string, userPassword: string): Observable<JwtResponse> {
     return this.http
-      .post<JwtResponse>(`${this.apiUrl}/authenticate`, { userEmail, password })
+      .post<JwtResponse>(`${this.apiUrl}/authenticate`, { userEmail, userPassword })
       .pipe(
         catchError((error) => {
           let errorMessage = 'Unknown error occurred';

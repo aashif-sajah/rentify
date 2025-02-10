@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -13,21 +14,26 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   userEmail = '';
-  password = '';
+  userPassword = '';
 
   errorMessage: string = '';
   usernameError: boolean = false;
   passwordError: boolean = false;
 
   onSubmit() {
-    if (!this.userEmail || !this.password) {
+    console.log('submitting login form' + this.userEmail +' : '+ this.userPassword);
+    if (!this.userEmail || !this.userPassword) {
       this.errorMessage = 'Please enter email and password';
       return;
     }
 
-    this.authService.login(this.userEmail, this.password).subscribe({
+    this.authService.login(this.userEmail, this.userPassword).subscribe({
       next: (res) => {
+        console.log('login response', res);
         this.authService.setToken(res.jwtToken);
+        this.authService.setRole(res.user.roles.map(role => role.role));
+        console.log("jwt from local storage: " + this.authService.getToken());
+        console.log("Roles from local storage: " + this.authService.getRole());
         if (res.businessAvailable) {
           this.router.navigate(['/dashboard']);
         } else {
@@ -40,22 +46,18 @@ export class LoginComponent {
     });
   }
 
-  private handleLoginError(errorMessage: string) {
-    const message = errorMessage.toLowerCase();
 
-    if (message.includes('username')) {
-      this.usernameError = true;
-      this.errorMessage = 'Invalid username';
-    } else if (
-      message.includes('password') ||
-      message.includes('credentials')
-    ) {
-      this.passwordError = true;
-      this.errorMessage = 'Invalid credentials';
-    } else {
-      this.errorMessage = 'Login failed. Please try again.';
+    private handleLoginError(errorMessage: string) {
+      if (errorMessage.includes('disabled')) {
+        this.errorMessage = 'Your account is disabled. Contact support.';
+      } else if (errorMessage.includes('username') || errorMessage.includes('password')) {
+        this.errorMessage = 'Invalid username or password.';
+        this.passwordError = true;
+      } else {
+        this.errorMessage = 'Login failed. Please try again later.';
+      }
     }
-  }
+
 
   private resetErrors() {
     this.errorMessage = '';

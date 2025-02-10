@@ -27,7 +27,7 @@ public class JwtService {
   private final UserRepo userRepo;
   private final BusinessRepo businessRepo;
 
-  public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
+  public JwtResponse createJwtToken(JwtRequest jwtRequest) {
 
     String userEmail = jwtRequest.getUserEmail();
     String userPassword = jwtRequest.getUserPassword();
@@ -44,7 +44,7 @@ public class JwtService {
     return new JwtResponse(user, newGeneratedJwtToken, isBusinessAvailable);
   }
 
-  private void authenticate(String userEmail, String password) throws Exception {
+  private void authenticate(String userEmail, String password){
     try {
       authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(userEmail, password));

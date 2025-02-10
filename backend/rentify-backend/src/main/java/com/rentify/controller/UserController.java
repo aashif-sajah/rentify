@@ -19,7 +19,6 @@ public class UserController
     @PostMapping("/api/auth/registerNewUser")
     public Users registerUser(@RequestBody Users users)
     {
-
         return userService.registerNewUser(users);
     }
 

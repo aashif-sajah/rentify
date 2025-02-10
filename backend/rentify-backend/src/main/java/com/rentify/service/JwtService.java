@@ -1,5 +1,7 @@
 package com.rentify.service;
 
+import com.rentify.exception.InvalidCredentialsException;
+import com.rentify.exception.UserDisabledException;
 import com.rentify.model.JwtRequest;
 import com.rentify.model.JwtResponse;
 import com.rentify.model.Users;
@@ -25,7 +27,7 @@ public class JwtService {
   private final UserRepo userRepo;
   private final BusinessRepo businessRepo;
 
-  public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
+  public JwtResponse createJwtToken(JwtRequest jwtRequest) {
 
     String userEmail = jwtRequest.getUserEmail();
     String userPassword = jwtRequest.getUserPassword();
@@ -42,14 +44,14 @@ public class JwtService {
     return new JwtResponse(user, newGeneratedJwtToken, isBusinessAvailable);
   }
 
-  private void authenticate(String userEmail, String password) throws Exception {
+  private void authenticate(String userEmail, String password){
     try {
       authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(userEmail, password));
     } catch (DisabledException e) {
-      throw new Exception("User is Disabled");
+      throw new UserDisabledException("User is disabled. Please contact support.");
     } catch (BadCredentialsException e) {
-      throw new Exception("Invalid username or password");
+      throw new InvalidCredentialsException("Invalid username or password.");
     }
   }
 }

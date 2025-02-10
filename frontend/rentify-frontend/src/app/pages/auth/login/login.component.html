@@ -1,0 +1,61 @@
+<div class="login-container">
+  <div class="login-box">
+    <h2>Log in</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="userEmail"
+          name="email"
+          required
+          placeholder="Enter your email"
+        />
+       <!--  <div *ngIf="email.invalid && userEmail.touched">
+          User Email is required.
+        </div> -->
+        <div *ngIf="usernameError" class="text-danger mt-1">
+          User Email not found
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="userPassword"
+          name="password"
+          required
+          placeholder="Enter your password"
+        />
+       <!--  <div *ngIf="password.invalid && password.touched" class="text-danger">
+          Password is required.
+        </div> -->
+        <div *ngIf="passwordError" class="text-danger mt-1">
+          Invalid password
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn">Log in</button>
+    </form>
+
+    <div class="social-login">
+      <p>Or log in with</p>
+      <div class="social-icons">
+        <button class="social-btn facebook">F</button>
+        <button class="social-btn google">G</button>
+        <button class="social-btn apple">A</button>
+      </div>
+    </div>
+
+    <p class="signup-link">
+      Don't have an account? <a routerLink="/signup">Sign up</a>
+    </p>
+  </div>
+  <div class="login-image">
+    <img src="assets/images/login-illustration.png" alt="Login Illustration" />
+  </div>
+</div>
+

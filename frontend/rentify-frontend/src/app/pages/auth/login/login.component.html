@@ -12,6 +12,12 @@
           required
           placeholder="Enter your email"
         />
+        <div *ngIf="email.invalid && email.touched">
+          User Email is required.
+        </div>
+        <div *ngIf="usernameError" class="text-danger mt-1">
+          User Email not found
+        </div>
       </div>
 
       <div class="input-group">
@@ -24,6 +30,12 @@
           required
           placeholder="Enter your password"
         />
+        <div *ngIf="password.invalid && password.touched" class="text-danger">
+          Password is required.
+        </div>
+        <div *ngIf="passwordError" class="text-danger mt-1">
+          Invalid password
+        </div>
       </div>
 
       <button type="submit" class="login-btn">Log in</button>

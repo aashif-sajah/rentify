@@ -1,9 +1,8 @@
-/* General Styling */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: #f8f9fa;
   padding: 20px;
 }
@@ -97,7 +96,6 @@ h2 {
   background-color: #333;
 }
 
-/* Signup Link */
 .signup-link {
   margin-top: 15px;
   font-size: 14px;
@@ -113,7 +111,6 @@ h2 {
   text-decoration: underline;
 }
 
-/* Illustration */
 .login-image {
   display: none;
 }

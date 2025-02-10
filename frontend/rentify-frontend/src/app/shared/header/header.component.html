@@ -6,7 +6,12 @@
     <li><a routerLink="/about-us">About Us</a></li>
   </ul>
   <div class="auth-buttons">
+    @if(isLoggedIn()){
+    <button class="login" (click)="logout()">Log out</button>
+    }
+    @if(!isLoggedIn()){
     <button class="login" routerLink='/login' >Log in</button>
     <button class="signup" routerLink='/register'>Sign up</button>
+    }
   </div>
 </nav>

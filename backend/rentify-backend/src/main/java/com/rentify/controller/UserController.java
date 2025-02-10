@@ -23,15 +23,4 @@ public class UserController
         return userService.registerNewUser(users);
     }
 
-    @GetMapping("/forAdmin")
-    public String forAdmin()
-    {
-        return "For admin";
-    }
-
-    @GetMapping("/forUser")
-    public String forUser()
-    {
-        return "For user";
-    }
 }

@@ -1,6 +1,7 @@
 package com.rentify.controller;
 
 import com.rentify.model.Business;
+import com.rentify.model.StoreTheme;
 import com.rentify.service.BusinessService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +18,8 @@ public class BusinessController
 
     @PostMapping("/create")
     @PreAuthorize("hasRole('Owner')")
-    public Business createBusiness(@RequestBody Business business) {
-        return businessService.createBusiness(business);
+    public Business createBusiness(@RequestBody Business business, @RequestBody StoreTheme storeTheme) {
+        return businessService.createBusiness(business, storeTheme);
     }
 
     @GetMapping("/{userId}")

@@ -1,8 +1,10 @@
 package com.rentify.service;
 
 import com.rentify.model.Business;
+import com.rentify.model.StoreTheme;
 import com.rentify.model.Users;
 import com.rentify.repository.BusinessRepo;
+import com.rentify.repository.StoreThemeRepo;
 import com.rentify.repository.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,10 +16,11 @@ import java.util.Optional;
 @AllArgsConstructor
 public class BusinessService {
   private final BusinessRepo businessRepo;
+  private final StoreThemeRepo storeThemeRepo;
 
   private final UserRepo userRepo;
 
-  public Business createBusiness(Business business) {
+  public Business createBusiness(Business business, StoreTheme storeTheme) {
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName() + "@gmail.com";
     Users owner =
         userRepo

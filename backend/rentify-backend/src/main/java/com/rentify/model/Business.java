@@ -34,4 +34,7 @@ public class Business
     @OneToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "userId", nullable = false)
     private Users owner;
+
+    @OneToOne(mappedBy = "business", cascade = CascadeType.ALL)
+    private StoreTheme storeTheme;
 }

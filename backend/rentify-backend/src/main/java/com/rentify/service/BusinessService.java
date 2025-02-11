@@ -30,6 +30,11 @@ public class BusinessService {
 
     business.setOwner(owner);
     business.setStoreSlug(generateSlug(business.getBusinessName()));
+
+    // saving the store details as well
+    StoreTheme savedStoreTheme = storeThemeRepo.save(storeTheme);
+    business.setStoreTheme(savedStoreTheme);
+
     return businessRepo.save(business);
   }
 

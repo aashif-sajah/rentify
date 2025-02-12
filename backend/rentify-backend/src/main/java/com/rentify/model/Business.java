@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -34,4 +37,11 @@ public class Business
     @OneToOne
     @JoinColumn(name = "owner_id", referencedColumnName = "userId", nullable = false)
     private Users owner;
+
+    @OneToOne(mappedBy = "business", cascade = CascadeType.ALL)
+    private StoreTheme storeTheme;
+
+    @OneToMany(mappedBy = "business", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products = new ArrayList<>();
+
 }

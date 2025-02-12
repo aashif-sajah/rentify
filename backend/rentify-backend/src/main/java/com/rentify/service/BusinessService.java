@@ -1,8 +1,8 @@
 package com.rentify.service;
 
-import com.rentify.model.Business;
-import com.rentify.model.Users;
+import com.rentify.model.*;
 import com.rentify.repository.BusinessRepo;
+import com.rentify.repository.StoreThemeRepo;
 import com.rentify.repository.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,10 +14,12 @@ import java.util.Optional;
 @AllArgsConstructor
 public class BusinessService {
   private final BusinessRepo businessRepo;
+  private final StoreThemeRepo storeThemeRepo;
 
   private final UserRepo userRepo;
 
-  public Business createBusiness(Business business) {
+  public BusinessResponse createBusiness(BusinessRequest request) {
+    System.out.println("This getting called line 22 business Service");
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName() + "@gmail.com";
     Users owner =
         userRepo
@@ -28,15 +30,52 @@ public class BusinessService {
       throw new RuntimeException("User already has a business");
     }
 
+    Business business = new Business();
+    business.setBusinessName(request.getBusinessName());
+    business.setBusinessType(request.getBusinessType());
+    business.setDescription(request.getDescription());
+    business.setContactEmail(request.getContactEmail());
+    business.setPhone(request.getPhone());
     business.setOwner(owner);
-    business.setStoreSlug(generateSlug(business.getBusinessName()));
-    return businessRepo.save(business);
+    business.setStoreSlug(generateSlug(request.getBusinessName()));
+
+    Business savedBusiness = businessRepo.save(business);
+
+    // saving the store details as well
+    StoreTheme storeTheme =  request.getStoreTheme();
+    storeTheme.setBusiness(savedBusiness);
+    StoreTheme savedStoreTheme = storeThemeRepo.save(storeTheme);
+
+    savedBusiness.setStoreTheme(savedStoreTheme);
+    businessRepo.save(savedBusiness);
+
+    return convertToBusinessResponse(savedBusiness);
+
   }
 
-  public Optional<Business> getBusinessByOwner(Long userId) {
+  private BusinessResponse convertToBusinessResponse(Business business)
+  {
+    return BusinessResponse.builder()
+            .id(business.getId())
+            .businessName(business.getBusinessName())
+            .businessType(business.getBusinessType())
+            .description(business.getDescription())
+            .contactEmail(business.getContactEmail())
+            .phone(business.getPhone())
+            .storeSlug(business.getStoreSlug())
+            .storeTheme(new StoreThemeResponse(
+                    business.getStoreTheme().getFontStyle(),
+                    business.getStoreTheme().getPrimaryColor(),
+                    business.getStoreTheme().getLogoUrl()
+            ))
+            .isProductAvailable(!business.getProducts().isEmpty()) // Check if products exist
+            .build();
+  }
+
+  public Optional<BusinessResponse> getBusinessByOwner(Long userId) {
     Users owner =
         userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-    return businessRepo.findByOwner(owner);
+    return businessRepo.findByOwner(owner).map(this::convertToBusinessResponse);
   }
 
   private String generateSlug(String businessName) {

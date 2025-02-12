@@ -1,14 +1,15 @@
 package com.rentify.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@Builder
 public class BusinessResponse {
     private Long id;
     private String businessName;
@@ -18,5 +19,5 @@ public class BusinessResponse {
     private String phone;
     private String storeSlug;
     private StoreThemeResponse storeTheme;
-    private List<ProductResponse> products;
+    private boolean isProductAvailable;
 }

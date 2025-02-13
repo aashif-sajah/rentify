@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-business-setup',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
   templateUrl: './business-setup.component.html',
   styleUrl: './business-setup.component.css'
 })

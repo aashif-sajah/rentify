@@ -24,7 +24,6 @@ export const routes: Routes = [
   {
     path: 'business-setup',
     component: BusinessSetupComponent,
-    canActivate: [authGuard],
   },
   {
     path: 'dashboard',

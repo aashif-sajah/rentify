@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/business")
@@ -22,8 +23,9 @@ public class BusinessController {
   @PostMapping("/create")
   @PreAuthorize("hasRole('Owner')")
   public ResponseEntity<BusinessResponse> createBusiness(
-          @RequestBody BusinessRequest businessRequest) {
-    BusinessResponse response = businessService.createBusiness(businessRequest);
+          @RequestPart("businessRequest") BusinessRequest businessRequest,
+          @RequestPart("image") MultipartFile image) {
+    BusinessResponse response = businessService.createBusiness(businessRequest,image);
     return ResponseEntity.status(HttpStatus.CREATED).body(response);
   }
 

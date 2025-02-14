@@ -38,6 +38,7 @@ public class CloudinaryConfig {
             System.out.println(uploadResult.toString());
             return uploadResult.get("url").toString(); // Get the URL of the uploaded image
         } catch (Exception e) {
+      System.out.println("exception occured");
             throw new RuntimeException("Image upload failed", e);
         }
     }

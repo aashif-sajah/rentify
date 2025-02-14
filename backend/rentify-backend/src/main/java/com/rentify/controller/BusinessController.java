@@ -1,6 +1,8 @@
 package com.rentify.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentify.model.BusinessRequest;
 import com.rentify.model.BusinessResponse;
 import com.rentify.service.BusinessService;
@@ -23,8 +25,18 @@ public class BusinessController {
   @PostMapping("/create")
   @PreAuthorize("hasRole('Owner')")
   public ResponseEntity<BusinessResponse> createBusiness(
-          @RequestPart("businessRequest") BusinessRequest businessRequest,
+          @RequestPart("businessRequest") String  businessRequestJson,
           @RequestPart("image") MultipartFile image) {
+
+    // Convert JSON string to BusinessRequest object
+    ObjectMapper objectMapper = new ObjectMapper();
+    BusinessRequest businessRequest;
+    try {
+      businessRequest = objectMapper.readValue(businessRequestJson, BusinessRequest.class);
+    } catch (JsonProcessingException e) {
+      return ResponseEntity.badRequest().build();
+    }
+
     BusinessResponse response = businessService.createBusiness(businessRequest,image);
     return ResponseEntity.status(HttpStatus.CREATED).body(response);
   }

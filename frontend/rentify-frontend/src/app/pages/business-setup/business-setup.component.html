@@ -1,1 +1,50 @@
-Business works
+<form (ngSubmit)="onSubmit()" #businessForm="ngForm" enctype="multipart/form-data">
+  <!-- Business Name -->
+  <label for="businessName">Business Name:</label>
+  <input type="text" id="businessName" name="businessName" [(ngModel)]="businessRequest.businessName" required />
+
+  <!-- Business Type -->
+  <label for="businessType">Business Type:</label>
+  <select id="businessType" name="businessType" [(ngModel)]="businessRequest.businessType" required>
+    <option value="Car Rental">Car Rental</option>
+    <option value="Camping">Camping</option>
+  </select>
+
+  <!-- Description -->
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" [(ngModel)]="businessRequest.description" required></textarea>
+
+  <!-- Contact Email -->
+  <label for="contactEmail">Contact Email:</label>
+  <input type="email" id="contactEmail" name="contactEmail" [(ngModel)]="businessRequest.contactEmail" required />
+
+  <!-- Phone -->
+  <label for="phone">Phone:</label>
+  <input type="text" id="phone" name="phone" [(ngModel)]="businessRequest.phone" required />
+
+  <!-- Store Theme -->
+  <h3>Store Theme</h3>
+
+  <label for="fontStyle">Font Style:</label>
+  <input type="text" id="fontStyle" name="fontStyle" [(ngModel)]="businessRequest.storeTheme.fontStyle" required />
+
+  <label for="primaryColor">Primary Color:</label>
+  <input type="color" id="primaryColor" name="primaryColor" [(ngModel)]="businessRequest.storeTheme.primaryColor" required />
+
+  <!-- Logo Upload -->
+  <label for="logo">Upload Logo:</label>
+  <input type="file" id="logo" (change)="onFileSelected($event)" required />
+
+  <!-- Submit Button -->
+  <button type="submit">Create Business</button>
+</form>
+
+<p>
+  <strong>Business Name:</strong> {{ businessRequest.businessName }}
+  <strong>Business businessType:</strong> {{ businessRequest.businessType }}
+  <strong>Business description:</strong> {{ businessRequest.description }}
+  <strong>Business contactEmail:</strong> {{ businessRequest.contactEmail }}
+  <strong>Business phone:</strong> {{ businessRequest.phone }}
+  <strong>Business storeTheme fontStyle:</strong> {{ businessRequest.storeTheme.fontStyle }}
+  <strong>Business storeTheme primaryColor:</strong> {{ businessRequest.storeTheme.primaryColor }}
+</p>

@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/business")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class BusinessController {
   private final BusinessService businessService;
 //  private final CloudinaryConfig cloudinaryConfig;
@@ -28,12 +29,15 @@ public class BusinessController {
           @RequestPart("businessRequest") String  businessRequestJson,
           @RequestPart("image") MultipartFile image) {
 
+    System.out.println(businessRequestJson + "line 32");
+
     // Convert JSON string to BusinessRequest object
     ObjectMapper objectMapper = new ObjectMapper();
     BusinessRequest businessRequest;
     try {
       businessRequest = objectMapper.readValue(businessRequestJson, BusinessRequest.class);
     } catch (JsonProcessingException e) {
+      System.out.println("This Getting called in line 40");
       return ResponseEntity.badRequest().build();
     }
 
@@ -50,9 +54,4 @@ public class BusinessController {
         .orElseThrow(() -> new RuntimeException("Business not found for user ID: " + userId));
   }
 
-//  @PostMapping("/test")
-//  public String storeImage(@RequestBody MultipartFile image)
-//  {
-//      return cloudinaryConfig.uploadImage(image);
-//  }
 }

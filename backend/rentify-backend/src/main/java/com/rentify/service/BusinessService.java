@@ -42,6 +42,7 @@ public class BusinessService {
     business.setBusinessType(request.getBusinessType());
     business.setDescription(request.getDescription());
     business.setContactEmail(request.getContactEmail());
+    business.setAddress(request.getAddress());
     business.setPhone(request.getPhone());
     business.setOwner(owner);
     business.setStoreSlug(generateSlug(request.getBusinessName()));
@@ -70,6 +71,7 @@ public class BusinessService {
             .description(business.getDescription())
             .contactEmail(business.getContactEmail())
             .phone(business.getPhone())
+            .address(business.getAddress())
             .storeSlug(business.getStoreSlug())
             .storeTheme(new StoreThemeResponse(
                     business.getStoreTheme().getFontStyle(),

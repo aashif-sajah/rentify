@@ -57,6 +57,25 @@ export class BusinessSetupComponent {
 
   submitForm() {
     console.log(this.businessData);
+
+     // Frontend validation before submitting
+  if (!this.businessData.businessName || 
+    !this.businessData.description || 
+    !this.businessData.contactEmail ||
+    !this.businessData.phone ||
+    !this.businessData.businessType ||
+    !this.businessData.address ||
+    !this.businessData.storeTheme.fontStyle ||
+    !this.businessData.storeTheme.primaryColor) {
+  this.errorMessage = 'Please fill in all required fields.';
+  return;
+}
+
+// Validate file size (Max 5MB)
+if (this.selectedFile && this.selectedFile.size > 5 * 1024 * 1024) {
+  this.errorMessage = 'File size exceeds 5MB. Please upload a smaller file.';
+  return;
+}
     if (!this.selectedFile) {
       alert('Please select an image.');
       return;

@@ -29,7 +29,6 @@ public class BusinessController {
           @RequestPart("businessRequest") String  businessRequestJson,
           @RequestPart("image") MultipartFile image) {
 
-    System.out.println(businessRequestJson + "line 32");
 
     ObjectMapper objectMapper = new ObjectMapper();
     BusinessRequest businessRequest;

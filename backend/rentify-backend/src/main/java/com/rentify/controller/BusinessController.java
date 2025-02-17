@@ -31,7 +31,6 @@ public class BusinessController {
 
     System.out.println(businessRequestJson + "line 32");
 
-    // Convert JSON string to BusinessRequest object
     ObjectMapper objectMapper = new ObjectMapper();
     BusinessRequest businessRequest;
     try {

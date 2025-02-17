@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
+import {jwtDecode} from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtHelperService {
 
-  constructor(private router:) {}
+  constructor(private router:Router) {}
 
   isTokenExpired(): boolean {
     const token = localStorage.getItem('jwtToken');
     if (!token) return true;
 
     try {
-      const decoded: any = jwt_decode(token);
+      const decoded: any = jwtDecode(token);
       const currentTime = Math.floor(Date.now() / 1000);
       return decoded.exp < currentTime;
     } catch (error) {

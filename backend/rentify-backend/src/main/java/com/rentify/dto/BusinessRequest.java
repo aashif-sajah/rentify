@@ -1,5 +1,6 @@
-package com.rentify.model;
+package com.rentify.dto;
 
+import com.rentify.model.StoreTheme;
 import lombok.Getter;
 import lombok.Setter;
 

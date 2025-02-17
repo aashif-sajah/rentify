@@ -1,7 +1,7 @@
 package com.rentify.controller;
 
-import com.rentify.model.JwtRequest;
-import com.rentify.model.JwtResponse;
+import com.rentify.dto.JwtRequest;
+import com.rentify.dto.JwtResponse;
 import com.rentify.service.JwtService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

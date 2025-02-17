@@ -1,5 +1,6 @@
-package com.rentify.model;
+package com.rentify.dto;
 
+import com.rentify.model.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

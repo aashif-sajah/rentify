@@ -1,4 +1,4 @@
-package com.rentify.model;
+package com.rentify.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

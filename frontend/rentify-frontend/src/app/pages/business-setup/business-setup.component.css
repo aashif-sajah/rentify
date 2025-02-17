@@ -1,36 +1,37 @@
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input, select {
-  padding: 10px;
-  font-size: 16px;
+.container {
+  width: 50%;
+  margin: auto;
+  padding: 20px;
   border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
   border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 button {
-  padding: 10px;
-  font-size: 16px;
-  background-color: blue;
-  color: white;
+  margin-top: 20px;
+  padding: 10px 15px;
   border: none;
+  background: blue;
+  color: white;
   cursor: pointer;
-  border-radius: 5px;
 }
 
-button:hover {
-  background-color: darkblue;
+button:disabled {
+  background: gray;
+}
+
+p {
+  color: red;
 }

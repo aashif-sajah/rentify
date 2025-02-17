@@ -15,6 +15,7 @@ public class BusinessResponse {
     private String businessName;
     private String businessType;
     private String description;
+    private String address;
     private String contactEmail;
     private String phone;
     private String storeSlug;

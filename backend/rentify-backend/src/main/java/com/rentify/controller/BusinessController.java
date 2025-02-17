@@ -1,29 +1,46 @@
 package com.rentify.controller;
 
-import com.rentify.model.Business;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentify.model.BusinessRequest;
 import com.rentify.model.BusinessResponse;
-import com.rentify.model.StoreTheme;
 import com.rentify.service.BusinessService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/business")
+@AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class BusinessController {
   private final BusinessService businessService;
+//  private final CloudinaryConfig cloudinaryConfig;
 
-  public BusinessController(BusinessService businessService) {
-    this.businessService = businessService;
-  }
+
 
   @PostMapping("/create")
   @PreAuthorize("hasRole('Owner')")
   public ResponseEntity<BusinessResponse> createBusiness(
-          @RequestBody BusinessRequest businessRequest) {
-    BusinessResponse response = businessService.createBusiness(businessRequest);
+          @RequestPart("businessRequest") String  businessRequestJson,
+          @RequestPart("image") MultipartFile image) {
+
+    System.out.println(businessRequestJson + "line 32");
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    BusinessRequest businessRequest;
+    try {
+      businessRequest = objectMapper.readValue(businessRequestJson, BusinessRequest.class);
+    } catch (JsonProcessingException e) {
+      System.out.println("This Getting called in line 40");
+      return ResponseEntity.badRequest().build();
+    }
+
+    BusinessResponse response = businessService.createBusiness(businessRequest,image);
     return ResponseEntity.status(HttpStatus.CREATED).body(response);
   }
 
@@ -35,4 +52,5 @@ public class BusinessController {
         .map(ResponseEntity::ok)
         .orElseThrow(() -> new RuntimeException("Business not found for user ID: " + userId));
   }
+
 }

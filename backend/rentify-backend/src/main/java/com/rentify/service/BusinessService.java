@@ -1,5 +1,7 @@
 package com.rentify.service;
 
+
+import com.rentify.config.CloudinaryConfig;
 import com.rentify.model.*;
 import com.rentify.repository.BusinessRepo;
 import com.rentify.repository.StoreThemeRepo;
@@ -7,6 +9,8 @@ import com.rentify.repository.UserRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import java.util.Optional;
 
@@ -15,11 +19,12 @@ import java.util.Optional;
 public class BusinessService {
   private final BusinessRepo businessRepo;
   private final StoreThemeRepo storeThemeRepo;
+  private final CloudinaryConfig cloudinaryConfig;
 
   private final UserRepo userRepo;
 
-  public BusinessResponse createBusiness(BusinessRequest request) {
-    System.out.println("This getting called line 22 business Service");
+  public BusinessResponse createBusiness(BusinessRequest request, MultipartFile image) {
+
     String userEmail = SecurityContextHolder.getContext().getAuthentication().getName() + "@gmail.com";
     Users owner =
         userRepo
@@ -30,11 +35,14 @@ public class BusinessService {
       throw new RuntimeException("User already has a business");
     }
 
+    String imageUrl = cloudinaryConfig.uploadImage(image);
+
     Business business = new Business();
     business.setBusinessName(request.getBusinessName());
     business.setBusinessType(request.getBusinessType());
     business.setDescription(request.getDescription());
     business.setContactEmail(request.getContactEmail());
+    business.setAddress(request.getAddress());
     business.setPhone(request.getPhone());
     business.setOwner(owner);
     business.setStoreSlug(generateSlug(request.getBusinessName()));
@@ -44,6 +52,7 @@ public class BusinessService {
     // saving the store details as well
     StoreTheme storeTheme =  request.getStoreTheme();
     storeTheme.setBusiness(savedBusiness);
+    storeTheme.setLogoUrl(imageUrl);
     StoreTheme savedStoreTheme = storeThemeRepo.save(storeTheme);
 
     savedBusiness.setStoreTheme(savedStoreTheme);
@@ -62,6 +71,7 @@ public class BusinessService {
             .description(business.getDescription())
             .contactEmail(business.getContactEmail())
             .phone(business.getPhone())
+            .address(business.getAddress())
             .storeSlug(business.getStoreSlug())
             .storeTheme(new StoreThemeResponse(
                     business.getStoreTheme().getFontStyle(),
@@ -81,4 +91,5 @@ public class BusinessService {
   private String generateSlug(String businessName) {
     return businessName.toLowerCase().replaceAll("\\s+", "-");
   }
+
 }

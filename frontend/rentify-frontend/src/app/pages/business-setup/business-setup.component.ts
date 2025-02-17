@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BusinessService } from '../../core/services/business.service';
 import { BusinessRequest } from '../../models/business-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-business-setup',
@@ -12,52 +13,76 @@ import { BusinessRequest } from '../../models/business-request';
   styleUrl: './business-setup.component.css'
 })
 export class BusinessSetupComponent {
-  businessRequest:BusinessRequest = {
+  step = 0;
+  loading = false;
+  errorMessage = '';
+  selectedFile: File | null = null;
+
+  businessData:BusinessRequest = {
     businessName: '',
-    businessType: '',
     description: '',
     contactEmail: '',
     phone: '',
-    storeTheme: {
+    businessType: '',
+    address: '',
+    storeTheme:{
       fontStyle: '',
       primaryColor: '',
-      logoUrl: '',
+      logoUrl: ''
     }
   };
-  selectedFile: File | null = null;
 
-  constructor(private businessService: BusinessService) {}
+  constructor(private businessService:BusinessService, private router: Router) {}
 
-  // Handle file selection
-  onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
+  handleFileInput(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
     }
   }
 
-  // Submit form data
-  onSubmit() {
+  nextStep() {
+    if (this.step < 2) {
+      this.step++;
+    } else {
+      this.submitForm();
+    }
+  }
+
+  prevStep() {
+    if (this.step > 0) {
+      this.step--;
+    }
+  }
+
+  submitForm() {
     if (!this.selectedFile) {
       alert('Please select an image.');
       return;
     }
 
+    this.loading = true;
     const formData = new FormData();
 
-    // Convert object to JSON string before appending
-    formData.append('businessRequest', JSON.stringify(this.businessRequest));
+    formData.append('businessRequest', JSON.stringify(this.businessData));
     formData.append('image', this.selectedFile);
 
     this.businessService.createBusiness(formData).subscribe({
-      next: (response) => {
-        console.log('Business Created:', response);
+      next: (response: any) => {
+        this.loading = false;
         alert('Business created successfully!');
+        if (response.isProductAvailable) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/add-product']);
+        }
       },
       error: (error) => {
-        console.error('Error creating business:', error);
+        this.loading = false;
         alert('Failed to create business.');
-      }
-    })
+        this.errorMessage = 'Failed to create business. Try again!';
+      },
+    });
   }
 
 }

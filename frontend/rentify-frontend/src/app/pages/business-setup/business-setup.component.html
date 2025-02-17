@@ -1,50 +1,70 @@
-<form (ngSubmit)="onSubmit()" #businessForm="ngForm" enctype="multipart/form-data">
-  <!-- Business Name -->
-  <label for="businessName">Business Name:</label>
-  <input type="text" id="businessName" name="businessName" [(ngModel)]="businessRequest.businessName" required />
+<div class="container">
+  <h2>Create Your Business</h2>
 
-  <!-- Business Type -->
-  <label for="businessType">Business Type:</label>
-  <select id="businessType" name="businessType" [(ngModel)]="businessRequest.businessType" required>
-    <option value="Car Rental">Car Rental</option>
-    <option value="Camping">Camping</option>
-  </select>
+  <!-- Step 1: Basic Info -->
+  @if(step === 0){
+  <form #form="ngForm">
+    <label for="businessName">Business Name:</label>
+    <input type="text" [(ngModel)]="businessData.businessName" name="businessName" id="businessName" required />
 
-  <!-- Description -->
-  <label for="description">Description:</label>
-  <textarea id="description" name="description" [(ngModel)]="businessRequest.description" required></textarea>
+    <label for="description">Description:</label>
+    <textarea [(ngModel)]="businessData.description" name="description" id="description" required>
+        </textarea>
 
-  <!-- Contact Email -->
-  <label for="contactEmail">Contact Email:</label>
-  <input type="email" id="contactEmail" name="contactEmail" [(ngModel)]="businessRequest.contactEmail" required />
+    <label for="contactEmail">Contact Email:</label>
+    <input type="email" [(ngModel)]="businessData.contactEmail" name="contactEmail" id="contactEmail" required />
 
-  <!-- Phone -->
-  <label for="phone">Phone:</label>
-  <input type="text" id="phone" name="phone" [(ngModel)]="businessRequest.phone" required />
+    <label for="phone">Phone:</label>
+    <input type="text" [(ngModel)]="businessData.phone" name="phone" required id="phone" />
 
-  <!-- Store Theme -->
-  <h3>Store Theme</h3>
+    <button type="button" (click)="nextStep()" [disabled]="form.invalid">Next →</button>
+  </form>
+  }
 
-  <label for="fontStyle">Font Style:</label>
-  <input type="text" id="fontStyle" name="fontStyle" [(ngModel)]="businessRequest.storeTheme.fontStyle" required />
+  <!-- Step 2: Business Type -->
+  @if(step === 1){
+  <form #form2="ngForm">
+    <label for="businessType">Select Business Type:</label>
+    <select [(ngModel)]="businessData.businessType" name="businessType" id="businessType" required>
+      <option value="Car Rental">Car Rental</option>
+      <option value="Room Rental">Room Rental</option>
+      <option value="Bicycle Rental">Bicycle Rental</option>
+      <option value="Camping Equipment">Camping Equipment</option>
+    </select>
 
-  <label for="primaryColor">Primary Color:</label>
-  <input type="color" id="primaryColor" name="primaryColor" [(ngModel)]="businessRequest.storeTheme.primaryColor" required />
+    <button type="button" (click)="prevStep()">← Back</button>
+    <button type="button" (click)="nextStep()" [disabled]="form2.invalid">Next →</button>
+  </form>
+  }
 
-  <!-- Logo Upload -->
+  <!-- Step 3: Store Theme -->
+  @if(step === 2){
+  <form #form3="ngForm">
+    <label for="fontStyle">Font Style:</label>
+    <select [(ngModel)]="businessData.storeTheme.fontStyle" name="fontStyle" id="fontStyle" required>
+      <option value="Arial">Arial</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Roboto">Roboto</option>
+    </select>
+
+    <label for="primaryColor">Primary Color:</label>
+    <input type="color" [(ngModel)]="businessData.storeTheme.primaryColor" name="primaryColor" id="primaryColor"
+      required />
+
+     <!-- Logo Upload -->
   <label for="logo">Upload Logo:</label>
-  <input type="file" id="logo" (change)="onFileSelected($event)" required />
+  <input type="file" id="logo" (change)="handleFileInput($event)" required />
+  
+    <button type="button" (click)="prevStep()">← Back</button>
+    <button type="button" (click)="submitForm()">Submit</button>
+  </form>
+  }
 
-  <!-- Submit Button -->
-  <button type="submit">Create Business</button>
-</form>
-
-<p>
-  <strong>Business Name:</strong> {{ businessRequest.businessName }}
-  <strong>Business businessType:</strong> {{ businessRequest.businessType }}
-  <strong>Business description:</strong> {{ businessRequest.description }}
-  <strong>Business contactEmail:</strong> {{ businessRequest.contactEmail }}
-  <strong>Business phone:</strong> {{ businessRequest.phone }}
-  <strong>Business storeTheme fontStyle:</strong> {{ businessRequest.storeTheme.fontStyle }}
-  <strong>Business storeTheme primaryColor:</strong> {{ businessRequest.storeTheme.primaryColor }}
-</p>
+  <!-- Loading & Error Handling -->
+  @if(loading){
+  <p>Submitting...</p>
+  }
+  @if(errorMessage){
+  <p>{{ errorMessage }}</p>
+  }
+</div>

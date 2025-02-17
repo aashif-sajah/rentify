@@ -8,7 +8,7 @@ import { BusinessResponse } from '../../models/business-response';
 })
 export class BusinessService {
 
-  private apiUrl = 'http://localhost:8080/api/business/create'; // Adjust API URL if needed
+  private apiUrl = 'http://localhost:8080/api/business/create';
 
   constructor(private http: HttpClient) {}
 

@@ -12,7 +12,8 @@ export class BusinessService {
 
   constructor(private http: HttpClient) {}
 
-  createBusiness(formData: FormData): Observable<BusinessResponse> {
+  createBusiness(formData: FormData): Observable<BusinessResponse>
+  {
     return this.http.post<BusinessResponse>(this.apiUrl, formData);
   }
 }

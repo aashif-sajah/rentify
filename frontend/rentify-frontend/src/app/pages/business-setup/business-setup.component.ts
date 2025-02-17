@@ -56,6 +56,7 @@ export class BusinessSetupComponent {
   }
 
   submitForm() {
+    console.log(this.businessData);
     if (!this.selectedFile) {
       alert('Please select an image.');
       return;
@@ -80,9 +81,30 @@ export class BusinessSetupComponent {
       error: (error) => {
         this.loading = false;
         alert('Failed to create business.');
-        this.errorMessage = 'Failed to create business. Try again!';
+        this.errorMessage = 'Failed to create business. Try again! :' + error.message;
+        alert("Resetting form");
+        this.resetForm();
       },
     });
   }
+
+  resetForm() {
+    this.businessData = {
+      businessName: '',
+      description: '',
+      contactEmail: '',
+      phone: '',
+      businessType: '',
+      address: '',
+      storeTheme:{
+        fontStyle: '',
+        primaryColor: '',
+        logoUrl: ''
+      }
+    };
+    this.selectedFile = null;
+    this.step = 0;
+  }
+
 
 }

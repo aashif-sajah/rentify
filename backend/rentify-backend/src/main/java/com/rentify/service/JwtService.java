@@ -2,8 +2,8 @@ package com.rentify.service;
 
 import com.rentify.exception.InvalidCredentialsException;
 import com.rentify.exception.UserDisabledException;
-import com.rentify.model.JwtRequest;
-import com.rentify.model.JwtResponse;
+import com.rentify.dto.JwtRequest;
+import com.rentify.dto.JwtResponse;
 import com.rentify.model.Users;
 import com.rentify.repository.BusinessRepo;
 import com.rentify.repository.UserRepo;

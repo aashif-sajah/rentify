@@ -1,4 +1,4 @@
-package com.rentify.model;
+package com.rentify.dto;
 
 import lombok.Data;
 import lombok.Getter;

@@ -2,6 +2,9 @@ package com.rentify.service;
 
 
 import com.rentify.config.CloudinaryConfig;
+import com.rentify.dto.BusinessRequest;
+import com.rentify.dto.BusinessResponse;
+import com.rentify.dto.StoreThemeResponse;
 import com.rentify.model.*;
 import com.rentify.repository.BusinessRepo;
 import com.rentify.repository.StoreThemeRepo;

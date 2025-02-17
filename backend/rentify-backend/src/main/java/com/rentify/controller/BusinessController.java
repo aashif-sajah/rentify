@@ -3,8 +3,8 @@ package com.rentify.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rentify.model.BusinessRequest;
-import com.rentify.model.BusinessResponse;
+import com.rentify.dto.BusinessRequest;
+import com.rentify.dto.BusinessResponse;
 import com.rentify.service.BusinessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

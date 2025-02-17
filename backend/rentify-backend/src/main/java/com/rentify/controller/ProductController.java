@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/products")
@@ -38,18 +39,19 @@ public class ProductController {
         return ResponseEntity.ok(savedProduct);
     }
 
-    //  Fetch all products
-    @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
+    // ✅ Fetch all products for a specific business
+    @GetMapping("/business/{businessId}")
+    public ResponseEntity<List<Product>> getAllProductsByBusiness(@PathVariable Long businessId) {
+        List<Product> products = productService.getAllProductsByBusiness(businessId);
         return ResponseEntity.ok(products);
     }
 
-    //  Fetch a product by ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        return productService.getProductById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+     // Fetch a single product by businessId and productId
+    @GetMapping("/business/{businessId}/product/{productId}")
+    public ResponseEntity<Product> getProductById(
+            @PathVariable Long businessId,
+            @PathVariable Long productId) {
+        Optional<Product> product = productService.getProductById(productId);
+        return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

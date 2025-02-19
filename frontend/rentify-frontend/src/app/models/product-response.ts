@@ -1,8 +1,9 @@
 export interface ProductResponse {
   id: number;
-  productName: string;
+  name: string;
   description: string;
-  price: number;
+  pricePerDay: number;
+  availability: boolean;
   category: string;
-  images: string[];
+  imageUrls: string[];
 }

@@ -1,8 +1,10 @@
 export interface ProductRequest {
-  productName: string;
+  name: string;
   description: string;
-  price: number;
+  pricePerDay: number;
+  availability: boolean;
   category: string;
+  businessId: number;
   images: File[];
 }
 

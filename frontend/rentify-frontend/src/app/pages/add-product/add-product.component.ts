@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { ProductServiceService } from '../../core/services/product-service.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
@@ -9,6 +9,7 @@ import { BusinessResponse } from '../../models/business-response';
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css'],
+  imports: [FormsModule]
 })
 export class AddProductComponent implements OnInit {
   productData = {
@@ -22,7 +23,7 @@ export class AddProductComponent implements OnInit {
 
   selectedFiles: File[] = [];
   errorMessage = '';
-  businessData!: BusinessResponse;
+  businessData!: BusinessResponse; // Store theme details
   storeTheme = {
     fontStyle: '',
     primaryColor: '',

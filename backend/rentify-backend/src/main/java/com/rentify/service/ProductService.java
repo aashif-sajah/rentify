@@ -1,6 +1,5 @@
 package com.rentify.service;
 
-import com.rentify.config.CloudinaryConfig;
 import com.rentify.dto.ProductRequest;
 import com.rentify.model.Business;
 import com.rentify.model.Product;
@@ -19,7 +18,7 @@ public class ProductService {
 
     private final ProductRepo productRepository;
     private final BusinessRepo businessRepository;
-    private final CloudinaryConfig cloudinaryService;
+    private final CloudinaryService cloudinaryService;
 
     @Transactional
     public Product addProduct(ProductRequest request) {

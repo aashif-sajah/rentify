@@ -1,7 +1,6 @@
 package com.rentify.service;
 
 
-import com.rentify.config.CloudinaryConfig;
 import com.rentify.dto.BusinessRequest;
 import com.rentify.dto.BusinessResponse;
 import com.rentify.dto.StoreThemeResponse;
@@ -22,7 +21,7 @@ import java.util.Optional;
 public class BusinessService {
   private final BusinessRepo businessRepo;
   private final StoreThemeRepo storeThemeRepo;
-  private final CloudinaryConfig cloudinaryConfig;
+  private final CloudinaryService cloudinaryService;
 
   private final UserRepo userRepo;
 
@@ -38,7 +37,7 @@ public class BusinessService {
       throw new RuntimeException("User already has a business");
     }
 
-    String imageUrl = cloudinaryConfig.uploadImage(image);
+    String imageUrl = cloudinaryService.uploadImage(image);
 
     Business business = new Business();
     business.setBusinessName(request.getBusinessName());

@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #007bff; /* Default color */
+  --font-style: Arial, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +12,6 @@
 body
 {
   background-color: #f0f0f0;
+  font-family: var(--font-style);
 }
+

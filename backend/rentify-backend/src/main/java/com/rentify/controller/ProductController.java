@@ -41,15 +41,14 @@ public class ProductController {
 
     // ✅ Fetch all products for a specific business
     @GetMapping("/business/{businessId}")
-    public ResponseEntity<List<Product>> getAllProductsByBusiness(@PathVariable Long businessId) {
+    public ResponseEntity<List<Product>> getAllProductsByBusiness(@PathVariable Long businessId) { // we have to return product response
         List<Product> products = productService.getAllProductsByBusiness(businessId);
         return ResponseEntity.ok(products);
     }
 
      // Fetch a single product by businessId and productId
-    @GetMapping("/business/{businessId}/product/{productId}")
-    public ResponseEntity<Product> getProductById(
-            @PathVariable Long businessId,
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<Product> getProductById( // return product response not product
             @PathVariable Long productId) {
         Optional<Product> product = productService.getProductById(productId);
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());

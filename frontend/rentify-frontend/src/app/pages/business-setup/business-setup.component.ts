@@ -59,8 +59,8 @@ export class BusinessSetupComponent {
     console.log(this.businessData);
 
      // Frontend validation before submitting
-  if (!this.businessData.businessName || 
-    !this.businessData.description || 
+  if (!this.businessData.businessName ||
+    !this.businessData.description ||
     !this.businessData.contactEmail ||
     !this.businessData.phone ||
     !this.businessData.businessType ||
@@ -89,6 +89,7 @@ if (this.selectedFile && this.selectedFile.size > 5 * 1024 * 1024) {
 
     this.businessService.createBusiness(formData).subscribe({
       next: (response: any) => {
+        localStorage.setItem('businessData', JSON.stringify(response));
         this.loading = false;
         alert('Business created successfully!');
         if (response.isProductAvailable) {

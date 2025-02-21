@@ -14,7 +14,7 @@ public class CrossOriginConfig {
       public void addCorsMappings(CorsRegistry registry) {
         registry
             .addMapping("/**") // Allow all endpoints
-            .allowedOrigins("localhost:4200") // Allow frontend
+            .allowedOrigins("localhost:4200","localhost:56158") // Allow frontend
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allowed HTTP methods
             .allowedHeaders("*") // Allow all headers
             .allowCredentials(true);

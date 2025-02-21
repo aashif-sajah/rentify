@@ -22,7 +22,8 @@ public class ProductService {
 
     @Transactional
     public Product addProduct(ProductRequest request) {
-        // Validate business
+    // Validate business
+        System.out.println("Product Service line 26 Business ID: " + request.getBusinessId());
         Business business = businessRepository.findById(request.getBusinessId())
                 .orElseThrow(() -> new RuntimeException("Business not found"));
 

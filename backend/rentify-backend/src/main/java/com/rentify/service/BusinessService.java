@@ -64,7 +64,7 @@ public class BusinessService {
 
   }
 
-  private BusinessResponse convertToBusinessResponse(Business business)
+  public BusinessResponse convertToBusinessResponse(Business business)
   {
     return BusinessResponse.builder()
             .id(business.getId())

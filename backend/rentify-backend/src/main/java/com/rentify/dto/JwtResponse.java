@@ -13,5 +13,6 @@ public class JwtResponse
     private Users user;
     private String jwtToken;
     private boolean isBusinessAvailable;
+    private BusinessResponse businessResponse;
 
 }

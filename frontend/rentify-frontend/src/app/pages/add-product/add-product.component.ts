@@ -4,6 +4,7 @@ import { ProductServiceService } from '../../core/services/product-service.servi
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { BusinessResponse } from '../../models/business-response';
+import { BusinessService } from '../../core/services/business.service';
 
 @Component({
   selector: 'app-add-product',
@@ -32,17 +33,24 @@ export class AddProductComponent implements OnInit {
 
   constructor(
     private productService: ProductServiceService,
-    private authService: AuthService,
+    private businessService: BusinessService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    const businessDataString = localStorage.getItem('businessData');
-    if (businessDataString) {
-      this.businessData = JSON.parse(businessDataString);
+    this.setBusinessDataToProduct();
+  }
+
+  setBusinessDataToProduct()
+  {
+    const businessData = this.businessService.getBusiness();
+    if (businessData) {
       this.productData.businessId = this.businessData.id;
       this.storeTheme = this.businessData.storeTheme;
       this.applyTheme();
+    } else
+    {
+      console.error('Business data not found! from product component line 49!');
     }
   }
 
@@ -65,6 +73,13 @@ export class AddProductComponent implements OnInit {
       this.errorMessage = 'Please upload at least one image!';
       return;
     }
+
+    if(!this.productData.businessId)
+    {
+      this.setBusinessDataToProduct();
+    }
+
+    console.log(this.productData.businessId);
 
     const formData = new FormData();
     formData.append('product', JSON.stringify(this.productData));

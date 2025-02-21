@@ -3,6 +3,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { BusinessService } from '../../../core/services/business.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ import { NgIf } from '@angular/common';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,
+    private businessService: BusinessService
+  ) {}
 
   userEmail = '';
   userPassword = '';
@@ -32,6 +35,8 @@ export class LoginComponent {
         console.log('login response', res);
         this.authService.setToken(res.jwtToken);
         this.authService.setRole(res.user.roles.map(role => role.role));
+        this.businessService.setBusiness(res.businessResponse)
+        console.log("jwt from local storage: " + this.businessService.getBusiness());
         console.log("jwt from local storage: " + this.authService.getToken());
         console.log("Roles from local storage: " + this.authService.getRole());
         if (res.businessAvailable) {

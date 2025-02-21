@@ -17,6 +17,9 @@
     <label for="phone">Phone:</label>
     <input type="text" [(ngModel)]="businessData.phone" name="phone" required id="phone" />
 
+    <label for="address">Address:</label>
+    <input type="text" [(ngModel)]="businessData.address" name="address" required id="address" />
+
     <button type="button" (click)="nextStep()" [disabled]="form.invalid">Next →</button>
   </form>
   }
@@ -54,7 +57,7 @@
      <!-- Logo Upload -->
   <label for="logo">Upload Logo:</label>
   <input type="file" id="logo" (change)="handleFileInput($event)" required />
-  
+
     <button type="button" (click)="prevStep()">← Back</button>
     <button type="button" (click)="submitForm()">Submit</button>
   </form>

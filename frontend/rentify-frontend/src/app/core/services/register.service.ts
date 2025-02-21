@@ -13,6 +13,7 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<User> {
+    console.log(user);
     return this.http.post<User>(this.apiUrl, user).pipe(
       catchError(this.handleError)
     );

@@ -1,5 +1,6 @@
 package com.rentify.service;
 
+import com.rentify.dto.BusinessResponse;
 import com.rentify.exception.InvalidCredentialsException;
 import com.rentify.exception.UserDisabledException;
 import com.rentify.dto.JwtRequest;
@@ -26,6 +27,7 @@ public class JwtService {
   private final UserDetailsService myUserDetailsService;
   private final UserRepo userRepo;
   private final BusinessRepo businessRepo;
+  private final BusinessService businessService;
 
   public JwtResponse createJwtToken(JwtRequest jwtRequest) {
 
@@ -41,7 +43,10 @@ public class JwtService {
             .orElseThrow(() -> new RuntimeException("User not found"));
 
     boolean isBusinessAvailable = businessRepo.findByOwner(user).isPresent();
-    return new JwtResponse(user, newGeneratedJwtToken, isBusinessAvailable);
+    BusinessResponse businessResponse = businessRepo.findByOwner(user)
+            .map(businessService::convertToBusinessResponse)
+            .orElse(null);
+    return new JwtResponse(user, newGeneratedJwtToken, isBusinessAvailable, businessResponse);
   }
 
   private void authenticate(String userEmail, String password){

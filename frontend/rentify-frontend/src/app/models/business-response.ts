@@ -8,6 +8,6 @@ export interface BusinessResponse {
   contactEmail: string;
   phone: string;
   storeSlug: string;
-  storeTheme: StoreThemeResponse;  // StoreThemeResponse instead of StoreTheme
+  storeTheme: StoreThemeResponse;  
   isProductAvailable: boolean;
 }

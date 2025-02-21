@@ -16,6 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     private final ProductService productService;
@@ -24,6 +25,8 @@ public class ProductController {
     public ResponseEntity<Product> addProduct(
             @RequestPart("product") String productRequestJson,
             @RequestPart("images") List<MultipartFile> images) {
+
+    System.out.println(productRequestJson + "line 29 product controller");
 
         ObjectMapper objectMapper = new ObjectMapper();
         ProductRequest productRequest;

@@ -46,6 +46,7 @@ public class JwtService {
     BusinessResponse businessResponse = businessRepo.findByOwner(user)
             .map(businessService::convertToBusinessResponse)
             .orElse(null);
+      System.out.println(businessResponse.toString());
     return new JwtResponse(user, newGeneratedJwtToken, isBusinessAvailable, businessResponse);
   }
 

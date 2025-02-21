@@ -66,4 +66,33 @@ public class ProductService {
     public List<Product> getAllProductsByBusiness(Long businessId) {
         return productRepository.findByBusinessId(businessId);
     }
+
+
+    public ProductResponse updateProduct(Long id, ProductRequest request) {
+    Product product =
+        productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+
+        product.setName(request.getName());
+        product.setDescription(request.getDescription());
+        product.setPricePerDay(request.getPricePerDay());
+        product.setAvailability(request.getAvailability());
+        product.setCategory(request.getCategory());
+
+        // Handle images
+//        if (request.getImages() != null && !request.getImages().isEmpty()) {
+//            List<String> imageUrls = fileStorageService.storeFiles(request.getImages());
+//            product.setImageUrls(imageUrls);
+//        }
+
+        Product updatedProduct = productRepository.save(product);
+        return convertToProductResponse(updatedProduct);
+    }
+
+    public void deleteProduct(Long id) {
+        if (!productRepository.existsById(id)) {
+      throw new RuntimeException("Product not found");
+        }
+        productRepository.deleteById(id);
+    }
+
 }

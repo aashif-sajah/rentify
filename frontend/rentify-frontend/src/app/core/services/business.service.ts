@@ -16,4 +16,20 @@ export class BusinessService {
   {
     return this.http.post<BusinessResponse>(this.apiUrl, formData);
   }
+
+
+  setBusiness(business: BusinessResponse) {
+    localStorage.setItem('businessData', JSON.stringify(business));
+  }
+
+  getBusiness(): BusinessResponse {
+    const business = localStorage.getItem('businessData');
+    return business ? JSON.parse(business) : null;
+  }
+
+  getBusinessId(): number {
+    const business = this.getBusiness();
+    return business ? business.id : 0;
+  }
+
 }

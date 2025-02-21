@@ -3,6 +3,7 @@ package com.rentify.controller;
 import com.rentify.model.Users;
 import com.rentify.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,5 +22,14 @@ public class UserController
     {
         return userService.registerNewUser(users);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Users> updateUser(
+            @PathVariable Long id,
+            @RequestBody Users userRequest) {
+        Users updatedUser = userService.updateUser(id, userRequest);
+        return ResponseEntity.ok(updatedUser);
+    }
+
 
 }

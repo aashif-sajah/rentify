@@ -23,15 +23,16 @@ public class UserService {
   }
 
   public Users registerNewUser(Users users) {
-    Role role = roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
+    Role role =
+        roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
     System.out.println(users.getRoles() == null || users.getRoles().isEmpty());
-    System.out.println("Before :"+users.getRoles());
+    System.out.println("Before :" + users.getRoles());
     if (users.getRoles() == null || users.getRoles().isEmpty()) {
-        Set<Role> roles = new HashSet<>();
-        roles.add(role);
-        users.setRoles(roles);
+      Set<Role> roles = new HashSet<>();
+      roles.add(role);
+      users.setRoles(roles);
     }
-    System.out.println("After :"+users.getRoles());
+    System.out.println("After :" + users.getRoles());
 
     users.setUserPassword(getEncodedPassword(users.getUserPassword()));
     return userRepo.save(users);
@@ -39,5 +40,26 @@ public class UserService {
 
   public String getEncodedPassword(String password) {
     return bCryptPasswordEncoder.encode(password);
+  }
+
+  public Users updateUser(Long id, Users request) {
+    Users user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+
+    if (request.getUserEmail() != null) {
+      user.setUserEmail(request.getUserEmail());
+    }
+    if (request.getUserPassword() != null) {
+      user.setUserPassword(getEncodedPassword(request.getUserPassword()));
+    }
+    if (request.getUserFirstName() != null) {
+      user.setUserFirstName(request.getUserFirstName());
+    }
+    if (request.getUserLastName() != null) {
+      user.setUserLastName(request.getUserLastName());
+    }
+    if (request.getUsername() != null) {
+      user.setUsername(request.getUsername());
+    }
+    return userRepo.save(user);
   }
 }

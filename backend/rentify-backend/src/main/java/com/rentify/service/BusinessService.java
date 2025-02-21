@@ -94,4 +94,57 @@ public class BusinessService {
     return businessName.toLowerCase().replaceAll("\\s+", "-");
   }
 
+  public BusinessResponse updateBusiness(Long businessId, BusinessRequest request, MultipartFile image) {
+    Business business = businessRepo.findById(businessId)
+            .orElseThrow(() -> new RuntimeException("Business not found"));
+
+
+    String userEmail = SecurityContextHolder.getContext().getAuthentication().getName() + "@gmail.com";
+    Users owner = userRepo.findByUserEmail(userEmail)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    if (!business.getOwner().getUserId().equals(owner.getUserId())) {
+      throw new RuntimeException("Unauthorized: You can only update your own business");
+    }
+
+    // Update business details
+    if (request.getBusinessName() != null) {
+      business.setBusinessName(request.getBusinessName());
+      business.setStoreSlug(generateSlug(request.getBusinessName())); // Update slug
+    }
+    if (request.getBusinessType() != null) {
+      business.setBusinessType(request.getBusinessType());
+    }
+    if (request.getDescription() != null) {
+      business.setDescription(request.getDescription());
+    }
+    if (request.getContactEmail() != null) {
+      business.setContactEmail(request.getContactEmail());
+    }
+    if (request.getPhone() != null) {
+      business.setPhone(request.getPhone());
+    }
+    if (request.getAddress() != null) {
+      business.setAddress(request.getAddress());
+    }
+
+    // Update store theme
+    if (request.getStoreTheme() != null) {
+      StoreTheme storeTheme = business.getStoreTheme();
+      storeTheme.setPrimaryColor(request.getStoreTheme().getPrimaryColor());
+      storeTheme.setFontStyle(request.getStoreTheme().getFontStyle());
+      storeThemeRepo.save(storeTheme);
+    }
+
+    // Update logo image if provided
+    if (image != null && !image.isEmpty()) {
+      String imageUrl = cloudinaryService.uploadImage(image);
+      business.getStoreTheme().setLogoUrl(imageUrl);
+    }
+
+    Business updatedBusiness = businessRepo.save(business);
+    return convertToBusinessResponse(updatedBusiness);
+  }
+
+
 }

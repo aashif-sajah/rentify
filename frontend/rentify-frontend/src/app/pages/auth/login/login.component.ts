@@ -35,7 +35,8 @@ export class LoginComponent {
         console.log('login response', res);
         this.authService.setToken(res.jwtToken);
         this.authService.setRole(res.user.roles.map(role => role.role));
-        this.businessService.setBusiness(res.businessResponse)
+        this.businessService.setBusiness(res.businessResponse);
+        this.authService.setUser(res.user);
         console.log("jwt from local storage: " + this.businessService.getBusiness());
         console.log("jwt from local storage: " + this.authService.getToken());
         console.log("Roles from local storage: " + this.authService.getRole());

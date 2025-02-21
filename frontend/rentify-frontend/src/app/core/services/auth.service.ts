@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtResponse } from '../../models/jwt-response';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -56,6 +57,15 @@ export class AuthService {
 
   public hasRole(role: string): boolean {
     return this.getRole().some((r) => r.role === role);
+  }
+
+  public setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  public getUser(): User {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : {};
   }
 
 }

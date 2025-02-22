@@ -53,28 +53,47 @@
 .featured {
   text-align: center;
   padding: 50px;
+  background: #795353; /* Light background for contrast */
 }
 
 .services {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 30px; /* Increased gap for better spacing */
 }
 
-.service {
-  background: white;
-  color: #0057ff;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px 25px;
-  border-radius: 10px;
-  transition: transform 0.3s;
+.service-card {
+  background: white; /* Card background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Padding inside the card */
+  text-align: center; /* Center text */
+  transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+  width: 220px; /* Fixed width for uniformity */
 }
 
-.service:hover {
-  transform: scale(1.1);
+.service-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
+
+.service-icon {
+  font-size: 40px; /* Larger icon size */
+  margin-bottom: 10px; /* Space between icon and title */
+}
+
+.service-title {
+  font-size: 20px; /* Font size for title */
+  font-weight: bold; /* Bold title */
+  margin: 10px 0; /* Margin for spacing */
+}
+
+.service-description {
+  font-size: 14px; /* Font size for description */
+  color: #555; /* Slightly darker color for readability */
+}
+
 
 /* How It Works */
 .how-it-works {
@@ -82,41 +101,80 @@
   padding: 50px;
 }
 
-.steps {
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-item {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
   align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+  transition: opacity 0.5s; /* Smooth opacity transition */
 }
 
-.step {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 15px;
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-item .circle {
+  width: 50px;
+  height: 50px;
+  background: #ffcc00;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item .content {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
   border-radius: 10px;
-  font-size: 18px;
-  width: 60%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-/* Features */
+
+.timeline-item:nth-child(odd):before {
+  left: auto;
+  right: 50%;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); } /* Start hidden */
+  100% { opacity: 1; transform: translateY(0); } /* Fully visible */
+}
+
+/* Add animations to the timeline items */
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Optional: Add hover effect for content */
+.timeline-item .content:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+
 .features {
   text-align: center;
   padding: 50px;
 }
 
-.feature-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.features h2 {
+  margin-bottom: 30px;
 }
 
-.feature {
-  background: white;
-  color: #0057ff;
-  font-size: 18px;
-  padding: 15px 20px;
-  border-radius: 10px;
-}
 
 /* Trusted Section */
 .trusted {

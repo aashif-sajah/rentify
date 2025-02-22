@@ -1,19 +1,186 @@
-.hero-section {
+
+
+/* Hero Section */.hero {
   text-align: center;
-  padding: 50px 20px;
+  padding: 80px 20px;
 }
-.hero-section h1 {
-  font-size: 2.5rem;
+
+.hero h1 {
+  font-size: 45px;
   font-weight: bold;
-  color: #0052cc;
 }
-.hero-section span {
-  color: orange;
+
+.hero .highlight {
+  color: #ffcc00;
 }
-.featured-services {
-  padding: 30px 20px;
+
+.register-form {
+  margin-top: 20px;
 }
-.carousel-item img {
-  width: 100%;
+
+.register-form input {
+  padding: 5px 10px;
+  width: 280px;
+  border: 1px solid rgb(146, 76, 187);
+  border-radius: 25px;
+  background:transparent;
+  transition: border-color 0.3s ease;
+}
+
+.register-form input:focus {
+  border-color: rgb(0, 0, 0); /* Keep the same color when focused */
+  outline: none;
+  background: transparent; /* Keep the background transparent */
+}
+
+.register-form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+.register-btn {
+  padding: 6px 20px;
+  background: #ffcc00;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-left: 18px;
+}
+
+/* Featured Services */
+.featured {
+  text-align: center;
+  padding: 50px;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.service {
+  background: white;
+  color: #0057ff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px 25px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.service:hover {
+  transform: scale(1.1);
+}
+
+/* How It Works */
+.how-it-works {
+  text-align: center;
+  padding: 50px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.step {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 60%;
+}
+
+/* Features */
+.features {
+  text-align: center;
+  padding: 50px;
+}
+
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.feature {
+  background: white;
+  color: #0057ff;
+  font-size: 18px;
+  padding: 15px 20px;
   border-radius: 10px;
 }
+
+/* Trusted Section */
+.trusted {
+  text-align: center;
+  padding: 50px;
+}
+
+.brands {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.brands img {
+  width: 100px;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.brands img:hover {
+  filter: none;
+}
+
+/* Quotes */
+.quotes {
+  padding: 50px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quote {
+  font-size: 20px;
+  font-style: italic;
+  opacity: 0;
+  animation: fadeIn 3s infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Call to Action */
+.cta {
+  text-align: center;
+  padding: 60px;
+}
+
+.cta-btn {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: #ffcc00;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+

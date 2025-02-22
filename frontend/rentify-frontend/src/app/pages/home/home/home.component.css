@@ -1,51 +1,19 @@
 .hero-section {
   text-align: center;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
-
 .hero-section h1 {
-  font-size: 36px;
+  font-size: 2.5rem;
   font-weight: bold;
+  color: #0052cc;
 }
-
-.highlight {
+.hero-section span {
   color: orange;
 }
-
-.register-form {
-  margin-top: 20px;
-}
-
-.register-form input {
-  padding: 10px;
-  border: 2px solid #0047ab;
-  border-radius: 5px;
-  width: 300px;
-}
-
-.register-btn {
-  padding: 10px 20px;
-  background: #0047ab;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
 .featured-services {
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
-
-.services-container {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.service-card {
-  width: 200px;
-  padding: 20px;
-  text-align: center;
-  font-weight: bold;
+.carousel-item img {
+  width: 100%;
   border-radius: 10px;
 }

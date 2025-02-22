@@ -1,0 +1,15 @@
+.about-us {
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+.about-us h2 {
+  margin-bottom: 30px;
+}
+
+.developer-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}

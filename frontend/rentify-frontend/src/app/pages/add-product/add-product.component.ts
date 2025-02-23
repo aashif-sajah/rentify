@@ -44,9 +44,11 @@ export class AddProductComponent implements OnInit {
   setBusinessDataToProduct()
   {
     const businessData = this.businessService.getBusiness();
+
     if (businessData) {
-      this.productData.businessId = this.businessData.id;
-      this.storeTheme = this.businessData.storeTheme;
+      this.productData.businessId = businessData.id;
+      console.log(this.productData.businessId);
+      this.storeTheme = businessData.storeTheme;
       this.applyTheme();
     } else
     {
@@ -84,14 +86,16 @@ export class AddProductComponent implements OnInit {
     const formData = new FormData();
     formData.append('product', JSON.stringify(this.productData));
     this.selectedFiles.forEach((file) => formData.append('images', file));
+    //formData.append('images', this.selectedFiles[0]);
 
     this.productService.addProduct(formData).subscribe({
-      next: () => {
+      next: (res) => {
+        console.log('Product added successfully!', res);
         alert('Product added successfully!');
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
-        this.errorMessage = `Error: ${error.message}`;
+        this.errorMessage = `Error: ${error.message} line 96`;
       },
     });
   }

@@ -1,13 +1,14 @@
 package com.rentify.service;
 
 import com.rentify.dto.ProductRequest;
+import com.rentify.dto.ProductResponse;
 import com.rentify.model.Business;
 import com.rentify.model.Product;
 import com.rentify.repository.BusinessRepo;
 import com.rentify.repository.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +21,7 @@ public class ProductService {
     private final BusinessRepo businessRepository;
     private final CloudinaryService cloudinaryService;
 
-    @Transactional
-    public Product addProduct(ProductRequest request) {
+    public ProductResponse addProduct(ProductRequest request) {
     // Validate business
         System.out.println("Product Service line 26 Business ID: " + request.getBusinessId());
         Business business = businessRepository.findById(request.getBusinessId())
@@ -40,7 +40,21 @@ public class ProductService {
         product.setImageUrls(imageUrls);
         product.setBusiness(business);
 
-        return productRepository.save(product);
+        Product savedProduct =  productRepository.save(product);
+        return convertToProductResponse(savedProduct);
+    }
+
+    private ProductResponse convertToProductResponse(Product savedProduct)
+    {
+        return ProductResponse.builder()
+                .name(savedProduct.getName())
+                .category(savedProduct.getCategory())
+                .description(savedProduct.getDescription())
+                .id(savedProduct.getId())
+                .availability(savedProduct.getAvailability())
+                .pricePerDay(savedProduct.getPricePerDay())
+                .imageUrls(savedProduct.getImageUrls())
+                .build();
     }
 
 
@@ -52,4 +66,33 @@ public class ProductService {
     public List<Product> getAllProductsByBusiness(Long businessId) {
         return productRepository.findByBusinessId(businessId);
     }
+
+
+    public ProductResponse updateProduct(Long id, ProductRequest request) {
+    Product product =
+        productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+
+        product.setName(request.getName());
+        product.setDescription(request.getDescription());
+        product.setPricePerDay(request.getPricePerDay());
+        product.setAvailability(request.getAvailability());
+        product.setCategory(request.getCategory());
+
+        // Handle images
+//        if (request.getImages() != null && !request.getImages().isEmpty()) {
+//            List<String> imageUrls = fileStorageService.storeFiles(request.getImages());
+//            product.setImageUrls(imageUrls);
+//        }
+
+        Product updatedProduct = productRepository.save(product);
+        return convertToProductResponse(updatedProduct);
+    }
+
+    public void deleteProduct(Long id) {
+        if (!productRepository.existsById(id)) {
+      throw new RuntimeException("Product not found");
+        }
+        productRepository.deleteById(id);
+    }
+
 }

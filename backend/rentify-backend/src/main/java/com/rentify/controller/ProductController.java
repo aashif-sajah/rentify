@@ -3,6 +3,7 @@ package com.rentify.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rentify.dto.ProductRequest;
+import com.rentify.dto.ProductResponse;
 import com.rentify.model.Product;
 import com.rentify.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,11 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping(consumes = "multipart/form-data")
-    public ResponseEntity<Product> addProduct(
+    public ResponseEntity<ProductResponse> addProduct(
             @RequestPart("product") String productRequestJson,
             @RequestPart("images") List<MultipartFile> images) {
 
-    System.out.println(productRequestJson + "line 29 product controller");
+        System.out.println(productRequestJson + "line 29 product controller");
 
         ObjectMapper objectMapper = new ObjectMapper();
         ProductRequest productRequest;
@@ -37,23 +38,38 @@ public class ProductController {
         }
 
         productRequest.setImages(images);
-        Product savedProduct = productService.addProduct(productRequest);
+        ProductResponse savedProduct = productService.addProduct(productRequest);
 
         return ResponseEntity.ok(savedProduct);
     }
 
-    // ✅ Fetch all products for a specific business
+
     @GetMapping("/business/{businessId}")
     public ResponseEntity<List<Product>> getAllProductsByBusiness(@PathVariable Long businessId) { // we have to return product response
         List<Product> products = productService.getAllProductsByBusiness(businessId);
         return ResponseEntity.ok(products);
     }
 
-     // Fetch a single product by businessId and productId
+
     @GetMapping("/product/{productId}")
     public ResponseEntity<Product> getProductById( // return product response not product
             @PathVariable Long productId) {
         Optional<Product> product = productService.getProductById(productId);
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> updateProduct(
+            @PathVariable Long id,
+            @ModelAttribute ProductRequest productRequest) {
+        ProductResponse updatedProduct = productService.updateProduct(id, productRequest);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

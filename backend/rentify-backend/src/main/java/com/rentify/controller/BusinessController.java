@@ -52,4 +52,24 @@ public class BusinessController {
         .orElseThrow(() -> new RuntimeException("Business not found for user ID: " + userId));
   }
 
+  @PutMapping("/{businessId}")
+  @PreAuthorize("hasRole('Owner')")
+  public ResponseEntity<BusinessResponse> updateBusiness(
+          @PathVariable Long businessId,
+          @RequestPart("businessRequest") String businessRequestJson,
+          @RequestPart(value = "image", required = false) MultipartFile image) {
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    BusinessRequest businessRequest;
+    try {
+      businessRequest = objectMapper.readValue(businessRequestJson, BusinessRequest.class);
+    } catch (JsonProcessingException e) {
+      return ResponseEntity.badRequest().build();
+    }
+
+    BusinessResponse updatedBusiness = businessService.updateBusiness(businessId, businessRequest, image);
+    return ResponseEntity.ok(updatedBusiness);
+  }
+
+
 }

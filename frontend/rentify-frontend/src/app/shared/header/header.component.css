@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #0057ff;
-  color: white;
+  background-color: /* #0057ff; */white;
+  color: #0057ff;
   border-radius: 15px;
   margin: 10px 20px 0 20px;
 
@@ -22,7 +22,7 @@
 
 
     li a {
-      color: white;
+      color: #0057ff;
       text-decoration: none;
       font-weight: 500;
     }

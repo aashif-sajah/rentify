@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit
       private businessService:BusinessService
     ) {}
 
+
     ngOnInit(): void {
       this.business = this.businessService.getBusiness();
       this.user = this.authService.getUser();
@@ -40,6 +41,6 @@ export class DashboardComponent implements OnInit
 
     viewAnalytics() {
       console.log("Navigate to analytics");
-    }
 
+    }
 }

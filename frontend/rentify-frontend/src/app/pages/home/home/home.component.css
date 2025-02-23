@@ -1,6 +1,5 @@
 .container
 {
-  border: 1px solid #ccc;
   margin-top: 75px;
   display: flex;
   flex-direction: column;
@@ -8,12 +7,11 @@
 }
 
 .heading-set{
-  border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75%;
+  width: 73%;
   max-width: 100%;
   min-width: 300px;
 }
@@ -174,7 +172,6 @@
   padding: 20px 0 20px 20px;
   border: 1px solid #ccc;
   border-radius: 15px;
-  margin: 10px 0;
   background-color: #f8f9fa;
   box-sizing: border-box;
   transition: transform 0.2s, box-shadow 0.3s;
@@ -208,5 +205,176 @@
   font-size: 15px;
   font-weight: 400;
   color: rgb(94, 92, 92);
+  margin-bottom: 30px;
+}
+
+
+/* Our Team */
+.team{
+  margin-top: 80px;
+  padding: 1px;
+}
+
+.team-sub-heading
+{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  color: #7c8318;
+}
+
+.team-heading{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  color: #007bff;
   margin-bottom: 10px;
+}
+
+.team-description{
+  margin-bottom: 40px;
+}
+
+
+.team-members{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.team-member{
+  flex: 1 1 calc(33.33% - 30px);
+  padding: 10px;
+  border-radius: 15px;;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.team-member-image{
+  width:292px;
+  height: 292px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+
+.team-member-image img{
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+  object-position: 0px 1px;
+  position: absolute;
+  left: 15px;
+  top: 70px;
+  transform: scale(1.5);
+}
+
+.team-member-name
+{
+  align-self: flex-start;
+  font-size: 25px;
+  font-weight: 600;
+  color: black;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.team-member-role{
+  align-self: flex-start;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(94, 92, 92);
+  margin-top: -2px;
+  margin-left: 20px;
+}
+
+
+/* Contact Us */
+.contact{
+  margin-top: 80px;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.contact-heading{
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.contact-description{
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: rgb(94, 92, 92);
+  margin-bottom: 40px;
+  margin-top: -5px;
+}
+
+.contact-form
+{
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form-group{
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-group input,textarea{
+  height: 35px;
+  padding: 10px;
+  font-size: 17px;
+  font-weight: 300;
+  color: #007bff;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.contact-form-group input:focus, textarea:focus{
+  border: 2px solid #8d8d8d;
+  outline: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form-group textarea{
+  height: 100px;
+}
+
+
+.contact-form-group button{
+  padding: 10px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.contact-form-group button:hover{
+  background-color: #a5c2e0;
+  transform: scale(1.02);
 }

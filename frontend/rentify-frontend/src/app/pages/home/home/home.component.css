@@ -371,7 +371,7 @@
   align-self: flex-start;
   font-size: 15px;
   font-weight: 400;
-  color: rgb(94, 92, 92);
+  color: rgb(94 92, 92);
   margin-top: -2px;
   margin-left: 20px;
 }
@@ -388,18 +388,16 @@
 
 
 .contact-heading{
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 500;
-  text-align: center;
-  color: #000;
+  text-align: left;
   margin-bottom: 6px;
 }
 
 .contact-description{
   font-size: 18px;
   font-weight: 400;
-  text-align: center;
-  color: rgb(94, 92, 92);
+  color: #2d301d;
   margin-bottom: 40px;
   margin-top: -5px;
 }

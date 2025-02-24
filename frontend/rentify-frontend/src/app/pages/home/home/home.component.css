@@ -60,6 +60,8 @@
   align-self: flex-start;
 }
 
+
+
 .reason-sub-heading
 {
   font-size: 20px;
@@ -106,6 +108,11 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.feature-icon i{
+  font-size: 25px;
+  color: white;
 }
 
 .feature-name{

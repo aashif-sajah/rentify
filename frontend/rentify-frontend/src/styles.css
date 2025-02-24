@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #007bff; /* Default color */
-  --font-style: Arial, sans-serif;
+  --primary-color: #007bff;
+  --font-style: 'Poppins', sans-serif;
 }
 
 * {
@@ -9,9 +9,10 @@
 
 }
 
-body
-{
-  background-color: #f0f0f0;
+body {
   font-family: var(--font-style);
+  background: rgb(226, 204, 162);
+  color: white;
+  margin: 0;
+  padding: 0;
 }
-

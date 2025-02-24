@@ -3,10 +3,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #0057ff;
-  color: white;
+  background-color:  #0057ff;
+  color: #fff;
   border-radius: 15px;
   margin: 10px 20px 0 20px;
+  font-family: 'inter', sans-serif;
 
   .logo {
     font-size: 20px;
@@ -17,6 +18,9 @@
     list-style: none;
     display: flex;
     gap: 20px;
+    position: relative;
+    top:10px;
+
 
     li a {
       color: white;
@@ -33,7 +37,7 @@
     .login, .signup {
       background: none;
       border: 2px solid white;
-      padding: 5px 10px;
+      padding: 3px 3px;
       color: white;
       cursor: pointer;
       border-radius: 15px;

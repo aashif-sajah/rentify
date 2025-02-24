@@ -2,15 +2,15 @@
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="business-info">
-      <img [src]="business?.storeTheme?.logoUrl" alt="Business Logo" class="business-logo" />
-      <span class="business-name">{{ business?.businessName }}</span>
+      <img [src]="business.storeTheme.logoUrl" alt="Business Logo" class="business-logo" />
+      <span class="business-name">{{ business.businessName }}</span>
     </div>
     <div class="user-info">
-      <span>{{ user?.username }}</span>
+      <span>{{ user.username }}</span>
       <button (click)="editProfile()">Edit Profile</button>
     </div>
   </div>
-
+A
   <!-- Sidebar -->
   <div class="sidebar">
     <ul>
@@ -19,7 +19,7 @@
       <li (click)="viewAnalytics()">Analytics</li>
     </ul>
   </div>
-  
+
   <div class="content">
     <router-outlet></router-outlet>
   </div>

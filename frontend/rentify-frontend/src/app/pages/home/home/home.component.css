@@ -288,7 +288,6 @@
 
 
 .team-members{
-  border: 1px solid rgb(0, 0, 0);
   display: flex;
   justify-content: space-between;
   gap: 30px;
@@ -296,7 +295,6 @@
 }
 
 .team-member{
-  border: 2px solid #3b3a3a;
   flex: 1 1 calc(33.33% - 30px);
   padding: 10px 10px 0px 10px;
   border-radius: 15px;
@@ -353,11 +351,11 @@
   width: 100%;
   height: 100%;
   object-fit:cover;
-  object-position: 0px 1px;
+  object-position: 0px;
   position: absolute;
-  left: 15px;
+  /* left: 15px;
   top: 70px;
-  transform: scale(1.5);
+  transform: scale(1.5); */
 }
 
 .team-member-name

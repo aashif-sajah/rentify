@@ -288,6 +288,7 @@
 
 
 .team-members{
+  border: 1px solid rgb(0, 0, 0);
   display: flex;
   justify-content: space-between;
   gap: 30px;
@@ -295,9 +296,10 @@
 }
 
 .team-member{
+  border: 2px solid #3b3a3a;
   flex: 1 1 calc(33.33% - 30px);
-  padding: 10px;
-  border-radius: 15px;;
+  padding: 10px 10px 0px 10px;
+  border-radius: 15px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -307,6 +309,7 @@
 
 .team-member-social-overlay{
   display: flex;
+  justify-content: space-between;
   gap: 15px;
   position: relative;
   top: -120px;

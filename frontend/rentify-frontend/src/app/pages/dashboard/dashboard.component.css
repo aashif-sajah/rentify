@@ -1,0 +1,65 @@
+.container-div{
+  border: 1px solid #000;
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 1px;
+  font-family: "Inter", sans-serif;
+}
+
+.left-side
+{
+  border: 1px solid #000;
+  width: 90%;
+  background-color: #0057FF;
+  border-top-right-radius: 25px;
+}
+
+.dashboard-heading{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 15px 50px 10px 0px;
+  padding: 3px 3px 3px 10px;
+  background-color: white;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  color: #0057FF;
+  font-family: 'Inter', sans-serif;
+}
+
+.total-products{
+  border: 1px solid #000;
+  margin: 50px 0 0 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+
+.quantity{
+  color: white;
+  font-size: 70px;
+  font-weight: 500;
+  margin: 0 0 0 50px;
+}
+
+.total-products-heading{
+  color:white;
+  font-size: 20px;
+  margin-top: -19px;
+  margin-bottom: 40px;
+  margin-left: 50px;
+}
+
+.analytics-btn{
+  align-self: center;
+  margin-top: 40px;
+  padding: 5px 20px;
+  background-color: white;
+  color: #0057FF;
+  margin-bottom: 10px;
+  border-radius: 25px;
+}
+

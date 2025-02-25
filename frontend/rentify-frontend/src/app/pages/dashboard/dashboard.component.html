@@ -1,26 +1,92 @@
-<div class="dashboard">
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="business-info">
-      <img [src]="business.storeTheme.logoUrl" alt="Business Logo" class="business-logo" />
-      <span class="business-name">{{ business.businessName }}</span>
+<div class="container">
+  <!-- Left Side -->
+  <div class="left-side">
+    <div class="dashboard-heading">
+      Business Dashboard
     </div>
-    <div class="user-info">
-      <span>{{ user.username }}</span>
-      <button (click)="editProfile()">Edit Profile</button>
+    <div class="total-products">
+      <div class="quantity">
+        15
+      </div>
+      <div class="total-products-heading">
+        Total Products
+      </div>
+      <div class="quantity">
+        15
+      </div>
+      <div class="total-products-heading">
+        Total Products
+      </div>
+      <div class="quantity">
+        15
+      </div>
+      <div class="total-products-heading">
+        Total Revenue
+      </div>
+      <div class="analytics-btn">
+        See More
+      </div>
     </div>
-  </div>
-A
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <ul>
-      <li (click)="viewProducts()">Products</li>
-      <li (click)="viewOrders()">Manage Orders</li>
-      <li (click)="viewAnalytics()">Analytics</li>
-    </ul>
   </div>
 
-  <div class="content">
-    <router-outlet></router-outlet>
+  <!-- Right Side -->
+  <div class="right-side">
+    <div class="business-details">
+      <div class="business-logo">
+        iFrameLK
+      </div>
+      <div class="business-name">
+        <div class="business-name-heading">
+          iFramesLk Sui !
+        </div>
+        <div class="business-name-description">
+          At iFramesLk, we provide you with the best quality frames for your spectacles. We have a wide range of frames
+          to choose from. We also provide you with the best quality lenses for your spectacles.
+        </div>
+      </div>
+      <div class="business-contact">
+        <div class="business-contact-fone">
+          Tel: +94 77 123 4567
+        </div>
+        <div class="business-contact-email">
+          Email: iframeLk&#64;admin.com
+        </div>
+      </div>
+    </div>
+    <div class="product-cards">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="assets/images/frames.jpg" alt="Frames">
+        </div>
+        <div class="product-details">
+          <div class="product-name">
+            Prado
+          </div>
+          <div class="product-price">
+            Rs. 1500.00
+          </div>
+          <div class="product-brand">
+            Toyato
+          </div>
+          <div class="product-condition">
+            per day
+          </div>
+        </div>
+        <div class="product-extra-details">
+          <div class="product-gear">
+            <i class="fa-solid fa-gear"></i> Auto
+          </div>
+          <div class="product-gas">
+            <i class="fa-solid fa-gas-pump"></i> PB 95
+          </div>
+          <div class="product-air-condition">
+            <i class="fa-solid fa-snowflake"></i> Air Conditioner
+          </div>
+        </div>
+        <div class="view-details-btn">
+          View Details
+        </div>
+      </div>
+    </div>
   </div>
 </div>

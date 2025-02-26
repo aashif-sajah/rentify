@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="product-cards">
-      <div class="product-card">
+      <!-- <div class="product-card">
         <div class="product-img">
           <img src="assets/Team Members/master.jpeg" alt="Frames">
         </div>
@@ -280,8 +280,42 @@
         <div class="view-details-btn">
           View Details
         </div>
-      </div>
+      </div> -->
 
+      <div class="product-cards">
+        <div *ngFor="let product of products" class="product-card">
+          <div class="product-img">
+            <img [src]="product.imageUrls" alt="{{ product.name }}">
+          </div>
+          <div class="product-details">
+            <div class="product-detail-1">
+              <div class="product-name">{{ product.name }}</div>
+              <div class="product-price">Rs. {{ product.pricePerDay }}</div>
+            </div>
+            <div class="product-detail-1">
+              <div class="product-brand">Toyato</div>
+              <div class="product-condition">per day</div>
+            </div>
+          </div>
+          <div class="product-extra-details">
+            <div class="product-gear">
+              <i class="fa-solid fa-gear"></i> Gear
+            </div>
+            <div class="product-gas">
+              <i class="fa-solid fa-gas-pump"></i> Fuel
+            </div>
+            <div class="product-air-condition">
+              <i class="fa-solid fa-snowflake"></i> Air Conditioner
+            </div>
+          </div>
+          <div class="view-details-btn">View Details</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add-product">
+    <div class="add-product-btn" (click)="addProduct()">
+      Add Product
     </div>
   </div>
 </div>

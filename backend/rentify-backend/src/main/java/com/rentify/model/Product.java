@@ -31,7 +31,7 @@ public class Product {
     @Column(nullable = false)
     private Boolean availability = true;
 
-    private String category; // Vehicle, Bicycle, House, Camping Gear
+    private String category;
 
     @ElementCollection
     private List<String> imageUrls;

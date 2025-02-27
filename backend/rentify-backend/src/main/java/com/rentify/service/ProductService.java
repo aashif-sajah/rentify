@@ -44,18 +44,19 @@ public class ProductService {
         return convertToProductResponse(savedProduct);
     }
 
-    private ProductResponse convertToProductResponse(Product savedProduct)
-    {
+    public ProductResponse convertToProductResponse(Product savedProduct) {
         return ProductResponse.builder()
+                .id(savedProduct.getId())
                 .name(savedProduct.getName())
                 .category(savedProduct.getCategory())
                 .description(savedProduct.getDescription())
-                .id(savedProduct.getId())
                 .availability(savedProduct.getAvailability())
                 .pricePerDay(savedProduct.getPricePerDay())
                 .imageUrls(savedProduct.getImageUrls())
+                .businessId(savedProduct.getBusiness().getId())
                 .build();
     }
+
 
 
     public Optional<Product> getProductById(Long id)
@@ -63,8 +64,9 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public List<Product> getAllProductsByBusiness(Long businessId) {
-        return productRepository.findByBusinessId(businessId);
+    public List<ProductResponse> getAllProductsByBusiness(Long businessId) {
+        List<Product> products = productRepository.findByBusinessId(businessId);
+        return products.stream().map(this::convertToProductResponse).toList();
     }
 
 

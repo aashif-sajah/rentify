@@ -285,7 +285,7 @@
       <div class="product-cards">
         <div *ngFor="let product of products" class="product-card">
           <div class="product-img">
-            <img [src]="product.imageUrls" alt="{{ product.name }}">
+            <img [src]="product.imageUrls[0]" alt="{{ product.name }}">
           </div>
           <div class="product-details">
             <div class="product-detail-1">
@@ -316,6 +316,11 @@
   <div class="add-product">
     <div class="add-product-btn" (click)="addProduct()">
       Add Product
+    </div>
+  </div>
+  <div class="add-product">
+    <div class="add-product-btn" (click)="deleteProduct()">
+      Delete Product
     </div>
   </div>
 </div>

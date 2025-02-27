@@ -19,4 +19,5 @@ public class ProductResponse {
     private Boolean availability;
     private String category;
     private List<String> imageUrls;
+    private Long businessId;
 }

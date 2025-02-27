@@ -6,4 +6,5 @@ export interface ProductResponse {
   availability: boolean;
   category: string;
   imageUrls: string[];
+  businessId: number;
 }

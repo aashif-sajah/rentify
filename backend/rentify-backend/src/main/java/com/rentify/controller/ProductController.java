@@ -45,20 +45,21 @@ public class ProductController {
 
 
     @GetMapping("/business/{businessId}")
-    public ResponseEntity<List<Product>> getAllProductsByBusiness(@PathVariable Long businessId) { // we have to return product response
-        List<Product> products = productService.getAllProductsByBusiness(businessId);
+    public ResponseEntity<List<ProductResponse>> getAllProductsByBusiness(@PathVariable Long businessId) { // we have to return product response
+        List<ProductResponse> products = productService.getAllProductsByBusiness(businessId);
         return ResponseEntity.ok(products);
     }
 
 
     @GetMapping("/product/{productId}")
-    public ResponseEntity<Product> getProductById( // return product response not product
+    public ResponseEntity<ProductResponse> getProductById( // return product response not product
             @PathVariable Long productId) {
         Optional<Product> product = productService.getProductById(productId);
-        return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return product.map(p -> ResponseEntity.ok(productService.convertToProductResponse(p)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/product/{id}")
     public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable Long id,
             @ModelAttribute ProductRequest productRequest) {
@@ -66,8 +67,9 @@ public class ProductController {
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/product/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+    System.out.println("This line getting called 72 from delete product");
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }

@@ -59,7 +59,7 @@ public class ProductController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/product/{id}")
     public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable Long id,
             @ModelAttribute ProductRequest productRequest) {
@@ -67,8 +67,9 @@ public class ProductController {
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/product/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+    System.out.println("This line getting called 72 from delete product");
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
     }

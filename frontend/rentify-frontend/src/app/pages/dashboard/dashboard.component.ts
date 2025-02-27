@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.business = this.businessService.getBusiness();
     this.user = this.authService.getUser();
-    console.log(this.business);
-    console.log(this.user);
+    console.log(this.business + 'This is Business Response');
+    console.log(this.user + 'This is User');
 
     if (this.business && this.business.id) {
       this.fetchProducts(this.business.id);
@@ -52,6 +52,21 @@ export class DashboardComponent implements OnInit {
   addProduct(): void {
     console.log('Add product');
     this.router.navigate(['/add-product']);
+  }
+
+  deleteProduct():void
+  {
+    console.log('Delete product');
+    this.productService.deleteProduct(this.products[0].id).subscribe({
+      next: (data) => {
+        console.log('Product deleted:', data);
+        this.fetchProducts(this.business.id);
+      },
+      error: (err) => {
+        console.error('Error deleting product:', err);
+      },
+    });
+
   }
 
 }

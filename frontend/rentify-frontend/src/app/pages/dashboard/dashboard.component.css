@@ -6,6 +6,7 @@
   width: 100%;
   padding: 1px;
   font-family: "Inter", sans-serif;
+  position: relative;
 }
 
 .left-side {
@@ -242,4 +243,40 @@
 
 .view-details-btn:hover {
   background-color: #0055ffbd;
+}
+
+.delete-product-popup{
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(141, 145, 141);
+  position: absolute;
+  top: 100px;
+  left: 40%;
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel, .delete{
+  padding: 5px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: red;
+  border: none;
+  transition: opacity 0.3s;
+}
+
+.cancel{
+  background-color: #0057ff;
+}
+
+.cancel:hover, .delete:hover{
+  opacity: 0.8;
 }

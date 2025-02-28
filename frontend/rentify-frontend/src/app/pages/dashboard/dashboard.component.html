@@ -40,7 +40,7 @@
           {{business.businessName}}
         </div>
         <div class="business-name-description">
-         {{business.description}}
+          {{business.description}}
         </div>
       </div>
       <div class="business-contact">
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="product-cards">
-      <div class="product-card">
+      <!-- <div class="product-card">
         <div class="product-img">
           <img src="assets/Home Page/Car.png" alt="Frames">
         </div>
@@ -327,7 +327,7 @@
             Edit
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="product-cards">
         <div *ngFor="let product of products" class="product-card">
@@ -357,16 +357,31 @@
           </div>
           <div class="view-details-btn">View Details</div>
           <div class="hover-actions">
-            <div class="delete-product" (click)="deleteProduct()"> <!-- Pass Product ID -->
+            <div class="delete-product" (click)="deleteTheProduct(product.id)"> <!-- Pass Product ID -->
               Delete
             </div>
-            <div class="edit-product" (click)="editProduct()"> <!-- Pass Product ID -->
+            <div class="edit-product" (click)="editTheProduct(product.id)"> <!-- Pass Product ID -->
               Edit
             </div>
           </div>
-          
         </div>
       </div>
     </div>
   </div>
+
+  @if(deleteProductConfirm){
+  <div class="delete-product-popup">
+    <div class="message">
+      Are you sure you want to delete the product ?{{message}}
+    </div>
+    <div class="buttons">
+      <div class="cancel" (click)="cancelDelete()">
+        Cancel
+      </div>
+      <div class="delete" (click)="confirmDelete()">
+        Delete
+      </div>
+    </div>
+  </div>
+} 
 </div>

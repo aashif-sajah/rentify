@@ -6,11 +6,12 @@ import { BusinessService } from '../../core/services/business.service';
 import { Router } from '@angular/router';
 import { ProductResponse } from '../../models/product-response';
 import { ProductServiceService } from '../../core/services/product-service.service';
+import { NgFor } from '@angular/common';
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [NgFor],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
@@ -18,6 +19,10 @@ export class DashboardComponent implements OnInit {
   business!: BusinessResponse;
   user!: User;
   products: ProductResponse[] = [];
+  deleteProductConfirm: boolean = false;
+  showSuccessMessage: boolean = false;
+  productIdToDelete: number | null = null;
+  message: string = '';
 
   constructor(
     private authService: AuthService,
@@ -69,7 +74,49 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  deleteTheProduct(id:number):void
+  {
+    this.deleteProductConfirm = true;
+    this.productIdToDelete = id;
+    this.message = 'Are you sure you want to delete this product?';
+  }
+
+  confirmDelete():void
+  {
+    if(this.productIdToDelete !== null)
+      {
+      this.productService.deleteProduct(this.productIdToDelete).subscribe({
+        next: (data) =>{
+          console.log('Product deleted:', data);
+          this.cancelDelete();
+          this.fetchProducts(this.business.id);
+          this.showSuccessMessage = true;
+          this.message = 'Product deleted successfully';
+          setTimeout(() => this.showSuccessMessage = false, 6000);
+        },
+        error: (err) =>{
+          console.error('Error deleting product:', err);
+          this.showSuccessMessage = true;
+          this.message = 'Error deleting the product';
+          setTimeout(() => this.showSuccessMessage = false, 6000);
+        },
+      })
+    }
+  }
+
+  cancelDelete():void
+  {
+    this.deleteProductConfirm = false;
+    this.productIdToDelete = null;
+  }
+
   editProduct():void
+  {
+    console.log('Edit product');
+    this.router.navigate(['/edit-product']);
+  }
+
+  editTheProduct(id:number):void
   {
     console.log('Edit product');
     this.router.navigate(['/edit-product']);

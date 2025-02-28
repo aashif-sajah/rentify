@@ -6,11 +6,11 @@ import { BusinessService } from '../../core/services/business.service';
 import { Router } from '@angular/router';
 import { ProductResponse } from '../../models/product-response';
 import { ProductServiceService } from '../../core/services/product-service.service';
-import { NgFor } from '@angular/common';
+
 
 @Component({
   selector: 'app-dashboard',
-  imports: [NgFor],
+  imports: [],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
@@ -67,6 +67,12 @@ export class DashboardComponent implements OnInit {
       },
     });
 
+  }
+
+  editProduct():void
+  {
+    console.log('Edit product');
+    this.router.navigate(['/edit-product']);
   }
 
 }

@@ -33,30 +33,29 @@
   <div class="right-side">
     <div class="business-details">
       <div class="business-logo">
-        iFrameLK
+        <img [src]="business.storeTheme.logoUrl" alt="Logo Not Found">
       </div>
       <div class="business-name">
         <div class="business-name-heading">
-          iFramesLk Sui !
+          {{business.businessName}}
         </div>
         <div class="business-name-description">
-          At iFramesLk, we provide you with the best quality frames for your spectacles. We have a wide range of frames
-          to choose from. We also provide you with the best quality lenses for your spectacles.
+         {{business.description}}
         </div>
       </div>
       <div class="business-contact">
         <div class="business-contact-fone">
-          Tel: +94 77 123 4567
+          Tel: +{{business.phone}}
         </div>
         <div class="business-contact-email">
-          Email: iframeLk&#64;admin.com
+          Email: {{business.contactEmail}}
         </div>
       </div>
     </div>
     <div class="product-cards">
-      <!-- <div class="product-card">
+      <div class="product-card">
         <div class="product-img">
-          <img src="assets/Team Members/master.jpeg" alt="Frames">
+          <img src="assets/Home Page/Car.png" alt="Frames">
         </div>
         <div class="product-details">
           <div class="product-detail-1">
@@ -89,17 +88,25 @@
         </div>
         <div class="view-details-btn">
           View Details
+        </div>
+        <div class="hover-actions">
+          <div class="delete-product" (click)="deleteProduct()">
+            Delete
+          </div>
+          <div class="delete-product" (click)="editProduct()">
+            Edit
+          </div>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-img">
-          <img src="assets/Team Members/master.jpeg" alt="Frames">
+          <img src="assets/Home Page/Camp.png" alt="Frames">
         </div>
         <div class="product-details">
           <div class="product-detail-1">
             <div class="product-name">
-              Prado
+              Camping Tent
             </div>
             <div class="product-price">
               Rs. 1500.00
@@ -107,7 +114,7 @@
           </div>
           <div class="product-detail-1">
             <div class="product-brand">
-              Toyato
+              Quecha
             </div>
             <div class="product-condition">
               per day
@@ -127,12 +134,20 @@
         </div>
         <div class="view-details-btn">
           View Details
+        </div>
+        <div class="hover-actions">
+          <div class="delete-product" (click)="deleteProduct()">
+            Delete
+          </div>
+          <div class="delete-product" (click)="editProduct()">
+            Edit
+          </div>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-img">
-          <img src="assets/Team Members/master.jpeg" alt="Frames">
+          <img src="assets/Home Page/Car.png" alt="Frames">
         </div>
         <div class="product-details">
           <div class="product-detail-1">
@@ -165,12 +180,20 @@
         </div>
         <div class="view-details-btn">
           View Details
+        </div>
+        <div class="hover-actions">
+          <div class="delete-product" (click)="deleteProduct()">
+            Delete
+          </div>
+          <div class="delete-product" (click)="editProduct()">
+            Edit
+          </div>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-img">
-          <img src="assets/Team Members/master.jpeg" alt="Frames">
+          <img src="assets/Home Page/Camp.png" alt="Frames">
         </div>
         <div class="product-details">
           <div class="product-detail-1">
@@ -203,12 +226,20 @@
         </div>
         <div class="view-details-btn">
           View Details
+        </div>
+        <div class="hover-actions">
+          <div class="delete-product" (click)="deleteProduct()">
+            Delete
+          </div>
+          <div class="delete-product" (click)="editProduct()">
+            Edit
+          </div>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-img">
-          <img src="assets/Team Members/master.jpeg" alt="Frames">
+          <img src="assets/Home Page/Car.png" alt="Frames">
         </div>
         <div class="product-details">
           <div class="product-detail-1">
@@ -241,12 +272,20 @@
         </div>
         <div class="view-details-btn">
           View Details
+        </div>
+        <div class="hover-actions">
+          <div class="delete-product" (click)="deleteProduct()">
+            Delete
+          </div>
+          <div class="delete-product" (click)="editProduct()">
+            Edit
+          </div>
         </div>
       </div>
 
       <div class="product-card">
         <div class="product-img">
-          <img src="assets/Team Members/master.jpeg" alt="Frames">
+          <img src="assets/Home Page/Camp.png" alt="Frames">
         </div>
         <div class="product-details">
           <div class="product-detail-1">
@@ -280,7 +319,15 @@
         <div class="view-details-btn">
           View Details
         </div>
-      </div> -->
+        <div class="hover-actions">
+          <div class="delete-product" (click)="deleteProduct()">
+            Delete
+          </div>
+          <div class="delete-product" (click)="editProduct()">
+            Edit
+          </div>
+        </div>
+      </div>
 
       <div class="product-cards">
         <div *ngFor="let product of products" class="product-card">
@@ -309,18 +356,17 @@
             </div>
           </div>
           <div class="view-details-btn">View Details</div>
+          <div class="hover-actions">
+            <div class="delete-product" (click)="deleteProduct()"> <!-- Pass Product ID -->
+              Delete
+            </div>
+            <div class="edit-product" (click)="editProduct()"> <!-- Pass Product ID -->
+              Edit
+            </div>
+          </div>
+          
         </div>
       </div>
-    </div>
-  </div>
-  <div class="add-product">
-    <div class="add-product-btn" (click)="addProduct()">
-      Add Product
-    </div>
-  </div>
-  <div class="add-product">
-    <div class="add-product-btn" (click)="deleteProduct()">
-      Delete Product
     </div>
   </div>
 </div>

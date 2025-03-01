@@ -74,8 +74,8 @@
           <!-- Product images -->
           <div class="product-image">
             <label for="images">Upload Images:</label>
-            <div class="custom-input">Choose Images</div>
-            <input type="file" id="images" (change)="handleFileInput($event)" multiple accept="image/*" />
+            <div class="custom-input"  (click)="triggerFileInput()">Choose Images</div>
+            <input type="file" id="images" #fileInput (change)="handleFileInput($event)" multiple accept="image/*" />
           </div>
           <!-- Product availability -->
           <div class="product-availability">

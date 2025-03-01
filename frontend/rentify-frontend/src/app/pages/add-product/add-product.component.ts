@@ -100,8 +100,6 @@ export class AddProductComponent implements OnInit {
       },
     });
   }
-
-
   triggerFileInput() {
     this.fileInput.nativeElement.click();
   }

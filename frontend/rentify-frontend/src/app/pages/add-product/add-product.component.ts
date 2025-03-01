@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ProductServiceService } from '../../core/services/product-service.service';
 import { Router } from '@angular/router';
@@ -13,12 +13,14 @@ import { BusinessService } from '../../core/services/business.service';
   imports: [FormsModule]
 })
 export class AddProductComponent implements OnInit {
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
   productData = {
     name: '',
     description: '',
     pricePerDay: 0,
     availability: true,
-    category: '',
+    category: 'none',
     businessId: 0,
   };
 
@@ -86,7 +88,6 @@ export class AddProductComponent implements OnInit {
     const formData = new FormData();
     formData.append('product', JSON.stringify(this.productData));
     this.selectedFiles.forEach((file) => formData.append('images', file));
-    //formData.append('images', this.selectedFiles[0]);
 
     this.productService.addProduct(formData).subscribe({
       next: (res) => {
@@ -98,5 +99,10 @@ export class AddProductComponent implements OnInit {
         this.errorMessage = `Error: ${error.message} line 96`;
       },
     });
+  }
+
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
   }
 }

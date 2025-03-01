@@ -86,7 +86,6 @@ export class AddProductComponent implements OnInit {
     const formData = new FormData();
     formData.append('product', JSON.stringify(this.productData));
     this.selectedFiles.forEach((file) => formData.append('images', file));
-    //formData.append('images', this.selectedFiles[0]);
 
     this.productService.addProduct(formData).subscribe({
       next: (res) => {

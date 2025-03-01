@@ -1,40 +1,98 @@
-<div class="product-container">
+<!-- <div class="product-container">
   <h2 class="title">Add Product</h2>
 
   <form #productForm="ngForm" (ngSubmit)="submitProductForm(productForm)">
-    <!-- Name -->
+
     <label for="name">Product Name:</label>
     <input type="text" id="name" name="name" [(ngModel)]="productData.name" required />
 
-    <!-- Description -->
+  
     <label for="description">Description:</label>
     <textarea id="description" name="description" [(ngModel)]="productData.description" required></textarea>
 
-    <!-- Price -->
+    
     <label for="price">Price Per Day:</label>
     <input type="number" id="price" name="pricePerDay" [(ngModel)]="productData.pricePerDay" required />
 
-    <!-- Availability -->
+    
     <label for="availability">Available:</label>
     <select id="availability" name="availability" [(ngModel)]="productData.availability">
       <option [value]="true">Yes</option>
       <option [value]="false">No</option>
     </select>
 
-    <!-- Category -->
+   
     <label for="category">Category:</label>
     <input type="text" id="category" name="category" [(ngModel)]="productData.category" required />
 
-    <!-- Image Upload -->
+   
     <label for="images">Upload Images:</label>
     <input type="file" id="images" (change)="handleFileInput($event)" multiple accept="image/*" />
 
-    <!-- Error Message -->
+    
     @if(errorMessage){
     <p class="error-message">{{ errorMessage }}</p>
     }
+    
 
-    <!-- Submit Button -->
     <button type="submit" class="submit-btn">Add Product</button>
   </form>
+</div>  -->
+
+
+<div class="container-form">
+  <div class="header">
+    <div class="header-heading">
+      List your <span>products !</span>
+    </div>
+    <div class="header-sub-heading">
+      Show your products effectively to reach and engage potential customers
+    </div>
+  </div>
+  <div class="form-container">
+    <form #productForm="ngForm" (ngSubmit)="submitProductForm(productForm)">
+      <div class="form-flex">
+        <div class="right-side">
+          <!-- Product name -->
+          <div class="product-name">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" [(ngModel)]="productData.name" required />
+          </div>
+
+          <!-- Product Description -->
+          <div class="product-description">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" [(ngModel)]="productData.description" required></textarea>
+          </div>
+        </div>
+        <div class="left-side">
+          <!-- Product Price -->
+          <div class="product-price">
+            <label for="price">Price Per Day:</label>
+            <input type="number" id="price" name="pricePerDay" [(ngModel)]="productData.pricePerDay" required />
+          </div>
+          <!-- Product images -->
+          <div class="product-image">
+            <label for="images">Upload Images:</label>
+            <div class="custom-input">Choose Images</div>
+            <input type="file" id="images" (change)="handleFileInput($event)" multiple accept="image/*" />
+          </div>
+          <!-- Product availability -->
+          <div class="product-availability">
+            <label for="availability">Available:</label>
+            <select id="availability" name="availability" [(ngModel)]="productData.availability">
+              <option [value]="true">Yes</option>
+              <option [value]="false">No</option>
+            </select>
+          </div>
+          <div class="add-product-btn">
+            <button type="submit" class="submit-btn">Add Product</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="next-btn">
+    <button class="next-btn-btn">Next</button> ➜
+  </div>
 </div>

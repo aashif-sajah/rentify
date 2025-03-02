@@ -9,6 +9,7 @@ import { ProductResponse } from '../../models/product-response';
 export class ProductServiceService {
 
   private apiUrl = 'http://localhost:8080/api/products';
+  private selectedProduct: ProductResponse | null = null;
 
   constructor(private http:HttpClient) { }
 
@@ -26,6 +27,22 @@ export class ProductServiceService {
 
   deleteProduct(productId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/product/${productId}`);
+  }
+  
+  updateProduct(productId: number, formData: FormData): Observable<ProductResponse> {
+    return this.http.put<ProductResponse>(`${this.apiUrl}/product/${productId}`, formData);
+  }
+
+  setSelectedProduct(product: ProductResponse) {
+    this.selectedProduct = product;
+  }
+
+  getSelectedProduct() {
+    return this.selectedProduct;
+  }
+
+  clearSelectedProduct() {
+    this.selectedProduct = null;
   }
 
 }

@@ -133,19 +133,34 @@
   background-color: #0055ffcc;
 }
 
-.next-btn {
+
+.btn-container{
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
 }
 
-.next-btn-btn{
+.next-btn, .back-btn {
+  cursor: pointer;
+}
+
+.next-btn-btn, .back-btn-btn {
   border: none;
   background-color: transparent;
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 5px;
-  cursor: pointer;
+  transition: color 0.3s;
 }
 
+.next-btn-btn:hover, .back-btn-btn:hover{
+  color: #000000dc;
+}
+
+
+.next-btn-btn:active, .back-btn-btn:active{
+  color: #000000;
+}
 
 
 

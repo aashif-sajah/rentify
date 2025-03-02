@@ -1,53 +1,20 @@
-<!-- <div class="product-container">
-  <h2 class="title">Add Product</h2>
-
-  <form #productForm="ngForm" (ngSubmit)="submitProductForm(productForm)">
-
-    <label for="name">Product Name:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="productData.name" required />
-
-  
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" [(ngModel)]="productData.description" required></textarea>
-
-    
-    <label for="price">Price Per Day:</label>
-    <input type="number" id="price" name="pricePerDay" [(ngModel)]="productData.pricePerDay" required />
-
-    
-    <label for="availability">Available:</label>
-    <select id="availability" name="availability" [(ngModel)]="productData.availability">
-      <option [value]="true">Yes</option>
-      <option [value]="false">No</option>
-    </select>
-
-   
-    <label for="category">Category:</label>
-    <input type="text" id="category" name="category" [(ngModel)]="productData.category" required />
-
-   
-    <label for="images">Upload Images:</label>
-    <input type="file" id="images" (change)="handleFileInput($event)" multiple accept="image/*" />
-
-    
-    @if(errorMessage){
-    <p class="error-message">{{ errorMessage }}</p>
-    }
-    
-
-    <button type="submit" class="submit-btn">Add Product</button>
-  </form>
-</div>  -->
-
-
 <div class="container-form">
   <div class="header">
-    <div class="header-heading">
-      List your <span>products !</span>
-    </div>
-    <div class="header-sub-heading">
-      Show your products effectively to reach and engage potential customers
-    </div>
+    @if(editingMode){
+      <div class="header-heading">
+        Edit your <span>product !</span>
+      </div>
+      <div class="header-sub-heading">
+        Edit your product effectively to reach and engage potential customers
+      </div>
+    } @else {
+      <div class="header-heading">
+        List your <span>products !</span>
+      </div>
+      <div class="header-sub-heading">
+        Show your products effectively to reach and engage potential customers
+      </div>
+    }
   </div>
   <div class="form-container">
     <form #productForm="ngForm" (ngSubmit)="submitProductForm(productForm)">
@@ -56,26 +23,49 @@
           <!-- Product name -->
           <div class="product-name">
             <label for="name">Product Name:</label>
-            <input type="text" id="name" name="name" [(ngModel)]="productData.name" required />
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              [(ngModel)]="productData.name" 
+              [placeholder]="editingMode ? productDataToEdit.name : 'Enter product name'"
+              required />
           </div>
 
           <!-- Product Description -->
           <div class="product-description">
             <label for="description">Description:</label>
-            <textarea id="description" name="description" [(ngModel)]="productData.description" required></textarea>
+            <textarea 
+              id="description" 
+              name="description" 
+              [(ngModel)]="productData.description"
+              [placeholder]="editingMode ? productDataToEdit.description : 'Enter product Description'"
+              required>
+            </textarea>
           </div>
         </div>
         <div class="left-side">
           <!-- Product Price -->
           <div class="product-price">
             <label for="price">Price Per Day:</label>
-            <input type="number" id="price" name="pricePerDay" [(ngModel)]="productData.pricePerDay" required />
+            <input 
+              type="number" 
+              id="price" 
+              name="pricePerDay" 
+              [(ngModel)]="productData.pricePerDay"
+              [value]="editingMode ? productDataToEdit.pricePerDay : 'Enter product price per day'"
+              required />
           </div>
           <!-- Product images -->
           <div class="product-image">
             <label for="images">Upload Images:</label>
-            <div class="custom-input"  (click)="triggerFileInput()">Choose Images</div>
-            <input type="file" id="images" #fileInput (change)="handleFileInput($event)" multiple accept="image/*" />
+            <div class="custom-input" (click)="triggerFileInput()">Choose Images</div>
+            <input 
+              type="file" 
+              id="images" 
+              #fileInput (change)="handleFileInput($event)" 
+              multiple accept="image/*"
+            />
           </div>
           <!-- Product availability -->
           <div class="product-availability">
@@ -86,13 +76,21 @@
             </select>
           </div>
           <div class="add-product-btn">
-            <button type="submit" class="submit-btn">Add Product</button>
+            <button type="submit" class="submit-btn">
+              {{ editingMode ? 'Update Product' : 'Add Product' }}
+            </button>
           </div>
         </div>
       </div>
     </form>
   </div>
-  <div class="next-btn">
-    <button class="next-btn-btn">Next</button> ➜
+  <div class="btn-container">
+    <div class="next-btn">
+      <button class="next-btn-btn" (click)="onBtnClick()">Next</button> &#x279C;
+    </div>
+    <div class="back-btn">
+      <button class="back-btn-btn" (click)="onBtnClick()">Back</button> 
+    </div>
   </div>
+  
 </div>

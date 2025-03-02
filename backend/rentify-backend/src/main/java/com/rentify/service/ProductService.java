@@ -81,10 +81,10 @@ public class ProductService {
         product.setCategory(request.getCategory());
 
         // Handle images
-//        if (request.getImages() != null && !request.getImages().isEmpty()) {
-//            List<String> imageUrls = fileStorageService.storeFiles(request.getImages());
-//            product.setImageUrls(imageUrls);
-//        }
+        if (request.getImages() != null && !request.getImages().isEmpty()) {
+            List<String> imageUrls = cloudinaryService.uploadImages(request.getImages());
+            product.setImageUrls(imageUrls);
+        }
 
         Product updatedProduct = productRepository.save(product);
         return convertToProductResponse(updatedProduct);

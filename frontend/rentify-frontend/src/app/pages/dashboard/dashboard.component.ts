@@ -76,6 +76,7 @@ export class DashboardComponent implements OnInit {
 
   deleteTheProduct(id:number):void
   {
+    console.log("deleteThe Product Clicked!!!!!")
     this.deleteProductConfirm = true;
     this.productIdToDelete = id;
     this.message = 'Are you sure you want to delete this product?';
@@ -112,14 +113,19 @@ export class DashboardComponent implements OnInit {
 
   editProduct():void
   {
-    console.log('Edit product');
     this.router.navigate(['/edit-product']);
   }
 
-  editTheProduct(id:number):void
+  editTheProduct(productId:number):void
   {
+    const productToEdit = this.products.find((product) => product.id === productId);
     console.log('Edit product');
-    this.router.navigate(['/edit-product']);
+    if (productToEdit) {
+      this.productService.setSelectedProduct(productToEdit);
+      this.router.navigate(['/add-product']);
+    } else {
+      console.error('Product not found!');
+    }
   }
 
 }

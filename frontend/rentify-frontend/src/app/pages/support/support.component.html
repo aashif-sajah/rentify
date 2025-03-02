@@ -1,1 +1,155 @@
-<p>support works!</p>
+<div class="support-hero">
+       <h2>How Can We Help You</h2>
+       <form action="#" class="search-form" >
+        <input type="text" placeholder="What are you looking for" class="search-bar">
+        <button type="submit" class="search-btn">Search</button>
+       </form>
+</div>       
+
+<section>
+    <div class="row">
+        <h3 class="section-heading">Support Categories</h3>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="card" (click)="scrollToFAQ()">
+                <a routerLink="/support" fragment="faq-section">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h4>Getting Started</h4>
+                <p>
+                    Learn how to set up your Rentify account, navigate the platform, 
+                    and start listing properties or renting with ease
+                </p>
+                </a>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" (click)="scrollToFAQ()">
+                <div class="icon-wrapper">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h4>Account & Billing</h4>
+                <p>
+                    Manage your account settings, update payment methods, 
+                    and understand billing cycles, invoices, and subscriptions.
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" (click)="scrollToFAQ()">
+                <div class="icon-wrapper">
+                    <i class="fas fa-list"></i>
+                </div>
+                <h4>Listings</h4>
+                <p>
+                    Discover how to create, manage, and optimize 
+                    items listings to attract the right tenants or customers
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" (click)="scrollToFAQ()">
+                <div class="icon-wrapper">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h4>Tenant & Landlord Support</h4>
+                <p>
+                    Guidance for both tenants and landlords, 
+                    covering rental agreements, 
+                    policies, and dispute resolution
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" (click)="scrollToFAQ()">
+                <div class="icon-wrapper">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h4>Technical Support</h4>
+                <p>
+                    Facing issues? Find solutions for platform errors, 
+                    login problems, and troubleshooting steps
+                </p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card" (click)="scrollToFAQ()">
+                <div class="icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Security & Privacy</h4>
+                <p>
+                    Understand data protection, 
+                    privacy policies, and how to keep your Rentify account secure
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="faq-section" class="freq-text">
+    <h3 class="section-heading">Frequently Asked Questions</h3>
+</div>
+<div class="accordion">
+    <div class="image-box">
+        <img src="./assets/FAQ.jpg" alt="FAQ Image">
+    </div>
+<div class="accordion-text">
+    <details #faqDetail>
+        <summary>How do I create an account on Rentify?</summary>
+        <div>
+            <p>
+                To create an account, click on the Sign Up button on the homepage, enter your email and password, and verify your email. Once verified, 
+                you can set up your profile and start using Rentify.
+            </p>
+        </div>
+    </details>
+    <details #faqDetail>
+        <summary>How can I list my property for rent?</summary>
+        <div>
+            <p>
+                You can list your property by going to the "Listings" section in your dashboard, clicking
+                "Add New Listing", and filling in the property details, images, and rental price. Once submitted, 
+                your property will be live after admin approval.
+            </p>
+        </div>
+    </details>
+    <details #faqDetail>
+        <summary>What payment methods are supported for paying rent?</summary>
+        <div>
+            <p>
+                Rentify supports multiple payment methods, including credit/debit cards, PayPal, and bank transfers.
+                You can choose your preferred method at checkout under the Billing & Payments section.
+            </p>
+        </div>
+    </details>
+    <details #faqDetail>
+        <summary> What should I do if I face issues with my account?</summary>
+        <div>
+            <p>
+                If you experience login issues or technical problems, try resetting your password first. If the issue persists,
+                contact our Technical Support Team via the Support section.
+            </p>
+        </div>
+    </details>
+    <details #faqDetail>
+        <summary> How can tenants and landlords communicate on Rentify?</summary>
+        <div>
+            <p>
+                Tenants and landlords can communicate directly using the Rentify Chat System, where they can ask questions, negotiate terms,
+                and schedule property visits securely within the platform.
+            </p>
+        </div>
+    </details>
+    <details #faqDetail>
+        <summary>How does Rentify ensure security and privacy?</summary>
+        <div>
+            <p>
+                Rentify follows strict security measures, including data encryption, two-factor authentication (2FA), 
+                and verified user profiles to ensure a safe experience for both landlords and tenants.
+            </p>
+        </div>
+    </details>
+</div>

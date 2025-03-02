@@ -62,7 +62,22 @@ public class ProductController {
     @PutMapping("/product/{id}")
     public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable Long id,
-            @ModelAttribute ProductRequest productRequest) {
+            @RequestPart("product") String productRequestJson,
+            @RequestPart(value = "images", required = false) List<MultipartFile> images) {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        ProductRequest productRequest;
+        try {
+            productRequest = objectMapper.readValue(productRequestJson, ProductRequest.class);
+        } catch (JsonProcessingException e) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        // Set the images only if they are provided
+        if (images != null && !images.isEmpty()) {
+            productRequest.setImages(images);
+        }
+
         ProductResponse updatedProduct = productService.updateProduct(id, productRequest);
         return ResponseEntity.ok(updatedProduct);
     }

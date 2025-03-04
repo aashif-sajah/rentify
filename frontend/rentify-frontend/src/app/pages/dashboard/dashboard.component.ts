@@ -8,7 +8,6 @@ import { ProductResponse } from '../../models/product-response';
 import { ProductServiceService } from '../../core/services/product-service.service';
 import { NgFor } from '@angular/common';
 
-
 @Component({
   selector: 'app-dashboard',
   imports: [NgFor],
@@ -59,8 +58,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/add-product']);
   }
 
-  deleteProduct():void
-  {
+  deleteProduct(): void {
     console.log('Delete product');
     this.productService.deleteProduct(this.products[0].id).subscribe({
       next: (data) => {
@@ -71,54 +69,49 @@ export class DashboardComponent implements OnInit {
         console.error('Error deleting product:', err);
       },
     });
-
   }
 
-  deleteTheProduct(id:number):void
-  {
-    console.log("deleteThe Product Clicked!!!!!")
+  deleteTheProduct(id: number): void {
+    console.log('deleteThe Product Clicked!!!!!');
     this.deleteProductConfirm = true;
     this.productIdToDelete = id;
     this.message = 'Are you sure you want to delete this product?';
   }
 
-  confirmDelete():void
-  {
-    if(this.productIdToDelete !== null)
-      {
+  confirmDelete(): void {
+    if (this.productIdToDelete !== null) {
       this.productService.deleteProduct(this.productIdToDelete).subscribe({
-        next: (data) =>{
+        next: (data) => {
           console.log('Product deleted:', data);
           this.cancelDelete();
           this.fetchProducts(this.business.id);
           this.showSuccessMessage = true;
           this.message = 'Product deleted successfully';
-          setTimeout(() => this.showSuccessMessage = false, 6000);
+          setTimeout(() => (this.showSuccessMessage = false), 6000);
         },
-        error: (err) =>{
+        error: (err) => {
           console.error('Error deleting product:', err);
           this.showSuccessMessage = true;
           this.message = 'Error deleting the product';
-          setTimeout(() => this.showSuccessMessage = false, 6000);
+          setTimeout(() => (this.showSuccessMessage = false), 6000);
         },
-      })
+      });
     }
   }
 
-  cancelDelete():void
-  {
+  cancelDelete(): void {
     this.deleteProductConfirm = false;
     this.productIdToDelete = null;
   }
 
-  editProduct():void
-  {
+  editProduct(): void {
     this.router.navigate(['/edit-product']);
   }
 
-  editTheProduct(productId:number):void
-  {
-    const productToEdit = this.products.find((product) => product.id === productId);
+  editTheProduct(productId: number): void {
+    const productToEdit = this.products.find(
+      (product) => product.id === productId
+    );
     console.log('Edit product');
     if (productToEdit) {
       this.productService.setSelectedProduct(productToEdit);
@@ -126,6 +119,11 @@ export class DashboardComponent implements OnInit {
     } else {
       console.error('Product not found!');
     }
+  }
+
+  viewProductDetails(product: ProductResponse) {
+    this.productService.setSelectedProduct(product);
+    this.router.navigate(['/view-product-details']);
   }
 
 }

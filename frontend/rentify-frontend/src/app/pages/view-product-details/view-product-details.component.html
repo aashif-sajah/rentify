@@ -1,1 +1,14 @@
-<p>view-product-details works!</p>
+<div *ngIf="selectedProduct">
+  <h2>{{ productDetails?.name }}</h2>
+  <p>{{ productDetails?.description }}</p>
+  <p>Category: {{ productDetails?.category }}</p>
+  <p>Price per day: ${{ productDetails?.pricePerDay }}</p>
+
+  <label for="numberOfDays">Number of Days:</label>
+  <input type="number" [(ngModel)]="numberOfDays" (input)="calculateTotalPrice()" min="1" name="numberOfDays" id="numberOfDays"/>
+
+  <h3>Total Price: ${{ totalPrice }}</h3>
+
+  <button (click)="bookNow()">Book Now</button>
+</div>
+

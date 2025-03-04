@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { SupportComponent } from './pages/support/support.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
+import { ViewProductDetailsComponent } from './pages/view-product-details/view-product-details.component';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,10 @@ export const routes: Routes = [
     path:'about-us',
     component: AboutUsComponent
 
+  },
+  {
+    path:'view-product-details',
+    component: ViewProductDetailsComponent
   },
   {
     path:'support',

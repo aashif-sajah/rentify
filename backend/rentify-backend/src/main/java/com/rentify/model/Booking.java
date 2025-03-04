@@ -2,14 +2,17 @@ package com.rentify.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Getter
+@Setter
 public class Booking
 {
 
@@ -26,10 +29,10 @@ public class Booking
     private Product product;  // The product being rented
 
     @Column(nullable = false)
-    private LocalDateTime startDate;  // When booking starts
+    private LocalDate startDate;  // When booking starts
 
     @Column(nullable = false)
-    private LocalDateTime endDate;  // When booking ends
+    private LocalDate endDate;  // When booking ends
 
     @Column(nullable = false)
     private int daysBooked;  // Number of days

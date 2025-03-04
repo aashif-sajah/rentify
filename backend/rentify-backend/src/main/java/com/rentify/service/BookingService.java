@@ -8,6 +8,7 @@ import com.rentify.model.Users;
 import com.rentify.repository.BookingRepo;
 import com.rentify.repository.ProductRepo;
 import com.rentify.repository.UserRepo;
+import com.rentify.util.BookingStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

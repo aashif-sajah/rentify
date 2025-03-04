@@ -1,5 +1,6 @@
 package com.rentify.model;
 
+import com.rentify.util.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,8 +30,8 @@ public class Payment {
     @Column(nullable = false)
     private String currency;
 
-//    @Enumerated(EnumType.STRING)
-//    private PaymentStatus status;  // SUCCESS, FAILED, PENDING
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus status;  // SUCCESS, FAILED, PENDING
 
     private String paymentMethod;
 }

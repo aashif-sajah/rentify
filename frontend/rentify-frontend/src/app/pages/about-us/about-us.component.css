@@ -192,32 +192,61 @@
   margin-top: 10px;
 }
 
-.stats {
-  background: #ffffff;
-  padding: 40px 0;
+/* Stats Section */
+.stats-section {
+  background-color: #0057ff;
+  padding: 130px;
+  padding-bottom: 50px;
   text-align: center;
+  color: white;
+  border-radius: 30px;
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.stats-title {
+  font-size: 46px;
+  font-weight: bold;
+}
+
+.stats-subtitle {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.stats-description {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 30px auto 40px;
 }
 
 .stats-grid {
   display: flex;
   justify-content: center;
   gap: 40px;
+  flex-wrap: wrap;
 }
 
 .stat-box {
-  background: #f0f0f0;
-  padding: 20px;
-  border-radius: 10px;
-  min-width: 200px;
+  background-color: #d39727;
+  padding: 30px 30px;
+  border-radius: 12px;
+  width: 200px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .stat-box h3 {
-  font-size: 28px;
-  color: #222;
+  font-size: 38px;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
 .stat-box p {
-  font-size: 14px;
-  color: #777;
+  font-size: 20px;
+  font-weight:bold;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  color: black;
 }

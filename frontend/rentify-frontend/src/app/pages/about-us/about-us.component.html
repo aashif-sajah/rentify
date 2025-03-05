@@ -66,21 +66,17 @@
   </div>
 </section>
 
-<!-- Stats / Awards Section -->
-<section class="stats">
+<section class="stats-section">
   <div class="container">
+    <h2 class="stats-title">Our Stats</h2>
+    <p class="stats-description">
+      See the Numbers Behind Our Success Stories
+    </p>
+
     <div class="stats-grid">
-      <div class="stat-box">
-        <h3>550+</h3>
-        <p>Properties Listed</p>
-      </div>
-      <div class="stat-box">
-        <h3>30+</h3>
-        <p>Awards Won</p>
-      </div>
-      <div class="stat-box">
-        <h3>20+</h3>
-        <p>Years of Experience</p>
+      <div class="stat-box" *ngFor="let stat of stats">
+        <h3 class="counter">{{ stat.formattedValue }}</h3>
+        <p>{{ stat.label }}</p>
       </div>
     </div>
   </div>

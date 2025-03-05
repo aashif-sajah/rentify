@@ -92,7 +92,7 @@
   max-width: 33%;
 }
 
-.card {
+.mission-vision .card {
   background: white;
   border-radius: 12px;
   padding: 60px;
@@ -101,7 +101,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.mission-vision .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
@@ -194,7 +194,7 @@
 
 /* Stats Section */
 .stats-section {
-  background-color: #0057ff;
+  background-color: #eeb14f;
   padding: 130px;
   padding-bottom: 50px;
   text-align: center;
@@ -229,9 +229,9 @@
 }
 
 .stat-box {
-  background-color: #d39727;
+  background-color: #007bff;
   padding: 30px 30px;
-  border-radius: 12px;
+  border-radius: 30px;
   width: 200px;
   text-align: center;
   margin-top: 20px;
@@ -249,4 +249,88 @@
   margin-bottom: 5px;
   margin-top: 15px;
   color: black;
+}
+
+/* service Section */
+
+:root {
+  --primery-color: #dc9107;
+  --secondary-color: rgba(255,255,255,.4);
+}
+
+.service-section{
+  min-height: 740px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.service-section h2 {
+  color: black;
+  font-size: 38px;
+  margin-top: 200px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+.service-section .container p {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.service-section .cards{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 50px;
+  z-index: 1;
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.service-section .cards .card{
+  min-height: 300px;
+  width: 350px;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 30px;
+  flex-direction: column;
+  padding: 20px;
+  background: #0057ff;
+  position: relative;
+}
+
+.service-section .cards .card::before{
+  position: absolute;
+  content: " ";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  background: #dc9107;
+  transition: .6s;
+  transform: rotate(0deg);
+  z-index: -1;
+}
+
+.service-section .cards .card:hover.card::before{
+  transform: rotate(10deg);
+}
+
+.service-section .cards .card i{
+  font-size: 2.5rem;
+  color: #dc9107;
+  margin-top: 30px;
+}
+
+.service-section .cards .card h3{
+  font-size: 1.8rem;
+  color: white;
+}
+
+.service-section .cards .card p{
+  font-size: 1.05rem;
+  color: white;
 }

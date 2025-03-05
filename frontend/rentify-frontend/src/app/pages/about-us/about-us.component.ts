@@ -1,15 +1,18 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ✅ Import CommonModule
+import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-about-us',
-  standalone: true, // ✅ Mark component as standalone
-  imports: [CommonModule], // ✅ Include CommonModule
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.css']
 })
-export class AboutUsComponent implements OnInit {
-  
+export class AboutUsComponent implements OnInit, AfterViewInit {
+  @ViewChild('statsSection') statsSection!: ElementRef;
+  private observer!: IntersectionObserver;
+  private hasAnimated = false;
+
   stats = [
     { label: 'Total Listings', targetValue: 10000, currentValue: 0, formattedValue: '0' },
     { label: 'Happy Renters', targetValue: 13200, currentValue: 0, formattedValue: '0' },
@@ -19,8 +22,22 @@ export class AboutUsComponent implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    this.animateStats();
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    this.observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.animateStats();
+          this.hasAnimated = true;
+          this.observer.disconnect();
+        }
+      });
+    });
+
+    if (this.statsSection) {
+      this.observer.observe(this.statsSection.nativeElement);
+    }
   }
 
   animateStats(): void {
@@ -32,21 +49,14 @@ export class AboutUsComponent implements OnInit {
 
       const updateValue = () => {
         stat.currentValue += increment;
-
         if (stat.currentValue >= stat.targetValue) {
           stat.currentValue = stat.targetValue;
         } else {
           setTimeout(updateValue, stepTime);
         }
 
-        // Format numbers
-        if (stat.targetValue >= 1000000) {
-          stat.formattedValue = (stat.currentValue / 1000000).toFixed(1) + 'M';
-        } else if (stat.targetValue >= 1000) {
-          stat.formattedValue = (stat.currentValue / 1000).toFixed(1) + 'K';
-        } else {
-          stat.formattedValue = Math.round(stat.currentValue).toString() + '+';
-        }
+        // Format numbers correctly
+        stat.formattedValue = this.formatNumber(stat.currentValue);
 
         // Ensure Angular detects changes
         this.cdr.detectChanges();
@@ -54,5 +64,15 @@ export class AboutUsComponent implements OnInit {
 
       updateValue();
     });
+  }
+
+  formatNumber(value: number): string {
+    if (value >= 1000000) {
+      return (value / 1000000).toFixed(1) + 'M+';
+    } else if (value >= 1000) {
+      return (value / 1000).toFixed(1) + 'K+';
+    } else {
+      return Math.round(value).toString() + '+';
+    }
   }
 }

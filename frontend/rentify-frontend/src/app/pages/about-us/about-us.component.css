@@ -166,6 +166,7 @@
 
 .content h2 {
   font-size: 32px;
+  font-weight: bold;
   color: #dc9107;
   margin-bottom: 50px;
 }
@@ -185,11 +186,11 @@
 .btn {
   display: inline-block;
   padding: 12px 20px;
-  background: black;
+  background: #007bff;
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 /* Stats Section */
@@ -210,15 +211,11 @@
   font-weight: bold;
 }
 
-.stats-subtitle {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
 .stats-description {
   font-size: 20px;
+  font-style: oblique;
   max-width: 600px;
-  margin: 30px auto 40px;
+  margin: 20px auto 40px;
 }
 
 .stats-grid {
@@ -229,7 +226,7 @@
 }
 
 .stat-box {
-  background-color: #007bff;
+  background-color: #fff5e379;
   padding: 30px 30px;
   border-radius: 30px;
   width: 200px;
@@ -241,6 +238,7 @@
   font-size: 38px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: black;
 }
 
 .stat-box p {
@@ -268,15 +266,19 @@
 }
 
 .service-section h2 {
-  color: black;
-  font-size: 38px;
+  color: #007bff;
+  font-size: 40px;
+  font-weight: bold;
   margin-top: 200px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
   position: relative;
 }
 .service-section .container p {
   text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: oblique;
   margin-bottom: 40px;
 }
 
@@ -297,7 +299,7 @@
   border-radius: 30px;
   flex-direction: column;
   padding: 20px;
-  background: #0057ff;
+  background: #257cff;
   position: relative;
 }
 
@@ -320,17 +322,21 @@
 }
 
 .service-section .cards .card i{
-  font-size: 2.5rem;
+  font-size: 30px;
   color: #dc9107;
-  margin-top: 30px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 .service-section .cards .card h3{
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: white;
+  text-align: center;
 }
 
 .service-section .cards .card p{
   font-size: 1.05rem;
-  color: white;
+  text-align: center;
+  color: #fff9f9;
 }

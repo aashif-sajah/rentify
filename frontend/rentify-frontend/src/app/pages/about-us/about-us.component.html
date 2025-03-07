@@ -161,3 +161,35 @@
     </div>
   </div>
 </section>
+
+<!--customer reviews-->
+
+<div class="testimonial-container">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-slider">
+    <div class="testimonial-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      <div class="testimonial-pair" *ngFor="let pair of reviewPairs">
+        <div class="testimonial-card">
+          <img [src]="pair[0].image" alt="User Photo" class="user-img" />
+          <h3>{{ pair[0].name }}</h3>
+          <p>{{ pair[0].message }}</p>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div *ngIf="pair[1]" class="testimonial-card">
+          <img [src]="pair[1].image" alt="User Photo" class="user-img" />
+          <h3>{{ pair[1].name }}</h3>
+          <p>{{ pair[1].message }}</p>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dots">
+    <span *ngFor="let pair of reviewPairs; let i = index" 
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)">
+    
+    </span>
+  </div>
+</div>

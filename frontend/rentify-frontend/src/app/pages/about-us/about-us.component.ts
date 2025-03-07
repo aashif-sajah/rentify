@@ -12,6 +12,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
   @ViewChild('statsSection') statsSection!: ElementRef;
   private observer!: IntersectionObserver;
   private hasAnimated = false;
+  currentIndex = 0;
 
   stats = [
     { label: 'Total Listings', targetValue: 10000, currentValue: 0, formattedValue: '0' },
@@ -20,9 +21,23 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     { label: 'Completed Transactions', targetValue: 55500, currentValue: 0, formattedValue: '0' }
   ];
 
+  reviews = [
+    { name: 'John Doe', message: 'Excellent service!', image: 'assets/user1.jpg' },
+    { name: 'Jane Smith', message: 'Very professional and friendly!', image: 'assets/user2.jpg' },
+    { name: 'Mike Johnson', message: 'Highly recommended!', image: 'assets/user3.jpg' },
+    { name: 'Sarah Brown', message: 'Fantastic experience!', image: 'assets/user4.jpg' },
+    { name: 'David Wilson', message: 'Top-notch service!', image: 'assets/user5.jpg' },
+    { name: 'Emma Taylor', message: 'Very reliable!', image: 'assets/user6.jpg' }
+  ];
+
+  reviewPairs: any[] = [];
+
   constructor(private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.splitReviewsIntoPairs();
+    setInterval(() => this.nextSlide(), 4000);
+  }
 
   ngAfterViewInit(): void {
     this.observer = new IntersectionObserver(entries => {
@@ -40,6 +55,23 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  splitReviewsIntoPairs(): void {
+    this.reviewPairs = [];
+    for (let i = 0; i < this.reviews.length; i += 2) {
+      this.reviewPairs.push([this.reviews[i], this.reviews[i + 1]]);
+    }
+  }
+
+  nextSlide(): void {
+    this.currentIndex = (this.currentIndex + 1) % this.reviewPairs.length;
+    this.cdr.detectChanges();
+  }
+
+  goToSlide(index: number): void {
+    this.currentIndex = index;
+    this.cdr.detectChanges();
+  }
+
   animateStats(): void {
     this.stats.forEach(stat => {
       let duration = 2000; // Animation duration (in ms)
@@ -55,10 +87,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
           setTimeout(updateValue, stepTime);
         }
 
-        // Format numbers correctly
         stat.formattedValue = this.formatNumber(stat.currentValue);
-
-        // Ensure Angular detects changes
         this.cdr.detectChanges();
       };
 

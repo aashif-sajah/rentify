@@ -299,7 +299,7 @@
   border-radius: 30px;
   flex-direction: column;
   padding: 20px;
-  background: #257cff;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
   position: relative;
 }
 
@@ -339,4 +339,111 @@
   font-size: 1.05rem;
   text-align: center;
   color: #fff9f9;
+}
+
+@media(max-width:1100px){
+  .service-section h2 {
+    margin-top: 200px;
+  }
+  .service-section .cards{
+    grid-template-columns: repeat(1,1fr);
+  }
+  .service-section .container p {
+    width: 100%;
+  }
+}
+@media(max-width:900px){
+  .service-section .cards .card{
+    height: 300px;
+    width: 400px;
+    margin: 25px 0;
+  }
+}
+
+
+.testimonial-container {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(to right, #f8e88d, #ffc30e);
+  color: rgb(18, 12, 12);
+  border-radius: 30px;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.testimonial-container h2{
+  color: black;
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.testimonial-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 200%; /* Adjusted for sliding effect */
+}
+
+.testimonial-pair {
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+}
+
+.testimonial-card {
+  flex: 0 0 45%;
+  text-align: center;
+  padding: 18px;
+  background: white;
+  color: black;
+  border-radius: 10px;
+}
+
+.user-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dots span.active {
+  background: black;
+}
+
+@media (max-width: 768px) {
+  .testimonial-cards-wrapper {
+    flex-direction: column; /* Stack cards vertically */
+  }
+
+  .testimonial-card {
+    flex: 0 0 80%; /* Cards take 80% width on smaller screens */
+    margin: auto;
+  }
 }

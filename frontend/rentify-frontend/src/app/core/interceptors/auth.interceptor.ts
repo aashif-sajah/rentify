@@ -43,7 +43,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         router.navigate(['/unauthorized']);
       }
 
-      // Re-throw the error for component-level handling
       return throwError(() => error);
     })
   );

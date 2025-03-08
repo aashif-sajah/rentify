@@ -8,5 +8,6 @@ export interface Business {
   address: string;
   contactEmail: string;
   phone: string;
+  
   owner: User;
 }

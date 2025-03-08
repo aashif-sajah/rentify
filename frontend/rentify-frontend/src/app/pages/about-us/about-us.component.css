@@ -402,8 +402,8 @@
 }
 
 .testimonial-card {
-  flex: 0 0 45%;
-  text-align: center;
+  flex: 0 0 46%;
+  text-align: left;
   padding: 18px;
   background: white;
   color: black;
@@ -414,7 +414,22 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  margin-bottom: 10px;
+  float: left; /* Moves the image to the left */
+  margin-right: 20px; /* Adds space between image and text */
+  margin-bottom: 0; /* Reset bottom margin */
+}
+.testimonial-card h3 {
+  font-size:25px;
+  text-align: left;
+  margin-top: 13px;
+ }
+
+.testimonial-card p {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 0 0 0;
+  font-style: oblique;
+  margin-bottom: 15px;
 }
 
 .dots {

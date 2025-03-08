@@ -22,12 +22,48 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
   ];
 
   reviews = [
-    { name: 'John Doe', message: 'Excellent service!', image: 'assets/user1.jpg' },
-    { name: 'Jane Smith', message: 'Very professional and friendly!', image: 'assets/user2.jpg' },
-    { name: 'Mike Johnson', message: 'Highly recommended!', image: 'assets/user3.jpg' },
-    { name: 'Sarah Brown', message: 'Fantastic experience!', image: 'assets/user4.jpg' },
-    { name: 'David Wilson', message: 'Top-notch service!', image: 'assets/user5.jpg' },
-    { name: 'Emma Taylor', message: 'Very reliable!', image: 'assets/user6.jpg' }
+    { 
+      name: 'John Doe', 
+      message: `"Rentify made my apartment hunt stress-free!
+                I found a verified owner quickly and easily.
+                Highly recommended for hassle-free rentals!"`, 
+      image: 'assets/user1.jpg' 
+    },
+    { 
+      name: 'Olivia Smith', 
+      message: `"Great platform with amazing support!
+                The booking process was smooth and secure.
+                I'll definitely use Rentify again!"`, 
+      image: 'assets/user2.jpg' 
+    },
+    { 
+      name: 'Mike Johnson', 
+      message: `"Fast, reliable, and super user-friendly.
+                Loved how transparent the listings were.
+                Found my dream place in just two days!"`, 
+      image: 'assets/user3.jpg' 
+    },
+    { 
+      name: 'Sarah Brown', 
+      message: `"Rentify helped me find tenants fast.
+                The verification process gave me peace of mind.
+                A game-changer for property owners!"`, 
+      image: 'assets/user4.jpg' 
+    },
+    { 
+      name: 'David Wilson', 
+      message: `"Best rental service I've ever used.
+                I felt safe with their secure payment system.
+                Everything was easy and straightforward!`, 
+      image: 'assets/user5.jpg"' 
+    },
+    { 
+      name: 'Emma Taylor', 
+      message: `"Finding a home has never been this simple.
+                Clear details and honest reviews helped a lot.
+                Rentify is my go-to for future rentals!"`, 
+      image: 'assets/user6.jpg' 
+    }
   ];
 
   reviewPairs: any[] = [];

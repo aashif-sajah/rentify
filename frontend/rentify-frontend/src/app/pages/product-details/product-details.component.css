@@ -58,49 +58,54 @@
 .product-info {
   flex: 1;
   max-width: 500px;
-  background: #f9f9f9;
-  padding: 25px;
+  height: 75vh;
+  background: linear-gradient(0deg, rgba(9,25,255,1) 3%, rgba(0,197,255,1) 100%);
+  padding: 50px;
   border-radius: 8px;
 }
 
 .product-info h1 {
-  font-size: 28px;
+  font-size: 40px;
+  font-weight: bold;
   color: #222;
-  margin-bottom: 10px;
+  margin-bottom: 60px;
 }
 
 .product-info .category {
-  font-size: 16px;
-  color: #777;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
 .product-info .description {
-  font-size: 16px;
-  color: #555;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
   margin-bottom: 15px;
   line-height: 1.6;
 }
 
 .price {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  color: #d32f2f;
+  color: #f7f7f7;
 }
 
 .price span {
-  color: #d32f2f;
+  color: #e8e8e8;
 }
 
 /* Availability */
 .availability {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
+  color: #fff;
   margin-top: 10px;
 }
 
 .available {
-  color: green;
+  color: rgb(10, 255, 10);
 }
 
 .unavailable {

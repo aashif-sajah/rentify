@@ -10,7 +10,7 @@
       <h1>{{ product.name }}</h1>
       <p class="category">{{ product.category }}</p>
       <p class="description">{{ product.description }}</p>
-      <p class="price">Price per Day: <span>${{ product.pricePerDay }}</span></p>
+      <p class="price">Price per Day: <span>Rs {{ product.pricePerDay }}</span></p>
       <p class="availability">
         Availability:
         <span [class.available]="product.availability" [class.unavailable]="!product.availability">

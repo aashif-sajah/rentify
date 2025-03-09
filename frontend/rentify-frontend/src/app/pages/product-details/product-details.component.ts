@@ -18,20 +18,16 @@ export class ProductDetailsComponent implements OnInit {
     // Fetching product ID from the URL
     const productId = this.route.snapshot.paramMap.get('id');
 
-    // Temporary mock product data (Replace this with API data)
+    // Temporary placeholder until backend logic is added
     this.product = {
       id: productId,
-      name: 'Toyota Supra',
-      description: 'A high-performance sports car with a sleek design.',
-      pricePerDay: 250,
+      name: 'Car Model',
+      description: 'A high-quality car with great features.',
+      pricePerDay: 3000,
       availability: true,
-      category: 'Sports Car',
+      category: 'Luxury Car',
       businessId: 12345,
-      images: [
-        'assets/images/supra1.jpg',
-        'assets/images/supra2.jpg',
-        'assets/images/supra3.jpg'
-      ]
+      images: [] // This will be replaced by backend API data
     };
   }
 }

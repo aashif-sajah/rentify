@@ -27,46 +27,111 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
       message: `"Rentify made my apartment hunt stress-free!
                 I found a verified owner quickly and easily.
                 Highly recommended for hassle-free rentals!"`, 
-      image: 'assets/user1.jpg' 
+      image: 'assets/About Us/user1.jpg' 
     },
     { 
       name: 'Olivia Smith', 
       message: `"Great platform with amazing support!
                 The booking process was smooth and secure.
                 I'll definitely use Rentify again!"`, 
-      image: 'assets/user2.jpg' 
+      image: 'assets/About Us/user2.jpg' 
     },
     { 
       name: 'Mike Johnson', 
       message: `"Fast, reliable, and super user-friendly.
                 Loved how transparent the listings were.
                 Found my dream place in just two days!"`, 
-      image: 'assets/user3.jpg' 
+      image: 'assets/About Us/user3.jpg' 
     },
     { 
       name: 'Sarah Brown', 
       message: `"Rentify helped me find tenants fast.
                 The verification process gave me peace of mind.
                 A game-changer for property owners!"`, 
-      image: 'assets/user4.jpg' 
+      image: 'assets/About Us/user4.jpg' 
     },
     { 
       name: 'David Wilson', 
       message: `"Best rental service I've ever used.
                 I felt safe with their secure payment system.
                 Everything was easy and straightforward!`, 
-      image: 'assets/user5.jpg"' 
+      image: 'assets/About Us/user5.jpg' 
     },
     { 
       name: 'Emma Taylor', 
       message: `"Finding a home has never been this simple.
                 Clear details and honest reviews helped a lot.
                 Rentify is my go-to for future rentals!"`, 
-      image: 'assets/user6.jpg' 
+      image: 'assets/About Us/user6.jpg' 
     }
   ];
 
   reviewPairs: any[] = [];
+
+  // New Team Section Data
+  teamMembers = [
+    {
+      name: 'Aashif Sajah',
+      role: 'Full Stack Developer',
+      image: 'assets/Team Members/master.jpeg',
+      socials: [
+        { link: 'https://www.instagram.com/cliff.adventurer_/', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com/aashif-sajah', icon: 'fa-brands fa-github' },
+        { link: 'https://www.linkedin.com/in/aashif-sajah/', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    {
+      name: 'Ruzaiq Fahim',
+      role: 'Backend Web Developer',
+      image: 'assets/Team Members/ruzaiq.png',
+      socials: [
+        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com', icon: 'fa-brands fa-github' },
+        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    {
+      name: 'Sanithu Muthukumarana',
+      role: 'Backend Web Developer',
+      image: 'assets/About Us/user1.jpg',
+      socials: [
+        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com', icon: 'fa-brands fa-github' },
+        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    {
+      name: 'Kaveesha Devindi',
+      role: 'Frontend Web Developer',
+      image: 'assets/Team Members/kaveesha.jpeg',
+      socials: [
+        { link: 'https://www.instagram.com/kaveesha_ed/', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com/kaveesha-ed', icon: 'fa-brands fa-github' },
+        { link: 'https://www.linkedin.com/in/kaveesha-elvitigala-92767818b', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    {
+      name: 'Uveen Sureshchandra',
+      role: 'Frontend Web Developer',
+      image: 'assets/About Us/user1.jpg',
+      socials: [
+        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com', icon: 'fa-brands fa-github' },
+        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    {
+      name: 'Niduk Samarakoon',
+      role: 'Frontend Web Developer',
+      image: 'assets/About Us/user1.jpg',
+      socials: [
+        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com', icon: 'fa-brands fa-github' },
+        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    
+  ];
 
   constructor(private cdr: ChangeDetectorRef) {}
 

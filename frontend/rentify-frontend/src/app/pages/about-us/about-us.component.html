@@ -51,7 +51,7 @@
   <div class="container">
     <div class="row">
       <div class="image-container">
-        <img src="/assets/about-us.png" alt="Rentify Office">
+        <img src="/assets/About Us/about-us.png" alt="Rentify Office">
       </div>
       <div class="content">
         <h2>We Provide You <br> The Best Experience</h2>
@@ -192,3 +192,31 @@
     </span>
   </div>
 </div>
+
+<!-- Call-to-Action Section -->
+<div class="cta-section">
+  <h2>Ready to Find Your Perfect Rental?</h2>
+  <p>Join thousands of happy renters and start your journey with Rentify today!</p>
+  <div class="cta-buttons">
+    <a routerLink="/register" class="cta-btn primary-btn">Get Started</a>
+    <a routerLink="/Contact-us" class="cta-btn secondary-btn">Contect us</a>
+  </div>
+</div>
+
+<!-- Team Section -->
+
+<section class="team-section">
+  <h2>Meet Our Team</h2>
+  <div class="team-container">
+      <div *ngFor="let member of teamMembers" class="team-box">
+          <img [src]="member.image" [alt]="member.name">
+          <h4>{{ member.name }}</h4>
+          <span>{{ member.role }}</span>
+          <div class="social-media">
+              <a *ngFor="let social of member.socials" [href]="social.link" target="_blank">
+                  <i [class]="social.icon"></i>
+              </a>
+          </div>
+      </div>
+  </div>
+</section>

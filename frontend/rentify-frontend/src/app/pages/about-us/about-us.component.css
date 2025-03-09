@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero-section {
-  background-image: url('/assets/aboutus-bg.jpg');
+  background-image: url('/assets/About Us/aboutus-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,7 +11,7 @@
   margin-left: 20px;
   margin-right: 20px;
   position: relative;
-  overflow: hidden; /* Ensures overlay stays inside */
+  overflow: hidden; 
 }
 
 /* Transparent overlay */
@@ -72,7 +72,7 @@
 
 .container {
   position: relative;
-  margin-top: -80px; /* Adjust to bring cards closer to the background */
+  margin-top: -80px; 
   z-index: 2;
   max-width: 1200px;
   padding: 0 20px;
@@ -360,7 +360,7 @@
   }
 }
 
-
+/*customer review section*/
 .testimonial-container {
   text-align: center;
   padding: 40px;
@@ -407,7 +407,7 @@
   padding: 18px;
   background: white;
   color: black;
-  border-radius: 10px;
+  border-radius: 25px;
 }
 
 .user-img {
@@ -453,12 +453,236 @@
 }
 
 @media (max-width: 768px) {
-  .testimonial-cards-wrapper {
-    flex-direction: column; /* Stack cards vertically */
+  .testimonial-slider {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .testimonial-track {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease-in-out;
+    width: 600%;
+  }
+
+  .testimonial-pair {
+    flex-direction: column; 
+    align-items: center;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .testimonial-card {
-    flex: 0 0 80%; /* Cards take 80% width on smaller screens */
-    margin: auto;
+    width: 60%;
+    margin: 10px;
+    max-width: 500px;
+    text-align: center;
   }
 }
+
+/* CTA Section Styles */
+
+.cta-section {
+  text-align: center;
+  padding: 80px;
+  color: white;
+  border-radius: 30px;
+  margin-top: 100px;
+  margin-left: 80px;
+  margin-right: 80px;
+  position: relative;
+  overflow: hidden;
+
+  /* Keep your original background */
+  background: linear-gradient(90deg, rgba(0, 0, 255, 1) 9%, rgb(10, 198, 255) 91%);
+
+  /* Border Animation */
+  --border-angle: 0turn;
+  border: solid 5px transparent;
+  border-radius: 30px;
+  --gradient-border: conic-gradient(from var(--border-angle), transparent 35%, rgb(0, 102, 255), rgb(0, 26, 255) 99%, transparent);
+
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: 
+    linear-gradient(90deg, rgba(0, 0, 255, 1) 9%, rgba(0, 194, 251, 1) 91%), /* Main Background */
+    var(--gradient-border);
+
+  background-position: center center;
+  animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+.cta-section h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cta-btn {
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.primary-btn {
+  background: white;
+  color: #007bff;
+  border: 2px solid white;
+}
+
+.primary-btn:hover {
+  background: #0056b3;
+  color: white;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.secondary-btn:hover {
+  background: white;
+  color: #007bff;
+}
+
+
+/*Team Section*/
+
+/* General Styles */
+.team-section {
+  text-align: center;
+  padding: 60px 20px;
+  margin-top: 50px;
+  background: #f8f9fa;
+}
+
+.team-section h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  color: #222;
+}
+
+/* Team Container */
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Team Member Box */
+.team-box {
+  background: #fff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 50px;
+  width: 350px;
+  text-align: center;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+.team-box:hover {
+  transform: translateY(-10px);
+}
+
+/* Team Image */
+.team-box img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 4px solid rgba(0, 0, 255, 0.5);
+  transition: 0.3s;
+}
+
+.team-box:hover img {
+  border-color: rgba(0, 194, 251, 1);
+}
+
+/* Team Name & Role */
+.team-box h4 {
+  font-size: 21px;
+  font-weight: bold;
+  color: #222;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.team-box span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #007bff;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* Social Media Icons */
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-media a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, #007bff, #00c2fb);
+  color: white;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.social-media a:hover {
+  background: linear-gradient(135deg, #ff6b6b, #ffcc00);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .team-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .team-box {
+      width: 80%;
+  }
+}
+

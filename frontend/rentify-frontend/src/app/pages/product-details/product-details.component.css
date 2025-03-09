@@ -74,7 +74,7 @@
 .product-info .category {
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
+  color:#ffffff;
   margin-bottom: 10px;
 }
 
@@ -117,7 +117,7 @@
   display: inline-block;
   width: 100%;
   padding: 12px 24px;
-  background-color: #3b82f6;
+  background-color: #dc9107;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -126,11 +126,11 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .rent-now:hover {
-  background-color: #2563eb;
+  background: linear-gradient(135deg, #ff6b6b, #ffcc00);
   transform: scale(1.05);
 }
 

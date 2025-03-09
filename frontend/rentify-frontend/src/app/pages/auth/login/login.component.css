@@ -5,6 +5,7 @@
   min-height: 79vh;
   background-color: #f8f9fa;
   padding: 20px 60px;
+  padding-left: 120px;
   gap: 20px;
 }
 
@@ -83,6 +84,18 @@ h2 {
 
 .signup-link a:hover {
   text-decoration: underline;
+}
+
+
+.login-image{
+  border: 1px solid black;
+}
+
+.login-image img{
+  width: 700px;
+  height: 600px;
+  object-fit: cover;
+  object-position: -10px -150px;
 }
 
 

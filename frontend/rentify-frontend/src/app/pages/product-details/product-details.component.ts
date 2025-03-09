@@ -1,33 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductResponse } from '../../models/product-response';
+import { ProductServiceService } from '../../core/services/product-service.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
-  standalone: true,  // ✅ Make it standalone
-  imports: [CommonModule], // ✅ Import CommonModule for *ngFor, *ngIf
+  standalone: true,
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
+  imports: [CommonModule]
 })
 export class ProductDetailsComponent implements OnInit {
-  product: any;
+  product: ProductResponse | null = null; // ✅ Initialize as null to avoid undefined errors
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductServiceService
+  ) {}
 
   ngOnInit(): void {
-    // Fetching product ID from the URL
     const productId = this.route.snapshot.paramMap.get('id');
 
-    // Temporary placeholder until backend logic is added
-    this.product = {
-      id: productId,
-      name: 'Car Model',
-      description: 'A high-quality car with great features.',
-      pricePerDay: 3000,
-      availability: true,
-      category: 'Luxury Car',
-      businessId: 12345,
-      images: [] // This will be replaced by backend API data
-    };
+    if (productId) {
+      const id = Number(productId); // ✅ Convert id to number
+      this.productService.getProductById(id).subscribe({
+        next: (data) => {
+          this.product = data;
+        },
+        error: (err) => {
+          console.error('Error fetching product:', err);
+        }
+      });
+    }
   }
 }

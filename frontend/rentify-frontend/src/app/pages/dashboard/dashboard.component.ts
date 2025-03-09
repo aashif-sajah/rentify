@@ -128,8 +128,9 @@ export class DashboardComponent implements OnInit {
       console.error('Product not found!');
     }
   }
-  viewProductDetails(productId: number | string) {
-    this.router.navigate(['/product-details', productId.toString()]);
+  viewProductDetails(product: ProductResponse) {
+    this.productService.setSelectedProduct(product);
+    this.router.navigate(['/product-details', product.id]);
   }
 
 }

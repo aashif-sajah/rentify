@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   showSuccessMessage: boolean = false;
   productIdToDelete: number | null = null;
   message: string = '';
+  
 
   constructor(
     private authService: AuthService,
@@ -126,6 +127,9 @@ export class DashboardComponent implements OnInit {
     } else {
       console.error('Product not found!');
     }
+  }
+  viewProductDetails(productId: number | string) {
+    this.router.navigate(['/product-details', productId.toString()]);
   }
 
 }

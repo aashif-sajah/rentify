@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { SupportComponent } from './pages/support/support.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,7 @@ export const routes: Routes = [
     component: AddProductComponent,
     /* canActivate: [authGuard], */
   },
+  
   {
     path:'about-us',
     component: AboutUsComponent
@@ -45,6 +47,10 @@ export const routes: Routes = [
   {
     path:'support',
     component: SupportComponent
+  },
+  {
+    path: 'product-details/:id', // Add route for Product Details with a dynamic ID
+    component: ProductDetailsComponent
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {

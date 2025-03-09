@@ -19,7 +19,7 @@
 }
 
 .main-image {
-  width: 500px;
+  width: 400px;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .image-thumbnails img {

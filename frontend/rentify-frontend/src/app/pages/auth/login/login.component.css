@@ -86,8 +86,12 @@ h2 {
   text-decoration: underline;
 }
 
+.login-image{
+  background-color: transparent;
+}
 
 .login-image img{
+
   width: 700px;
   height: 600px;
   object-fit: cover;

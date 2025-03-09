@@ -205,4 +205,11 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
       return Math.round(value).toString() + '+';
     }
   }
+  scrollToContact(): void {
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  
 }

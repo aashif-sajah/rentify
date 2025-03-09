@@ -5,7 +5,7 @@
     <div class="hero-content">
       <h1 class="hero-title">About Us</h1>
       <p class="hero-description">Your trusted rental management platform</p>
-      <a href="#" class="hero-btn">Contact us</a>
+      <a class="hero-btn" (click)="scrollToContact()">Contact Us</a>
     </div>
   </div>
 </section>
@@ -198,8 +198,8 @@
   <h2>Ready to Find Your Perfect Rental?</h2>
   <p>Join thousands of happy renters and start your journey with Rentify today!</p>
   <div class="cta-buttons">
-    <a routerLink="/register" class="cta-btn primary-btn">Get Started</a>
-    <a routerLink="/Contact-us" class="cta-btn secondary-btn">Contect us</a>
+    <a routerLink="/auth/register" class="cta-btn primary-btn">Get Started</a>
+    <a class="cta-btn secondary-btn" (click)="scrollToContact()">Contact Us</a>  
   </div>
 </div>
 
@@ -223,7 +223,7 @@
 
 <!-- Contact us Section -->
 
-<section class="contact-section">
+<section id="contact-section" class="contact-section">
   <div class="contact-container">
       <div class="contact-info">
           <h2>Contact Information</h2>

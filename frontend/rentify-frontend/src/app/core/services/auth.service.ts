@@ -45,6 +45,7 @@ export class AuthService {
     return localStorage.getItem('jwtToken') || '';
   }
 
+  
   public clearRole() {
     localStorage.clear();
   }

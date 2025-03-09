@@ -5,6 +5,7 @@
   min-height: 90vh;
   background-color: #f8f9fa;
   padding: 20px;
+  gap: 20px;
 }
 
 .login-box {

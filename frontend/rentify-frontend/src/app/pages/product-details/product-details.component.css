@@ -1,97 +1,150 @@
+/* Product Details Container */
 .product-details-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .product-images {
-    flex: 1;
-    max-width: 500px;
-  }
-  
-  .main-image {
-    width: 100%;
-    border-radius: 10px;
-  }
-  
-  .image-thumbnails {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .image-thumbnails img {
-    width: 80px;
-    height: 80px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .image-thumbnails img:hover {
-    transform: scale(1.1);
-  }
-  
-  .product-info {
-    flex: 1;
-    max-width: 500px;
-  }
-  
-  h1 {
-    font-size: 28px;
-    color: #333;
-  }
-  
-  .category {
-    font-size: 16px;
-    color: #777;
-    margin-bottom: 10px;
-  }
-  
-  .description {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 15px;
-  }
-  
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #d9534f;
-  }
-  
-  .availability {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  .available {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .unavailable {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .rent-now {
-    padding: 10px 20px;
-    font-size: 18px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .rent-now:hover {
-    background: #0056b3;
-  }
-  
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  background: #fff;
+}
+
+/* Left Section: Product Images */
+.product-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.main-image {
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.main-image:hover {
+  transform: scale(1.03);
+}
+
+/* Image Thumbnails */
+.image-thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.image-thumbnails img {
+  width: 100px;
+  height: 80px;
+  border-radius: 5px;
+  cursor: pointer;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.image-thumbnails img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Right Section: Product Info */
+.product-info {
+  flex: 1;
+  max-width: 500px;
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+}
+
+.product-info h1 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.product-info .category {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.product-info .description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.price span {
+  color: #d32f2f;
+}
+
+/* Availability */
+.availability {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.available {
+  color: green;
+}
+
+.unavailable {
+  color: red;
+}
+
+/* Rent Now Button */
+.rent-now {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+}
+
+.rent-now:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Additional Sections */
+.additional-info {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f3f3f3;
+  border-radius: 8px;
+}
+
+.additional-info h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.additional-info p {
+  font-size: 16px;
+  color: #666;
+}

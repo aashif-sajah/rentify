@@ -1,22 +1,28 @@
-<div class="product-details-container" *ngIf="product">
-  <div class="product-images" *ngIf="product.imageUrls?.length">
-    <img [src]="product.imageUrls[0]" alt="Product Image" class="main-image">
+<div class="product-details-container">
+  <!-- Left Section: Product Images -->
+  <div class="product-images">
+    <img [src]="selectedImage" alt="Product Image" class="main-image">
+
     <div class="image-thumbnails">
-      <img *ngFor="let img of product.imageUrls" [src]="img" alt="Product Image">
+      <img *ngFor="let img of product?.imageUrls" 
+           [src]="img" 
+           alt="Product Thumbnail" 
+           (click)="switchImage(img)">
     </div>
   </div>
 
+  <!-- Right Section: Product Info -->
   <div class="product-info">
-    <h1>{{ product.name }}</h1>
-    <p class="category">Category: {{ product.category }}</p>
-    <p class="description">Description: {{ product.description }}</p>
-    <p class="price">Price per Day: <span>Rs {{ product.pricePerDay }}</span></p>
+    <h1>{{ product?.name }}</h1>
+    <p class="category">Category: {{ product?.category }}</p>
+    <p class="description">Description: {{ product?.description }}</p>
+    <p class="price">Price per Day: Rs {{ product?.pricePerDay }}</p>
     <p class="availability">
       Availability:
-      <span [class.available]="product.availability" [class.unavailable]="!product.availability">
-        {{ product.availability ? 'Available' : 'Not Available' }}
+      <span [class.available]="product?.availability" [class.unavailable]="!product?.availability">
+        {{ product?.availability ? 'Available' : 'Not Available' }}
       </span>
     </p>
-    <button class="rent-now" *ngIf="product.availability">Rent Now</button>
+    <button class="rent-now">Rent Now</button>
   </div>
 </div>

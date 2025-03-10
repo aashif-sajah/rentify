@@ -81,16 +81,20 @@
 .featured-services h2 {
   font-size: 24px;
   font-weight: bold;
+  text-align: left;
+  margin-left: -220px;
   margin-bottom: 20px;
 }
 
 /* Services Container */
 .services-container {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 25px;
+  margin-left: -220px;
+  width: 100%;
   flex-wrap: nowrap; /* Keeps items in a row */
-  overflow-x: auto; /* Enables scrolling if needed */
+  overflow: hidden /* Enables scrolling if needed */
 }
 
 /* Individual Service Box */

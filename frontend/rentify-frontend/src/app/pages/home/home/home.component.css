@@ -80,7 +80,7 @@
 
 /* Featured Services Heading */
 .featured-services h2 {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   text-align: left;
   margin-left: -220px;
@@ -91,7 +91,7 @@
   display: flex;
   justify-content: flex-end; /* Moves buttons to the right */
   align-items: center;
-  margin-top: -55px;
+  margin-top: -58px;
   margin-bottom: 50px;
   padding-right: 200px;
   position: relative;
@@ -130,9 +130,8 @@
 /* Individual Service Box */
 .service-box {
   flex: 1;
-  min-width: 300px;
-  max-width: 300px;
-  height: 290px;
+  min-width: 320px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -159,10 +158,10 @@
 
 /* Service Image */
 .service-box img {
-  width: 110%;
+  width: 100%;
   height: auto;
-  max-height: 170px;
-  object-fit: contain;
+  align-self: flex-end;
+  object-fit: cover;
 }
 
 /* Service Title */

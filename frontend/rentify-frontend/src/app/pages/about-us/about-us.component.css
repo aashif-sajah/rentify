@@ -747,17 +747,25 @@
 }
 
 .social-icons {
-  margin-top: 40px;
+  margin-top: 30px;
   text-align: center;
+}
+.social-icons p{
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  color: #030303;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .social-icons a {
   display: inline-block;
   background: #00c2fb;
   color: white;
-  padding: 15px;
+  padding: 18px;
   margin: 7px;
-  border-radius: 16px;
+  border-radius: 20px;
   transition: 0.3s ease;
   text-align: center;
 }

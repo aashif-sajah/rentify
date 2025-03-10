@@ -89,19 +89,21 @@
 /* Services Container */
 .services-container {
   display: flex;
-  justify-content: flex-start;
-  gap: 25px;
+  justify-content: space-between;
+  gap: 55px;
   margin-left: -220px;
   width: 100%;
+  padding-right: 300px;
   flex-wrap: nowrap; /* Keeps items in a row */
+  overflow-x: auto;
   overflow: hidden /* Enables scrolling if needed */
 }
 
 /* Individual Service Box */
 .service-box {
   flex: 1;
-  min-width: 250px;
-  max-width: 280px;
+  min-width: 300px;
+  max-width: 300px;
   height: 230px;
   display: flex;
   flex-direction: column;
@@ -146,9 +148,11 @@
 
 /* See More */
 .see-more {
+  font-size: 24px;
+  font-weight: bold;
   text-align: right;
-  font-size: 14px;
-  margin-top: 10px;
+  margin-right: 220px;
+  margin-bottom: 20px;
 }
 
 .see-more a {

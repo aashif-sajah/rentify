@@ -17,7 +17,11 @@
 
   <div class="featured-services"> 
       <h2>Featured services</h2>
-      <div class="services-container" id="servcesContainer">
+      <div class="button-container">
+        <button (click)="scrollLeft()">Back</button>
+        <button (click)="scrollRight()">See more</button>
+      </div>
+      <div #servicesContainer class="services-container">
         <div class="service-box">
           <img src="assets/Home Page/Bicycle.png" alt="Rent Bicycles">
           <h3>Rent bicycles</h3>
@@ -35,8 +39,7 @@
           <h3>Rent rooms</h3>
         </div>
       </div>
-      <a href="/services" class="see-more">See more</a>
-  </div>
+    </div>
 
   </div>
   <div class="reason">

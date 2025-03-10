@@ -85,6 +85,20 @@
   margin-left: -220px;
   margin-bottom: 20px;
 }
+/* See More */
+.see-more {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 220px;
+  margin-bottom: 20px;
+}
+
+.see-more a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
 
 /* Services Container */
 .services-container {
@@ -144,21 +158,6 @@
   position: absolute;
   top: 10px;
   left: 10px;
-}
-
-/* See More */
-.see-more {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: right;
-  margin-right: 220px;
-  margin-bottom: 20px;
-}
-
-.see-more a {
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
 }
 
 /* Fix for Mobile Screens */

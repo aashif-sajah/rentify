@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 
 @Component({
@@ -9,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent 
 {
+  @ViewChild('servicesContainer', { static: false }) servicesContainer!: ElementRef;
+
+  scrollRight(): void {
+    if (this.servicesContainer) {
+      this.servicesContainer.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  }
+  scrollLeft(): void {
+    if (this.servicesContainer) {
+      this.servicesContainer.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  }
 }
+

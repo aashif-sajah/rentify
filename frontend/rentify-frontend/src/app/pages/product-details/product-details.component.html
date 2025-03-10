@@ -3,11 +3,20 @@
   <div class="product-images">
     <img [src]="selectedImage" alt="Product Image" class="main-image">
 
-    <div class="image-thumbnails">
-      <img *ngFor="let img of product?.imageUrls" 
-           [src]="img" 
-           alt="Product Thumbnail" 
-           (click)="switchImage(img)">
+    <div class="image-thumbnails-container">
+      <!-- Left Arrow -->
+      <button (click)="prevImages()" class="arrow left-arrow" *ngIf="startIndex > 0">&#10094;</button>
+
+      <div class="image-thumbnails">
+        <img *ngFor="let img of (product?.imageUrls ?? []).slice(startIndex, startIndex + 4)"
+             [src]="img" 
+             alt="Product Thumbnail" 
+             (click)="switchImage(img)"
+             [class.active]="img === selectedImage">
+      </div>
+
+      <!-- Right Arrow -->
+      <button (click)="nextImages()" class="arrow right-arrow" *ngIf="startIndex + 4 < (product?.imageUrls?.length || 0)">&#10095;</button>
     </div>
   </div>
 

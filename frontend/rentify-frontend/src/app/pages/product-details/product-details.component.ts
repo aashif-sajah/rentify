@@ -12,8 +12,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class ProductDetailsComponent implements OnInit {
-  product: ProductResponse | null = null; // ✅ Initialize as null to avoid undefined errors
-  selectedImage: string = ''; // ✅ Stores the currently displayed image
+  product: ProductResponse | null = null; 
+  selectedImage: string = ''; 
+  startIndex: number = 0; // Track starting index for image thumbnails
+  fallbackImage: string = 'assets/default-image.jpg'; // ✅ Added fallback image
 
   constructor(
     private route: ActivatedRoute,
@@ -24,12 +26,16 @@ export class ProductDetailsComponent implements OnInit {
     const productId = this.route.snapshot.paramMap.get('id');
 
     if (productId) {
-      const id = Number(productId); // ✅ Convert id to number
+      const id = Number(productId);
       this.productService.getProductById(id).subscribe({
         next: (data) => {
           this.product = data;
-          if (this.product.imageUrls && this.product.imageUrls.length > 0) {
-            this.selectedImage = this.product.imageUrls[0]; // ✅ Set the first image as default
+
+          // ✅ Ensure imageUrls exists before setting selectedImage
+          if (this.product?.imageUrls?.length) {
+            this.selectedImage = this.product.imageUrls[0]; 
+          } else {
+            this.selectedImage = this.fallbackImage; // ✅ Use fallback image
           }
         },
         error: (err) => {
@@ -41,5 +47,17 @@ export class ProductDetailsComponent implements OnInit {
 
   switchImage(imageUrl: string): void {
     this.selectedImage = imageUrl;
+  }
+
+  prevImages(): void {
+    if (this.startIndex > 0) {
+      this.startIndex -= 4;
+    }
+  }
+
+  nextImages(): void {
+    if (this.product?.imageUrls && this.startIndex + 4 < this.product.imageUrls.length) {
+      this.startIndex += 4;
+    }
   }
 }

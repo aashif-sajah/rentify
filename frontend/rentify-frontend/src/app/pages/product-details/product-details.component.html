@@ -1,0 +1,38 @@
+<div class="product-details-container">
+  <!-- Left Section: Product Images -->
+  <div class="product-images">
+    <img [src]="selectedImage" alt="Product Image" class="main-image">
+
+    <div class="image-thumbnails-container">
+      <!-- Left Arrow -->
+      <button (click)="prevImages()" class="arrow left-arrow" *ngIf="startIndex > 0">&#10094;</button>
+
+      <div class="image-thumbnails">
+        <img *ngFor="let img of (product?.imageUrls ?? []).slice(startIndex, startIndex + 4)"
+             [src]="img" 
+             alt="Product Thumbnail" 
+             (click)="switchImage(img)"
+             [class.active]="img === selectedImage">
+      </div>
+
+      <!-- Right Arrow -->
+      <button (click)="nextImages()" class="arrow right-arrow" *ngIf="startIndex + 4 < (product?.imageUrls?.length || 0)">&#10095;</button>
+    </div>
+    <button class="back-btn" (click)="goBack()">Back</button>
+  </div>
+
+  <!-- Right Section: Product Info -->
+  <div class="product-info">
+    <h1>{{ product?.name }}</h1>
+    <p class="category">Category: {{ product?.category }}</p>
+    <p class="description">Description: {{ product?.description }}</p>
+    <p class="price">Price per Day: Rs {{ product?.pricePerDay }}</p>
+    <p class="availability">
+      Availability:
+      <span [class.available]="product?.availability" [class.unavailable]="!product?.availability">
+        {{ product?.availability ? 'Available' : 'Not Available' }}
+      </span>
+    </p>
+    <button class="rent-now">Rent Now</button>
+  </div>
+</div>

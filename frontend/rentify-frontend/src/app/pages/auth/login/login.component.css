@@ -1,10 +1,12 @@
 .login-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 90vh;
+  min-height: 79vh;
   background-color: #f8f9fa;
-  padding: 20px;
+  padding: 20px 60px;
+  padding-left: 120px;
+  gap: 20px;
 }
 
 .login-box {
@@ -56,33 +58,6 @@ h2 {
   background-color: #0056b3;
 }
 
-/* Social Login */
-.social-login {
-  margin-top: 15px;
-}
-
-.social-login p {
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: #666;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.social-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-}
 
 .facebook {
   background-color: #1877f2;
@@ -111,9 +86,18 @@ h2 {
   text-decoration: underline;
 }
 
-.login-image {
-  display: none;
+.login-image{
+  background-color: transparent;
 }
+
+.login-image img{
+
+  width: 700px;
+  height: 600px;
+  object-fit: cover;
+  object-position: -10px -150px;
+}
+
 
 @media (min-width: 768px) {
   .login-container {
@@ -125,11 +109,11 @@ h2 {
     margin-right: 40px;
   }
 
-  .login-image {
+ /*  .login-image {
     display: block;
   }
-
-  .login-image img {
+ */
+  /* .login-image img {
     max-width: 300px;
-  }
+  } */
 }

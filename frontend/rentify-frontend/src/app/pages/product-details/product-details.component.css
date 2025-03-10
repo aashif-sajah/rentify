@@ -64,10 +64,11 @@
 
 /* Navigation Arrows */
 .arrow {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(15, 43, 249);
+  border-radius: 60px;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   font-size: 18px;
   position: absolute;
@@ -85,7 +86,7 @@
 }
 
 .arrow:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: #dc9107;
 }
 
 /* Right Section: Product Info */

@@ -1,16 +1,16 @@
 <div class="container">
   <h2>Create Your Business</h2>
 
-  <!-- Step 1: Basic Info -->
+
   @if(step === 0){
-  <form #form="ngForm">
+  <form #form="ngForm"> 
     <label for="businessName">Business Name:</label>
     <input type="text" [(ngModel)]="businessData.businessName" name="businessName" id="businessName" required />
 
     <label for="description">Description:</label>
     <textarea [(ngModel)]="businessData.description" name="description" id="description" required>
         </textarea>
-
+        
     <label for="contactEmail">Contact Email:</label>
     <input type="email" [(ngModel)]="businessData.contactEmail" name="contactEmail" id="contactEmail" required />
 
@@ -24,7 +24,7 @@
   </form>
   }
 
-  <!-- Step 2: Business Type -->
+
   @if(step === 1){
   <form #form2="ngForm">
     <label for="businessType">Select Business Type:</label>
@@ -40,7 +40,7 @@
   </form>
   }
 
-  <!-- Step 3: Store Theme -->
+
   @if(step === 2){
   <form #form3="ngForm">
     <label for="fontStyle">Font Style:</label>
@@ -63,7 +63,6 @@
   </form>
   }
 
-  <!-- Loading & Error Handling -->
   @if(loading){
   <p>Submitting...</p>
   }

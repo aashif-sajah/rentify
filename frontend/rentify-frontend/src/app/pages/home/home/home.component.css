@@ -62,11 +62,130 @@
 
 .dev-message{
   margin-top: 20px;
+  margin-bottom: 50px;
   font-size: 16px;
   font-weight: 400;
   color: #7B7D74;
   font-style: italic;
 }
+
+/* Featured Services Section */
+.featured-services {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: left;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Featured Services Heading */
+.featured-services h2 {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: -220px;
+  margin-bottom: 20px;
+}
+/* See More */
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Moves buttons to the right */
+  align-items: center;
+  margin-top: -58px;
+  margin-bottom: 50px;
+  padding-right: 200px;
+  position: relative;
+  gap: 10px; /* Adds spacing between buttons */
+  width: 100%;
+}
+
+.button-container button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.3s ease-in-out;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Services Container */
+.services-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 55px;
+  margin-left: -220px;
+  width: 100%;
+  padding-right: 300px;
+  flex-wrap: nowrap; /* Keeps items in a row */
+  overflow-x: auto;
+  overflow: hidden /* Enables scrolling if needed */
+}
+
+/* Individual Service Box */
+.service-box {
+  flex: 1;
+  min-width: 320px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Hover Effect */
+.service-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Background Colors */
+.service-box:nth-child(1) { background: #acd3ee; }  /* Light Blue */
+.service-box:nth-child(2) { background: #2f2c2c; color: white; } /* Dark Gray */
+.service-box:nth-child(3) { background: #bbce80; } /* Light Green */
+.service-box:nth-child(4) { background: #f6fca0; } /* Light Yellow */
+
+/* Service Image */
+.service-box img {
+  width: 100%;
+  height: auto;
+  margin-right: -40px; /* Move image slightly to the right */
+  margin-bottom: -19px; 
+  object-fit: contain;
+}
+
+/* Service Title */
+.service-box h3 {
+  font-size: 23px;
+  font-weight: bold;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+/* Fix for Mobile Screens */
+@media screen and (max-width: 768px) {
+  .services-container {
+      flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  }
+
+  .service-box {
+      min-width: 45%; /* Adjust width on mobile */
+  }
+}
+
+
 
 /* Reason Section */
 

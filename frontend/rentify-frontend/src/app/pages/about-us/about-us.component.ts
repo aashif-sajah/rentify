@@ -1,10 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; 
 
 @Component({
   selector: 'app-about-us',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.css']
 })
@@ -81,23 +82,23 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
       ]
     },
     {
+      name: 'Sanithu Muthukumarana',
+      role: 'Backend Web Developer',
+      image: 'assets/Team Members/zanithu.jpg',
+      socials: [
+        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com/Zanithu', icon: 'fa-brands fa-github' },
+        { link: 'https://www.linkedin.com/in/sanithu-muthukumarana', icon: 'fa-brands fa-linkedin' },
+      ]
+    },
+    {
       name: 'Ruzaiq Fahim',
       role: 'Backend Web Developer',
       image: 'assets/Team Members/ruzaiq.png',
       socials: [
-        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
-        { link: 'https://github.com', icon: 'fa-brands fa-github' },
-        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
-      ]
-    },
-    {
-      name: 'Sanithu Muthukumarana',
-      role: 'Backend Web Developer',
-      image: 'assets/About Us/user1.jpg',
-      socials: [
-        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
-        { link: 'https://github.com', icon: 'fa-brands fa-github' },
-        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
+        { link: 'https://www.instagram.com/ruzaiqfahim/', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com/ruzaiqf', icon: 'fa-brands fa-github' },
+        { link: 'https://www.linkedin.com/in/ruzaiq-fahim/', icon: 'fa-brands fa-linkedin' },
       ]
     },
     {

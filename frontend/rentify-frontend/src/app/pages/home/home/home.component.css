@@ -68,6 +68,104 @@
   font-style: italic;
 }
 
+/* Featured Services Section */
+.featured-services {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: left;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Featured Services Heading */
+.featured-services h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Services Container */
+.services-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap; /* Keeps items in a row */
+  overflow-x: auto; /* Enables scrolling if needed */
+}
+
+/* Individual Service Box */
+.service-box {
+  flex: 1;
+  min-width: 250px;
+  max-width: 280px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Hover Effect */
+.service-box:hover {
+  transform: translateY(-5px);
+}
+
+/* Background Colors */
+.service-box:nth-child(1) { background: #c3ddff; }  /* Light Blue */
+.service-box:nth-child(2) { background: #2a2a2a; color: white; } /* Dark Gray */
+.service-box:nth-child(3) { background: #d2f7bd; } /* Light Green */
+.service-box:nth-child(4) { background: #f9f59a; } /* Light Yellow */
+
+/* Service Image */
+.service-box img {
+  width: 100%;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+}
+
+/* Service Title */
+.service-box h3 {
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* See More */
+.see-more {
+  text-align: right;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.see-more a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+/* Fix for Mobile Screens */
+@media screen and (max-width: 768px) {
+  .services-container {
+      flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  }
+
+  .service-box {
+      min-width: 45%; /* Adjust width on mobile */
+  }
+}
+
+
+
 /* Reason Section */
 
 .reason{

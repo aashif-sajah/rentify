@@ -45,6 +45,10 @@ export const routes: Routes = [
 
   },
   {
+    path:'view-product-details',
+    component: ViewProductDetailsComponent
+  },
+  {
     path:'support',
     component: SupportComponent
   },

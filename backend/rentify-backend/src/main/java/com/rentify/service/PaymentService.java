@@ -13,6 +13,7 @@ import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,40 +22,46 @@ public class PaymentService {
   private final BookingRepo bookingRepository;
   private final StripeService stripeService;
 
-  public Payment processPayment(PaymentRequest paymentRequest) {
+  public String createPaymentIntent(Long bookingId) {
     Booking booking =
         bookingRepository
-            .findById(paymentRequest.getBookingId())
+            .findById(bookingId)
             .orElseThrow(() -> new RuntimeException("Booking not found"));
 
-    Stripe.apiKey = "sk_test_YourSecretKey"; // Use environment variables in production
+    try {
+      return stripeService.createPaymentIntent(booking.getTotalAmount(), "usd");
+    } catch (StripeException e) {
+      throw new RuntimeException("Failed to create payment intent: " + e.getMessage());
+    }
+
+  }
+
+  @Transactional
+  public Payment confirmPayment(String paymentIntentId, Long bookingId) {
+    Booking booking = bookingRepository.findById(bookingId)
+            .orElseThrow(() -> new RuntimeException("Booking not found"));
 
     try {
-      PaymentIntentCreateParams params =
-          PaymentIntentCreateParams.builder()
-              .setAmount((long) (booking.getTotalAmount() * 100)) // Convert to cents
-              .setCurrency("usd")
-              .setPaymentMethod(paymentRequest.getStripeToken())
-              .setConfirm(true)
-              .build();
+      PaymentIntent paymentIntent = stripeService.retrievePaymentIntent(paymentIntentId);
 
-      PaymentIntent intent = PaymentIntent.create(params);
+      if ("succeeded".equals(paymentIntent.getStatus())) {
+        Payment payment = new Payment();
+        payment.setBooking(booking);
+        payment.setPaymentIntentId(paymentIntentId);
+        payment.setAmountPaid(booking.getTotalAmount());
+        payment.setCurrency("usd");
+        payment.setStatus(PaymentStatus.SUCCESS);
+        payment.setPaymentMethod(paymentIntent.getPaymentMethod());
 
-      Payment payment = new Payment();
-      payment.setBooking(booking);
-      payment.setPaymentIntentId(intent.getId());
-      payment.setAmountPaid(booking.getTotalAmount());
-      payment.setCurrency("usd");
-      payment.setStatus(PaymentStatus.SUCCESS);
-      payment.setPaymentMethod(intent.getPaymentMethod());
+        booking.setStatus(BookingStatus.PAID);
+        bookingRepository.save(booking);
 
-      // Update booking status
-      booking.setStatus(BookingStatus.PAID);
-      bookingRepository.save(booking);
-
-      return paymentRepository.save(payment);
+        return paymentRepository.save(payment);
+      } else {
+        throw new RuntimeException("Payment not successful");
+      }
     } catch (StripeException e) {
-      throw new RuntimeException("Payment failed: " + e.getMessage());
+      throw new RuntimeException("Payment verification failed: " + e.getMessage());
     }
   }
 }

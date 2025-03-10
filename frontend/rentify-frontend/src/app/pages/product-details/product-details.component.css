@@ -202,3 +202,26 @@
   background: linear-gradient(135deg, #ff6b6b, #ffcc00);
   transform: scale(1.05);
 }
+
+.back-btn {
+  margin-top: 60px; /* Add spacing */
+  padding: 10px 20px;
+  background-color: #0f16d4;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: block; /* Ensure it's a block element */
+  text-align: center;
+  width: fit-content; /* Adjust button width */
+  align-self: flex-start; /* Align left */
+}
+
+.back-btn:hover {
+  background-color: #dc9107;
+  transform: scale(1.05);
+}
+

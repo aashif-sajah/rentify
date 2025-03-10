@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router  } from '@angular/router';
 import { ProductResponse } from '../../models/product-response';
 import { ProductServiceService } from '../../core/services/product-service.service';
 import { CommonModule } from '@angular/common';
@@ -15,11 +15,12 @@ export class ProductDetailsComponent implements OnInit {
   product: ProductResponse | null = null; 
   selectedImage: string = ''; 
   startIndex: number = 0; // Track starting index for image thumbnails
-  fallbackImage: string = 'assets/default-image.jpg'; // ✅ Added fallback image
+  fallbackImage: string = 'assets/default-image.jpg'; // Added fallback image
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductServiceService
+    private productService: ProductServiceService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,11 +32,11 @@ export class ProductDetailsComponent implements OnInit {
         next: (data) => {
           this.product = data;
 
-          // ✅ Ensure imageUrls exists before setting selectedImage
+          // Ensure imageUrls exists before setting selectedImage
           if (this.product?.imageUrls?.length) {
             this.selectedImage = this.product.imageUrls[0]; 
           } else {
-            this.selectedImage = this.fallbackImage; // ✅ Use fallback image
+            this.selectedImage = this.fallbackImage; // Use fallback image
           }
         },
         error: (err) => {
@@ -59,5 +60,9 @@ export class ProductDetailsComponent implements OnInit {
     if (this.product?.imageUrls && this.startIndex + 4 < this.product.imageUrls.length) {
       this.startIndex += 4;
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/dashboard']);
   }
 }

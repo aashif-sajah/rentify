@@ -18,6 +18,7 @@
       <!-- Right Arrow -->
       <button (click)="nextImages()" class="arrow right-arrow" *ngIf="startIndex + 4 < (product?.imageUrls?.length || 0)">&#10095;</button>
     </div>
+    <button class="back-btn" (click)="goBack()">Back</button>
   </div>
 
   <!-- Right Section: Product Info -->

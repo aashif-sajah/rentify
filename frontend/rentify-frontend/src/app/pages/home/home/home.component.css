@@ -118,10 +118,10 @@
 }
 
 /* Background Colors */
-.service-box:nth-child(1) { background: #c3ddff; }  /* Light Blue */
-.service-box:nth-child(2) { background: #2a2a2a; color: white; } /* Dark Gray */
-.service-box:nth-child(3) { background: #d2f7bd; } /* Light Green */
-.service-box:nth-child(4) { background: #f9f59a; } /* Light Yellow */
+.service-box:nth-child(1) { background: #acd3ee; }  /* Light Blue */
+.service-box:nth-child(2) { background: #2f2c2c; color: white; } /* Dark Gray */
+.service-box:nth-child(3) { background: #bbce80; } /* Light Green */
+.service-box:nth-child(4) { background: #f6fca0; } /* Light Yellow */
 
 /* Service Image */
 .service-box img {

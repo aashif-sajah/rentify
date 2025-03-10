@@ -11,9 +11,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './view-product-details.component.css'
 })
 export class ViewProductDetailsComponent implements OnInit {
-bookNow() {
-throw new Error('Method not implemented.');
-}
+
 
   productDetails: ProductResponse | null = null;
   numberOfDays: number = 1;
@@ -21,7 +19,7 @@ throw new Error('Method not implemented.');
 
   constructor(private productService: ProductServiceService) {}
 
-  ngOnInit() 
+  ngOnInit()
   {
     this.productDetails = this.productService.getSelectedProduct();
   }
@@ -30,6 +28,10 @@ throw new Error('Method not implemented.');
     if(this.productDetails) {
     this.totalPrice = this.productDetails.pricePerDay * this.numberOfDays;
     }
+  }
+
+  bookNow():void{
+    console.log("booking Now");
   }
 
 }

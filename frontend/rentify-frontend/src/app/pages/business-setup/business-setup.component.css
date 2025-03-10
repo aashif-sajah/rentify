@@ -28,6 +28,7 @@ button {
   cursor: pointer;
 }
 
+
 button:disabled {
   background: gray;
 }

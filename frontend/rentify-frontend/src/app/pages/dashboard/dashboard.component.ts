@@ -126,9 +126,4 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/product-details', product.id]);
   }
 
-  viewProductDetails(product: ProductResponse) {
-    this.productService.setSelectedProduct(product);
-    this.router.navigate(['/view-product-details']);
-  }
-
 }

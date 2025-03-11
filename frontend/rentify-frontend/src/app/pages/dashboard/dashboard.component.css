@@ -49,7 +49,7 @@
   margin-left: 50px;
 }
 
-.analytics-btn {
+.analytics-btn, .user-view-link {
   align-self: center;
   margin-top: 40px;
   padding: 5px 20px;

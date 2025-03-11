@@ -24,5 +24,29 @@ export class CustomerViewComponent
       private router: Router
     ) {}
 
-    
+
+    ngOnInit(): void {
+      this.business = this.businessService.getBusiness();
+      console.log(this.business + 'This is Business Response');
+  
+      if (this.business && this.business.id) {
+        this.fetchProducts(this.business.id);
+      }
+    }
+  
+    fetchProducts(businessId: number): void {
+      this.productService.getAllProductsByBusiness(businessId).subscribe({
+        next: (data) => {
+          this.products = data;
+          console.log('Products:', this.products);
+        },
+        error: (err) => {
+          console.error('Error fetching products:', err);
+        },
+      });
+    }
+  
+
+
+
 }

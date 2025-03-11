@@ -10,8 +10,10 @@ import { SupportComponent } from './pages/support/support.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ViewProductDetailsComponent } from './pages/view-product-details/view-product-details.component';
+import { CustomerViewComponent } from './pages/customer-view/customer-view.component';
 
 export const routes: Routes = [
+
   {
     path: 'home',
     component: HomeComponent,
@@ -56,6 +58,10 @@ export const routes: Routes = [
   {
     path: 'product-details/:id', // Add route for Product Details with a dynamic ID
     component: ProductDetailsComponent
+  },
+  {
+    path:'business/:slug',
+    component:CustomerViewComponent
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {

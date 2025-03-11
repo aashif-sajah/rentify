@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   showSuccessMessage: boolean = false;
   productIdToDelete: number | null = null;
   message: string = '';
+  storeSlug: string = 'testingPurPose';
   
 
   constructor(
@@ -124,6 +125,10 @@ export class DashboardComponent implements OnInit {
   viewProductDetails(product: ProductResponse) {
     this.productService.setSelectedProduct(product);
     this.router.navigate(['/product-details', product.id]);
+  }
+
+  redirectToUserViewPage(){
+    this.router.navigate(['/business',this.business.storeSlug]);
   }
 
 }

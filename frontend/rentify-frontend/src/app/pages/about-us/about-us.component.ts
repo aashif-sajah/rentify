@@ -93,7 +93,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     },
     {
       name: 'Ruzaiq Fahim',
-      role: 'Backend Web Developer',
+      role: 'Fronend Web Developer',
       image: 'assets/Team Members/ruzaiq.png',
       socials: [
         { link: 'https://www.instagram.com/ruzaiqfahim/', icon: 'fa-brands fa-instagram' },

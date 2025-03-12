@@ -5,14 +5,15 @@ import { AuthService } from '../../core/services/auth.service';
 import { BusinessService } from '../../core/services/business.service';
 import { ProductServiceService } from '../../core/services/product-service.service';
 import { Router } from '@angular/router';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-customer-view',
-  imports: [],
+  imports: [NgFor],
   templateUrl: './customer-view.component.html',
   styleUrl: './customer-view.component.css'
 })
-export class CustomerViewComponent 
+export class CustomerViewComponent
 {
   business!: BusinessResponse;
   products: ProductResponse[] = [];
@@ -28,12 +29,12 @@ export class CustomerViewComponent
     ngOnInit(): void {
       this.business = this.businessService.getBusiness();
       console.log(this.business + 'This is Business Response');
-  
+
       if (this.business && this.business.id) {
         this.fetchProducts(this.business.id);
       }
     }
-  
+
     fetchProducts(businessId: number): void {
       this.productService.getAllProductsByBusiness(businessId).subscribe({
         next: (data) => {
@@ -45,8 +46,9 @@ export class CustomerViewComponent
         },
       });
     }
-  
 
-
-
+    viewProductDetails(product: ProductResponse) {
+      this.productService.setSelectedProduct(product);
+      this.router.navigate(['/product-details', product.id]);
+    }
 }

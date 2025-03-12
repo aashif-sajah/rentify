@@ -1,10 +1,12 @@
 .right-side {
+  margin-top: 10px;
   padding: 2px;
   display: flex;
   flex-direction: column;
 }
 
 .business-details {
+  margin: 0 10px;
   border: none;
   display: flex;
   background-color: rgb(245, 239, 230);

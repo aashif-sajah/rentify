@@ -42,7 +42,7 @@
 
 }
 
-.cta-btn{
+.cta-btn-btn{
   margin-top: 20px;
   padding: 8px 30px;
   background-color: #007bff;
@@ -55,7 +55,7 @@
   transition: background-color 0.3s, transform 0.1s;
 }
 
-.cta-btn:hover{
+.cta-btn-btn:hover{
   background-color: #0056b3;
   transform: scale(1.05);
 }

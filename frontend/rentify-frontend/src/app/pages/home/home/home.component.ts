@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +12,8 @@ export class HomeComponent
 {
   @ViewChild('servicesContainer', { static: false }) servicesContainer!: ElementRef;
 
+  constructor(private router:Router){}
+
   scrollRight(): void {
     if (this.servicesContainer) {
       this.servicesContainer.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
@@ -20,6 +23,11 @@ export class HomeComponent
     if (this.servicesContainer) {
       this.servicesContainer.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
     }
+  }
+
+  toRegister(): void {
+    console.log('Clicked');
+    this.router.navigate(['/register']);
   }
 }
 

@@ -147,4 +147,8 @@ public class BusinessService {
   }
 
 
+  public BusinessResponse getBusinessByBusinessSlug(String businessSlug)
+  {
+    return businessRepo.findByStoreSlug(businessSlug).map(this::convertToBusinessResponse).orElse(null);
+  }
 }

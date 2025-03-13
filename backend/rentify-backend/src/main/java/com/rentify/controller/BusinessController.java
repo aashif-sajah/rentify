@@ -50,7 +50,6 @@ public class BusinessController {
   }
 
   @PutMapping("/{businessId}")
-  @PreAuthorize("hasRole('Owner')")
   public ResponseEntity<BusinessResponse> updateBusiness(
           @PathVariable Long businessId,
           @RequestPart("businessRequest") String businessRequestJson,

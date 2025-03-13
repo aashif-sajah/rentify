@@ -4,7 +4,7 @@ import { ProductResponse } from '../../models/product-response';
 import { AuthService } from '../../core/services/auth.service';
 import { BusinessService } from '../../core/services/business.service';
 import { ProductServiceService } from '../../core/services/product-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -23,17 +23,21 @@ export class CustomerViewComponent implements OnInit,OnDestroy
       private authService: AuthService,
       private businessService: BusinessService,
       private productService: ProductServiceService,
-      private router: Router
+      private router: Router,
+      private activatedRoute: ActivatedRoute
     ) {}
 
 
     ngOnInit(): void {
-      this.business = this.businessService.getBusiness();
-      console.log(this.business + 'This is Business Response');
+      console.log("This is working!!!!")
+      this.activatedRoute.paramMap.subscribe(params => {
+        const storeSlug = params.get('slug');
+        console.log('Store slug:', storeSlug);
+        if (storeSlug) {
+          this.fetchProductsBySlug(storeSlug);
+        }
+      });
 
-      if (this.business && this.business.id) {
-        this.fetchProducts(this.business.id);
-      }
 
       this.isActive = true;
       this.authService.setActive(this.isActive);
@@ -52,6 +56,21 @@ export class CustomerViewComponent implements OnInit,OnDestroy
         },
         error: (err) => {
           console.error('Error fetching products:', err);
+        },
+      });
+    }
+
+    fetchProductsBySlug(storeSlug: string): void {
+      this.businessService.getBusinessBySlug(storeSlug).subscribe({
+        next: (data) => {
+          this.business = data;
+          console.log('Business fetched:', this.business);
+          if (this.business && this.business.id) {
+            this.fetchProducts(this.business.id);
+          } else{console.log('business not found');}
+        },
+        error: (err) => {
+          console.error('Error fetching business:', err);
         },
       });
     }

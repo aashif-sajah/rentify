@@ -22,9 +22,30 @@ export class BusinessService {
     localStorage.setItem('businessData', JSON.stringify(business));
   }
 
+  
   getBusiness(): BusinessResponse {
     const business = localStorage.getItem('businessData');
-    return business ? JSON.parse(business) : null;
+    return business ? JSON.parse(business) : {
+        id: 0,
+        businessName: '',
+        businessType: '',
+        description: '',
+        contactEmail: '',
+        phone: '',
+        storeSlug: '',
+        storeTheme: {
+            fontStyle: '',
+            primaryColor: '',
+            logoUrl: ''
+        },
+        isProductAvailable: false
+    };
+}
+
+
+  getBusinessBySlug(storeSlug: string): Observable<BusinessResponse> {
+    const url = `http://localhost:8080/api/business/slug/${storeSlug}`;
+    return this.http.get<BusinessResponse>(url);
   }
 
   getBusinessId(): number {

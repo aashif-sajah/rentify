@@ -9,7 +9,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  
   constructor( private authService: AuthService, private router: Router ) { }
 
 
@@ -22,6 +22,10 @@ export class HeaderComponent {
     this.authService.clearRole();
     this.authService.setToken('');
     this.router.navigate(['/login']);
+  }
+
+  isActive(): boolean {
+    return this.authService.getActive();
   }
   
 }

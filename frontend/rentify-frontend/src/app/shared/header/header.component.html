@@ -1,17 +1,20 @@
-<nav class="navbar">
-  <div class="logo">RENT<span>i</span>FY</div>
-  <ul class="nav-links">
-    <li><a routerLink="/home" >Home</a></li>
-    <li><a routerLink="/support" >Support</a></li> <!-- routerLink="/home" fragment="about-us" -->
-    <li><a routerLink="/about-us" >About Us</a></li>
-  </ul>
-  <div class="auth-buttons">
-    @if(isLoggedIn()){
-    <button class="login" (click)="logout()">Log out</button>
-    }
-    @if(!isLoggedIn()){
-    <button class="login" routerLink='/login' >Log in</button>
-    <button class="signup" routerLink='/register'>Sign up</button>
-    }
-  </div>
-</nav>
+@if(!isActive())
+{
+  <nav class="navbar">
+    <div class="logo">RENT<span>i</span>FY</div>
+    <ul class="nav-links">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/support">Support</a></li> <!-- routerLink="/home" fragment="about-us" -->
+      <li><a routerLink="/about-us">About Us</a></li>
+    </ul>
+    <div class="auth-buttons">
+      @if(isLoggedIn()){
+      <button class="login" (click)="logout()">Log out</button>
+      }
+      @if(!isLoggedIn()){
+      <button class="login" routerLink='/login'>Log in</button>
+      <button class="signup" routerLink='/register'>Sign up</button>
+      }
+    </div>
+  </nav>
+}

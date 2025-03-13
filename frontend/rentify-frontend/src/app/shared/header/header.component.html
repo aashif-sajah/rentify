@@ -6,6 +6,9 @@
       <li><a routerLink="/home">Home</a></li>
       <li><a routerLink="/support">Support</a></li> <!-- routerLink="/home" fragment="about-us" -->
       <li><a routerLink="/about-us">About Us</a></li>
+      @if(isLoggedIn()){
+      <li><a routerLink="/dashboard">Dashboard</a></li>
+      }
     </ul>
     <div class="auth-buttons">
       @if(isLoggedIn()){

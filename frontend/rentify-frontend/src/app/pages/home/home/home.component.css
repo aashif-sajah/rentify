@@ -71,11 +71,11 @@
 
 /* Featured Services Section */
 .featured-services {
-  margin-top: 40px;
+  width: 100%;
   padding: 20px;
   text-align: left;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 /* Featured Services Heading */
@@ -83,19 +83,21 @@
   font-size: 30px;
   font-weight: bold;
   text-align: left;
-  margin-left: -220px;
-  margin-bottom: 20px;
+  margin-left: -190px;
+  margin-bottom: -50px;
 }
-/* See More */
+
+/* See More & Back Button Container */
 .button-container {
   display: flex;
   justify-content: flex-end; /* Moves buttons to the right */
   align-items: center;
-  margin-top: -58px;
-  margin-bottom: 50px;
-  padding-right: 200px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 245px;
+  padding-right: 50px;
   position: relative;
-  gap: 10px; /* Adds spacing between buttons */
+  gap: 10px;
   width: 100%;
 }
 
@@ -117,26 +119,28 @@
 /* Services Container */
 .services-container {
   display: flex;
-  justify-content: space-between;
-  gap: 55px;
-  margin-left: -220px;
-  width: 100%;
-  padding-right: 300px;
-  flex-wrap: nowrap; /* Keeps items in a row */
-  overflow-x: auto;
-  overflow: hidden /* Enables scrolling if needed */
+  justify-content: flex-start;
+  scroll-behavior: smooth;
+  gap: 30px; /* Adjust spacing */
+  width: 156%;
+  max-width: 1200px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-left: 20px; /* Remove any extra left padding */
+  margin-left: -215px; /* Move container further left */
+  overflow-x: hidden; /* Enables scrolling */
+  white-space: nowrap;
 }
-
 /* Individual Service Box */
 .service-box {
-  flex: 1;
+  flex: 1; /* Ensures 3 items per row */
   min-width: 320px;
   height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding: 20px;
+  padding: 0px;
   border-radius: 15px;
   position: relative;
   overflow: hidden;
@@ -158,10 +162,9 @@
 
 /* Service Image */
 .service-box img {
-  width: 100%;
+  width: 90%;
   height: auto;
-  margin-right: -40px; /* Move image slightly to the right */
-  margin-bottom: -19px; 
+  margin-right: -35px;
   object-fit: contain;
 }
 
@@ -170,20 +173,21 @@
   font-size: 23px;
   font-weight: bold;
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 20px;
+  left: 20px;
 }
 
 /* Fix for Mobile Screens */
 @media screen and (max-width: 768px) {
   .services-container {
-      flex-wrap: wrap; /* Allow wrapping for smaller screens */
+      flex-wrap: wrap;
   }
 
   .service-box {
       min-width: 45%; /* Adjust width on mobile */
   }
 }
+
 
 
 

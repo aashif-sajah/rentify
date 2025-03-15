@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 79vh;
   background-color: #fff;
   padding: 20px 60px;
   padding-left: 120px;
@@ -12,7 +11,7 @@
 
 .register-container {
   background: rgb(213, 212, 212);
-  padding: 25px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 380px;
@@ -45,8 +44,7 @@ label {
 
 input {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 17px;
@@ -76,13 +74,13 @@ button:hover {
 }
 
 .register-image img {
-  width: 700px;
-  height: 600px;
+  width: 300px;
+  height: 500px;
   object-fit: cover;
-  object-position: -10px -150px;
+  
 }
 
-/* 📱 Responsive Design */
+
 @media (max-width: 1024px) {
   .register-wrapper {
     flex-direction: column;
@@ -99,3 +97,5 @@ button:hover {
     max-width: 90%;
   }
 }
+
+

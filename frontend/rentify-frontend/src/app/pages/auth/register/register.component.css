@@ -3,20 +3,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 79vh; 
+  min-height: 79vh;
   background-color: #fff;
   padding: 20px 60px;
   padding-left: 120px;
   gap: 5px;
 }
 
-/* Register Form */
 .register-container {
   background: rgb(213, 212, 212);
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 380px; 
+  width: 380px;
   text-align: center;
 }
 
@@ -33,7 +32,7 @@ h2 {
 .form-group {
   display: flex;
   flex-direction: column;
-  
+
 }
 
 label {

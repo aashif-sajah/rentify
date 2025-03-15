@@ -9,7 +9,6 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { SupportComponent } from './pages/support/support.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { ViewProductDetailsComponent } from './pages/view-product-details/view-product-details.component';
 import { CustomerViewComponent } from './pages/customer-view/customer-view.component';
 
 export const routes: Routes = [
@@ -34,22 +33,18 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-   /*  canActivate: [authGuard] */
+     canActivate: [authGuard] 
   },
   {
     path: 'add-product',
     component: AddProductComponent,
-    /* canActivate: [authGuard], */
+     canActivate: [authGuard], 
   },
 
   {
     path:'about-us',
     component: AboutUsComponent
 
-  },
-  {
-    path:'view-product-details',
-    component: ViewProductDetailsComponent
   },
   {
     path:'support',

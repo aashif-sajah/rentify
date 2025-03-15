@@ -19,9 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin(origins = "http://localhost:4200")
 public class BusinessController {
   private final BusinessService businessService;
-//  private final CloudinaryConfig cloudinaryConfig;
-
-
 
   @PostMapping("/create")
   @PreAuthorize("hasRole('Owner')")
@@ -53,7 +50,6 @@ public class BusinessController {
   }
 
   @PutMapping("/{businessId}")
-  @PreAuthorize("hasRole('Owner')")
   public ResponseEntity<BusinessResponse> updateBusiness(
           @PathVariable Long businessId,
           @RequestPart("businessRequest") String businessRequestJson,
@@ -71,5 +67,11 @@ public class BusinessController {
     return ResponseEntity.ok(updatedBusiness);
   }
 
+  @GetMapping("/slug/{businessSlug}")
+  public ResponseEntity<BusinessResponse> getBusinessByBusinessSlug(@PathVariable String businessSlug)
+  {
+    BusinessResponse businessResponse = businessService.getBusinessByBusinessSlug(businessSlug);
+    return ResponseEntity.ok(businessResponse);
+  }
 
 }

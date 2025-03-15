@@ -1,9 +1,9 @@
 .container-div {
-  margin: 20px 0 0 0;
+  margin: 20px 0 0 10px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  width: 100%;
+  width: 98%;
   padding: 1px;
   font-family: "Inter", sans-serif;
   position: relative;
@@ -13,17 +13,19 @@
   width: 40%;
   background-color: #0057ff;
   border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border: none;
 }
 
 .dashboard-heading {
   font-size: 20px;
   font-weight: 600;
-  margin: 15px 50px 10px 0px;
+  margin: 45px 50px 10px 0px;
   padding: 3px 3px 3px 10px;
   background-color: white;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
-  color: #0057ff;
+  color: #0055ff;
   font-family: "Inter", sans-serif;
 }
 
@@ -61,7 +63,6 @@
 }
 
 /* Right Side */
-
 .right-side {
   padding: 2px;
   display: flex;
@@ -123,9 +124,9 @@
 }
 
 .product-card {
-  background-color: #cfd8eb; 
+  background-color: #cfd8eb;
   border-radius: 25px;
-  width: calc(33.33% - 10px); 
+  width: calc(33.33% - 10px);
   min-width: 292px;
   display: flex;
   flex-wrap: wrap;

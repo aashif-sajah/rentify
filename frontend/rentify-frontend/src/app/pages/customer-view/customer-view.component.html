@@ -1,5 +1,54 @@
-<div class="container">
-    <div class="header">
-        Welcome Welcome Welcome
+<div class="right-side">
+  <div class="business-details">
+    <div class="business-logo">
+      <img [src]="business.storeTheme.logoUrl" alt="Logo Not Found">
     </div>
+    <div class="business-name">
+      <div class="business-name-heading">
+        {{business.businessName}}
+      </div>
+      <div class="business-name-description">
+        {{business.description}}
+      </div>
+    </div>
+    <div class="business-contact">
+      <div class="business-contact-fone">
+        Tel: +{{business.phone}}
+      </div>
+      <div class="business-contact-email">
+        Email: {{business.contactEmail}}
+      </div>
+    </div>
+  </div>
+  <div class="product-cards">
+    <div class="product-cards">
+      <div *ngFor="let product of products" class="product-card">
+        <div class="product-img">
+          <img [src]="product.imageUrls[0]" alt="{{ product.name }}">
+        </div>
+        <div class="product-details">
+          <div class="product-detail-1">
+            <div class="product-name">{{ product.name }}</div>
+            <div class="product-price">Rs. {{ product.pricePerDay }}</div>
+          </div>
+          <div class="product-detail-1">
+            <div class="product-brand">Toyato</div>
+            <div class="product-condition">per day</div>
+          </div>
+        </div>
+        <div class="product-extra-details">
+          <div class="product-gear">
+            <i class="fa-solid fa-gear"></i> Gear
+          </div>
+          <div class="product-gas">
+            <i class="fa-solid fa-gas-pump"></i> Fuel
+          </div>
+          <div class="product-air-condition">
+            <i class="fa-solid fa-snowflake"></i> Air Conditioner
+          </div>
+        </div>
+        <div class="view-details-btn" (click)="viewProductDetails(product)">View Details</div>
+      </div>
+    </div>
+  </div>
 </div>

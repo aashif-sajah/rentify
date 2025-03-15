@@ -9,7 +9,9 @@ import { User } from '../../models/user';
   providedIn: 'root',
 })
 export class AuthService {
+  
   private apiUrl = 'http://localhost:8080/api/auth';
+  private isActive: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -66,7 +68,21 @@ export class AuthService {
 
   public getUser(): User {
     const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : {};
+    return user ? JSON.parse(user) : {
+      userEmail: '',
+      userFirstName: '',
+      userLastName: '',
+      username: '',
+      userPassword: '',
+      roles: []
+    };
   }
 
+  public setActive(isActive: boolean) {
+    this.isActive = isActive;
+  }
+
+  public getActive(): boolean {
+    return this.isActive;
+  }
 }

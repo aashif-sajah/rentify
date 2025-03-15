@@ -18,6 +18,7 @@ export class ProductServiceService {
   }
 
   getAllProductsByBusiness(businessId: number):Observable<ProductResponse[]>{
+    console.log("this is getting called")
     return this.http.get<ProductResponse[]>(`${this.apiUrl}/business/${businessId}`);
   }
 

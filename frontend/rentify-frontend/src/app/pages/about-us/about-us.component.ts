@@ -93,7 +93,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     },
     {
       name: 'Ruzaiq Fahim',
-      role: 'Fronend Web Developer',
+      role: 'Frontend Web Developer',
       image: 'assets/Team Members/ruzaiq.png',
       socials: [
         { link: 'https://www.instagram.com/ruzaiqfahim/', icon: 'fa-brands fa-instagram' },
@@ -108,17 +108,17 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
       socials: [
         { link: 'https://www.instagram.com/kaveesha_ed/', icon: 'fa-brands fa-instagram' },
         { link: 'https://github.com/kaveesha-ed', icon: 'fa-brands fa-github' },
-        { link: 'https://www.linkedin.com/in/kaveesha-elvitigala-92767818b', icon: 'fa-brands fa-linkedin' },
+        { link: 'https://www.linkedin.com/in/kd-ed/', icon: 'fa-brands fa-linkedin' },
       ]
     },
     {
       name: 'Uveen Sureshchandra',
       role: 'Frontend Web Developer',
-      image: 'assets/About Us/user1.jpg',
+      image: 'assets/Team Members/Uveen.jpg',
       socials: [
-        { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
-        { link: 'https://github.com', icon: 'fa-brands fa-github' },
-        { link: 'https://linkedin.com', icon: 'fa-brands fa-linkedin' },
+        { link: 'https://instagram.com/uveensura/', icon: 'fa-brands fa-instagram' },
+        { link: 'https://github.com/UveenSura', icon: 'fa-brands fa-github' },
+        { link: 'https://www.linkedin.com/in/uveen-sureshchandra-375a17311/', icon: 'fa-brands fa-linkedin' },
       ]
     },
     {

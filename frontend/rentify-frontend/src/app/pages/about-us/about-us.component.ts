@@ -93,7 +93,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     },
     {
       name: 'Ruzaiq Fahim',
-      role: 'Fronend Web Developer',
+      role: 'Frontend Web Developer',
       image: 'assets/Team Members/ruzaiq.png',
       socials: [
         { link: 'https://www.instagram.com/ruzaiqfahim/', icon: 'fa-brands fa-instagram' },
@@ -114,7 +114,7 @@ export class AboutUsComponent implements OnInit, AfterViewInit {
     {
       name: 'Uveen Sureshchandra',
       role: 'Frontend Web Developer',
-      image: 'assets/About Us/user1.jpg',
+      image: 'assets/Team Members/Uveen.jpg',
       socials: [
         { link: 'https://instagram.com', icon: 'fa-brands fa-instagram' },
         { link: 'https://github.com', icon: 'fa-brands fa-github' },

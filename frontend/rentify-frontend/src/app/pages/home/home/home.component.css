@@ -72,7 +72,7 @@
 /* Featured Services Section */
 .featured-services {
   width: 100%;
-  padding: 20px;
+  padding: 30px;
   text-align: left;
   max-width: 1200px;
   margin: 0 auto;
@@ -124,8 +124,8 @@
   gap: 30px; /* Adjust spacing */
   width: 156%;
   max-width: 1200px;
-  padding: 10px;
-  padding-top: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 20px; /* Remove any extra left padding */
   margin-left: -215px; /* Move container further left */
   overflow-x: hidden; /* Enables scrolling */
@@ -178,13 +178,17 @@
 }
 
 /* Fix for Mobile Screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 468px) {
   .services-container {
       flex-wrap: wrap;
   }
 
+  .button-container{
+    width: 200px;
+  }
+
   .service-box {
-      min-width: 45%; /* Adjust width on mobile */
+      min-width: 35%; /* Adjust width on mobile */
   }
 }
 

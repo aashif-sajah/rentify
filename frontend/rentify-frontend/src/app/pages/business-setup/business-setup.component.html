@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-<div class="form-wrap">
+<div class="form-wrap" [style.margin-top.px]="step === 1 ? 100 : 0">
   <h2>Create Your Business</h2>
   @if(step === 0){
   <form #form="ngForm"> 
@@ -25,7 +25,7 @@
 
 
   @if(step === 1){
-  <form #form2="ngForm">
+  <form #form2="ngForm" class="form-2">
     <label for="businessType">Select Business Type:</label>
     <select [(ngModel)]="businessData.businessType" name="businessType" id="businessType" required>
       <option value="Car Rental">Car Rental</option>
@@ -68,8 +68,5 @@
   @if(errorMessage){
   <p>{{ errorMessage }}</p>
   }
-</div>
-<div class="img-img">
-  <img src="assets/Home Page/Billy 54.png" alt="">
 </div>
 </div>

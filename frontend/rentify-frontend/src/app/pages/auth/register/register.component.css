@@ -51,6 +51,11 @@ input {
   font-size: 17px;
 }
 
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
 /* Register Button */
 button {
   width: 100%;

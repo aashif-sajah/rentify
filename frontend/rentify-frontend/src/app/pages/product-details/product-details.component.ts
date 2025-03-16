@@ -13,6 +13,9 @@ import { BusinessService } from '../../core/services/business.service';
   imports: [CommonModule]
 })
 export class ProductDetailsComponent implements OnInit {
+redirectToPayment(arg0: ProductResponse|null) {
+throw new Error('Method not implemented.');
+}
   product: ProductResponse | null = null;
   selectedImage: string = '';
   startIndex: number = 0; // Track starting index for image thumbnails

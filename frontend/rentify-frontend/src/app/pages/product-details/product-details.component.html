@@ -9,8 +9,8 @@
 
       <div class="image-thumbnails">
         <img *ngFor="let img of (product?.imageUrls ?? []).slice(startIndex, startIndex + 4)"
-             [src]="img" 
-             alt="Product Thumbnail" 
+             [src]="img"
+             alt="Product Thumbnail"
              (click)="switchImage(img)"
              [class.active]="img === selectedImage">
       </div>
@@ -32,6 +32,6 @@
         {{ product?.availability ? 'Available' : 'Not Available' }}
       </span>
     </p>
-    <button class="rent-now">Rent Now</button>
+    <button class="rent-now" (click)="redirectToPayment(product)">Rent Now</button>
   </div>
 </div>

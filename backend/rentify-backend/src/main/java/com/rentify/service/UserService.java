@@ -23,14 +23,15 @@ public class UserService {
   }
 
   public Users registerNewUser(Users users) {
-    Role role =
-        roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
-    System.out.println(users.getRoles() == null || users.getRoles().isEmpty());
-    System.out.println("Before :" + users.getRoles());
+    Role role;
     if (users.getRoles() == null || users.getRoles().isEmpty()) {
       Set<Role> roles = new HashSet<>();
+      role = roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
       roles.add(role);
       users.setRoles(roles);
+    } else {
+      role = roleRepo.findById("Customer").orElseThrow(() -> new RuntimeException("Role not found"));
+      users.getRoles().add(role);
     }
     System.out.println("After :" + users.getRoles());
 

@@ -34,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
       this.productService.getProductById(id).subscribe({
         next: (data) => {
           this.product = data;
+          this.productService.setSelectedProduct(this.product);
 
           // Ensure imageUrls exists before setting selectedImage
           if (this.product?.imageUrls?.length) {
@@ -45,7 +46,7 @@ export class ProductDetailsComponent implements OnInit {
         error: (err) => {
           console.error('Error fetching product:', err);
         }
-      });
+      });      
     }
   }
 

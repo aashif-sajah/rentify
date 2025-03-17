@@ -1,15 +1,16 @@
 <div class="container-ctn">
-  <form action="">
+  <form>
       <div class="row">
           <div class="column">
               <h3 class="title">Billing Address</h3>
               <div class="input-box">
                   <span>Full Name :</span>
-                  <input type="text" placeholder="Jacob Core">
+                  <input type="text" placeholder="Jacob Core" name="
+                  full-name" [(ngModel)]="user.username">
               </div>
               <div class="input-box">
                   <span>Email :</span>
-                  <input type="email" placeholder="example@example.com">
+                  <input type="email" placeholder="example@example.com" name="email" [(ngModel)]="user.userEmail">
               </div>
               <div class="input-box">
                   <span>Address :</span>
@@ -64,6 +65,6 @@
           </div>
       </div>
 
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn" (click)="onSubmit()">Submit</button>
   </form>
 </div>

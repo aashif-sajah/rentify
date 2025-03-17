@@ -15,11 +15,13 @@ public class UserService {
   private final UserRepo userRepo;
   private final PasswordEncoder bCryptPasswordEncoder;
   private final RoleRepo roleRepo;
+  private final RoleService roleService;
 
-  public UserService(UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, RoleRepo roleRepo) {
+  public UserService(UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, RoleRepo roleRepo, RoleService roleService) {
     this.userRepo = userRepo;
     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     this.roleRepo = roleRepo;
+    this.roleService = roleService;
   }
 
   public Users registerNewUser(Users users) {
@@ -31,9 +33,9 @@ public class UserService {
       users.setRoles(roles);
     } else {
       role = roleRepo.findById("Customer").orElseThrow(() -> new RuntimeException("Role not found"));
+      users.getRoles().clear();
       users.getRoles().add(role);
     }
-    System.out.println("After :" + users.getRoles());
 
     users.setUserPassword(getEncodedPassword(users.getUserPassword()));
     return userRepo.save(users);

@@ -13,9 +13,7 @@ import { BusinessService } from '../../core/services/business.service';
   imports: [CommonModule]
 })
 export class ProductDetailsComponent implements OnInit {
-redirectToPayment(arg0: ProductResponse|null) {
-throw new Error('Method not implemented.');
-}
+
   product: ProductResponse | null = null;
   selectedImage: string = '';
   startIndex: number = 0; // Track starting index for image thumbnails
@@ -70,4 +68,9 @@ throw new Error('Method not implemented.');
   goBack(): void {
     this.router.navigate(['/business',this.businessService.getBusiness().storeSlug]);
   }
+
+
+  redirectToPayment(): void {
+      this.router.navigate(['/payment']);
+    }
 }

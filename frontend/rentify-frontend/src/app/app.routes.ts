@@ -10,6 +10,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CustomerViewComponent } from './pages/customer-view/customer-view.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 export const routes: Routes = [
 
@@ -33,12 +34,12 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-     canActivate: [authGuard] 
+     canActivate: [authGuard]
   },
   {
     path: 'add-product',
     component: AddProductComponent,
-     canActivate: [authGuard], 
+     canActivate: [authGuard],
   },
 
   {
@@ -57,6 +58,10 @@ export const routes: Routes = [
   {
     path:'business/:slug',
     component:CustomerViewComponent
+  },
+  {
+    path:'payment',
+    component:PaymentComponent
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {

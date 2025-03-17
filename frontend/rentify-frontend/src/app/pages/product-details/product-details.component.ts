@@ -72,6 +72,6 @@ export class ProductDetailsComponent implements OnInit {
 
 
   redirectToPayment(): void {
-      this.router.navigate(['/payment']);
+      this.router.navigate(['/payment', this.product?.id]);
     }
 }

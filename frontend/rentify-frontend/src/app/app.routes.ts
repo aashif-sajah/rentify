@@ -60,7 +60,7 @@ export const routes: Routes = [
     component:CustomerViewComponent
   },
   {
-    path:'payment',
+    path:'payment/:id',
     component:PaymentComponent
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

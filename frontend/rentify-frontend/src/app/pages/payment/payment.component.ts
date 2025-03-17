@@ -30,7 +30,7 @@ export class PaymentComponent {
     this.registerService.register(this.user).subscribe({
       next: (response) => {
         console.log(response, ' Successfully created user');
-        /* Here We Have to Call booking API to Book. */
+        
       },
       error: (error) => {
         console.error('There was an error!', error);

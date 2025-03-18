@@ -2,7 +2,7 @@
   <div class="register-container">
     <h2>Register</h2>
     <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
-  
+
        <!-- User Name -->
        <div class="form-group">
         <label for="username">Username</label>
@@ -15,7 +15,7 @@
           minlength="2"
           #username="ngModel">
       </div>
-  
+
       <!-- First Name -->
       <div class="form-group">
         <label for="firstName">First Name</label>
@@ -28,7 +28,7 @@
           minlength="2"
           #firstName="ngModel">
       </div>
-  
+
       <!-- Last Name -->
       <div class="form-group">
         <label for="lastName">Last Name</label>
@@ -41,7 +41,7 @@
           minlength="2"
           #lastName="ngModel">
       </div>
-  
+
       <!-- Email -->
       <div class="form-group">
         <label for="email">Email</label>
@@ -54,7 +54,7 @@
           email
           #email="ngModel">
       </div>
-  
+
       <!-- Password -->
       <div class="form-group">
         <label for="password">Password</label>
@@ -67,7 +67,7 @@
           minlength="6"
           #password="ngModel">
       </div>
-  
+
       <button type="submit" [disabled]="registerForm.invalid">Register</button>
     </form>
   </div>

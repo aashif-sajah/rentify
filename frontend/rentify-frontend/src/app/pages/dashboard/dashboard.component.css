@@ -1,8 +1,8 @@
 .container-div {
   margin: 20px 0 0 10px;
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: space-around;
+  gap: 50px;
   width: 98%;
   padding: 1px;
   font-family: "Inter", sans-serif;
@@ -10,7 +10,7 @@
 }
 
 .left-side {
-  width: 40%;
+  width: 25%;
   background-color: #0057ff;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;

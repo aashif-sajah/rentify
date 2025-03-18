@@ -15,24 +15,29 @@ public class UserService {
   private final UserRepo userRepo;
   private final PasswordEncoder bCryptPasswordEncoder;
   private final RoleRepo roleRepo;
+  private final RoleService roleService;
 
-  public UserService(UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, RoleRepo roleRepo) {
+  public UserService(UserRepo userRepo, PasswordEncoder bCryptPasswordEncoder, RoleRepo roleRepo, RoleService roleService) {
     this.userRepo = userRepo;
     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     this.roleRepo = roleRepo;
+    this.roleService = roleService;
   }
 
   public Users registerNewUser(Users users) {
-    Role role =
-        roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
-    System.out.println(users.getRoles() == null || users.getRoles().isEmpty());
-    System.out.println("Before :" + users.getRoles());
+    Role role;
     if (users.getRoles() == null || users.getRoles().isEmpty()) {
       Set<Role> roles = new HashSet<>();
+      role = roleRepo.findById("Owner").orElseThrow(() -> new RuntimeException("Role not found"));
       roles.add(role);
       users.setRoles(roles);
+    } else {
+      role = roleRepo.findById("Customer").orElseThrow(() -> new RuntimeException("Role not found"));
+      users.getRoles().clear();
+      users.getRoles().add(role);
+      Users user = userRepo.findByUserEmail(users.getUserEmail()).orElse(null);
+      if (user != null) { return user; }
     }
-    System.out.println("After :" + users.getRoles());
 
     users.setUserPassword(getEncodedPassword(users.getUserPassword()));
     return userRepo.save(users);

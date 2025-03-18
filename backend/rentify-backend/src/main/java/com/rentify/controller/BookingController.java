@@ -1,6 +1,7 @@
 package com.rentify.controller;
 
 import com.rentify.dto.BookingRequest;
+import com.rentify.dto.BookingResponse;
 import com.rentify.model.Booking;
 import com.rentify.service.BookingService;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,8 @@ public class BookingController
     private final BookingService bookingService;
 
     @PostMapping("/create/{userId}")
-    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequest request, @PathVariable Long userId) {
-        Booking booking = bookingService.createBooking(request, userId);
+    public ResponseEntity<BookingResponse> createBooking(@RequestBody BookingRequest request, @PathVariable Long userId) {
+        BookingResponse booking = bookingService.createBooking(request, userId);
         return ResponseEntity.ok(booking);
     }
 }

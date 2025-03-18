@@ -35,6 +35,8 @@ public class UserService {
       role = roleRepo.findById("Customer").orElseThrow(() -> new RuntimeException("Role not found"));
       users.getRoles().clear();
       users.getRoles().add(role);
+      Users user = userRepo.findByUserEmail(users.getUserEmail()).orElse(null);
+      if (user != null) { return user; }
     }
 
     users.setUserPassword(getEncodedPassword(users.getUserPassword()));

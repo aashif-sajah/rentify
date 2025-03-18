@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../core/services/register.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { FormsModule } from '@angular/forms';
 import { BookingService } from '../../core/services/booking.service';
@@ -14,7 +14,7 @@ import { BookingRequest } from '../../models/booking-request';
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css',
 })
-export class PaymentComponent {
+export class PaymentComponent implements OnInit {
   user: User = {
     userFirstName: 'Test',
     userLastName: 'User',
@@ -27,6 +27,7 @@ export class PaymentComponent {
   constructor(
     private registerService: RegisterService,
     private router: Router,
+    private route: ActivatedRoute,
     private bookingService: BookingService,
     private productService: ProductServiceService
   ) {}
@@ -37,9 +38,16 @@ export class PaymentComponent {
     address: '',
     booked: false,
   };
+  
+  ngOnInit(): void{
+    
+  }
+
 
   onSubmit() {
     console.log(this.user);
+    const productId = this.route.snapshot.paramMap.get('id');
+    this.bookingRequest.productId = Number(productId);
     this.registerService.register(this.user).subscribe({
       next: (response) => {
         console.log(response, ' Successfully created user');

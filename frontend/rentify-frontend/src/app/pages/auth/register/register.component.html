@@ -1,0 +1,78 @@
+<div class="register-wrapper">
+  <div class="register-container">
+    <h2>Register</h2>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
+
+       <!-- User Name -->
+       <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="user.username"
+          required
+          minlength="2"
+          #username="ngModel">
+      </div>
+
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          [(ngModel)]="user.userFirstName"
+          required
+          minlength="2"
+          #firstName="ngModel">
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          [(ngModel)]="user.userLastName"
+          required
+          minlength="2"
+          #lastName="ngModel">
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="user.userEmail"
+          required
+          email
+          #email="ngModel">
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="user.userPassword"
+          required
+          minlength="6"
+          #password="ngModel">
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  </div>
+  <div class="register-image">
+    <img src="assets/Home Page/Billy 79 1.png" alt="Login Illustration" />
+  </div>
+</div>
+

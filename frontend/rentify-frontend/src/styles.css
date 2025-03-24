@@ -1,0 +1,24 @@
+:root {
+  --primary-color: #007bff;
+  --font-style: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: var(--font-style);
+  background: rgb(226, 204, 162);
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+

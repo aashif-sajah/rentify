@@ -1,0 +1,259 @@
+<!--hero section-->
+
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">About Us</h1>
+      <p class="hero-description">Your trusted rental management platform</p>
+      <a class="hero-btn" (click)="scrollToContact()">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!--mission-vision section-->
+
+<section class="mission-vision">
+  <div class="container">
+    <div class="row">
+      
+      <!-- Mission -->
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fas fa-trophy"></i> 
+          </div>
+          <h4>Our Mission</h4>
+          <p>
+            Our mission is to provide a seamless rental experience, ensuring convenience and security for both landlords and tenants.
+          </p>
+        </div>
+      </div>
+
+      <!-- Vision -->
+      <div class="column">
+        <div class="card">
+          <div class="icon-wrapper">
+            <i class="fas fa-chart-line"></i> 
+          </div>
+          <h4>Our Vision</h4>
+          <p>
+            Our vision is to become the leading rental management platform, known for reliability, efficiency, and innovation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--who-we-are section-->
+
+<section class="who-we-are">
+  <div class="container">
+    <div class="row">
+      <div class="image-container">
+        <img src="/assets/About Us/about-us.png" alt="Rentify Office">
+      </div>
+      <div class="content">
+        <h2>We Provide You <br> The Best Experience</h2>
+        <p>
+          Rentify started in <strong>September 2024</strong> with a vision to revolutionize 
+          the rental industry. Our mission is to provide an effortless, 
+          secure, and innovative rental experience for both landlords and tenants.
+        </p>
+        <p>
+          Whether you're listing properties or finding your dream home, 
+          Rentify ensures smooth transactions, personalized assistance, 
+          and the best rental opportunities.
+        </p>
+        <a href="#" class="btn">Explore More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--stats section-->
+
+<section class="stats-section" #statsSection>
+  <div class="container">
+    <h2 class="stats-title">Our Stats</h2>
+    <p class="stats-description">
+      "See the Numbers Behind Our Success Stories"
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-box" *ngFor="let stat of stats">
+        <h3 class="counter">{{ stat.formattedValue }}</h3>
+        <p>{{ stat.label }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--service section-->
+
+<section class="service-section">
+  <div class="container">
+    <h2>Our Services</h2>
+    <p>"Seamless Management for Renters & Owners,
+      Ensuring Secure, Smart & Hassle-Free Transactions"</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <i class="fas fa-check"></i>
+      <div class="content">
+        <h3>Verified Listings</h3>
+        <p>
+          Ensures authentic and scam-free listings across rentals, 
+          jobs, services, and businesses.
+          Prevents scams by verifying sellers, landlords, and service providers.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fas fa-calendar-check"></i>
+      <div class="content">
+        <h3>Instant Booking</h3>
+        <p>
+          Enables users to book or inquire about listings in real-time.
+          Supports direct communication between buyers and sellers.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fas fa-tags"></i>
+      <div class="content">
+        <h3>Smart Pricing & Alerts</h3>
+        <p>
+          AI-driven price recommendations to stay competitive.
+          Automated reminders for listing renewals and expiring rentals.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fas fa-briefcase"></i>
+      <div class="content">
+        <h3>Business Profiles</h3>
+        <p>
+          Custom profiles for businesses, freelancers, and landlords.
+          Allows branding, custom contact details, and service showcasing.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fas fa-lock"></i>
+      <div class="content">
+        <h3>Secure Payments</h3>
+        <p>
+          Safe transactions for rentals, services, and bookings.
+          Supports multiple payment methods & Stripe integration.
+        </p>
+      </div>
+    </div>
+    <div class="card">
+      <i class="fas fa-star"></i>
+      <div class="content">
+        <h3>Ratings & Reviews</h3>
+        <p>
+          Users can rate and review listings for trust and credibility.
+          Helps renters, buyers, and service seekers make informed decisions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--customer reviews-->
+
+<div class="testimonial-container">
+  <h2>What Our Clients Say</h2>
+  <div class="testimonial-slider">
+    <div class="testimonial-track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+      <div class="testimonial-pair" *ngFor="let pair of reviewPairs">
+        <div class="testimonial-card">
+          <img [src]="pair[0].image" alt="User Photo" class="user-img" />
+          <h3>{{ pair[0].name }}</h3>
+          <p>{{ pair[0].message }}</p>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+        <div *ngIf="pair[1]" class="testimonial-card">
+          <img [src]="pair[1].image" alt="User Photo" class="user-img" />
+          <h3>{{ pair[1].name }}</h3>
+          <p>{{ pair[1].message }}</p>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dots">
+    <span *ngFor="let pair of reviewPairs; let i = index" 
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)">
+    </span>
+  </div>
+</div>
+
+<!-- Call-to-Action Section -->
+<div class="cta-section">
+  <h2>Ready to Find Your Perfect Rental?</h2>
+  <p>Join thousands of happy renters and start your journey with Rentify today!</p>
+  <div class="cta-buttons">
+    <a [routerLink]="'/register'" class="cta-btn primary-btn">Get Started</a>
+    <a class="cta-btn secondary-btn" (click)="scrollToContact()">Contact Us</a>  
+  </div>
+</div>
+
+<!-- Team Section -->
+
+<section class="team-section">
+  <h2>Meet Our Amazing Team</h2>
+  <div class="team-container">
+      <div *ngFor="let member of teamMembers" class="team-box">
+          <img [src]="member.image" [alt]="member.name">
+          <h4>{{ member.name }}</h4>
+          <span>{{ member.role }}</span>
+          <div class="social-media">
+              <a *ngFor="let social of member.socials" [href]="social.link" target="_blank">
+                  <i [class]="social.icon"></i>
+              </a>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Contact us Section -->
+
+<section id="contact-section" class="contact-section">
+  <div class="contact-container">
+      <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p>Fill up the form and our Team will get back to you within 24 hours</p>
+          <div class="contact-details">
+              <p><i class="fas fa-phone"></i><span>Phone:  </span> <a href="tel: (+94)756359350"> (+94)756359350</a></p>
+              <p><i class="fas fa-envelope"></i> <span>Email: </span><a href="mailto:support@rentify.lk">support&#64;rentify.lk</a></p>
+              <p><i class="fas fa-map-marker-alt"></i>Colombo, Sri Lanka</p>
+          </div>
+          <div class="social-icons">
+            <p>Follow Us</p>
+              <a href="https://www.instagram.com/rentifylk/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/rentifylk/"target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://www.facebook.com/"target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
+      </div>
+      <div class="contact-form">
+          <h2>Send us a message</h2>
+          <form>
+              <div class="input-row">
+                  <input type="text" placeholder="First Name" required>
+                  <input type="text" placeholder="Last Name" required>
+              </div>
+              <div class="input-row">
+                  <input type="email" placeholder="Email" required>
+                  <input type="tel" placeholder="Phone" required>
+              </div>
+              <textarea placeholder="Write your message" required></textarea>
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
+  </div>
+</section>

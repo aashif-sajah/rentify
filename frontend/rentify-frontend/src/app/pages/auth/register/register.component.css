@@ -1,0 +1,107 @@
+/* Wrapper to hold form and image */
+.register-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px 60px;
+  padding-left: 120px;
+  min-height: 78vh;
+  gap: 5px;
+}
+
+.register-container {
+  background: rgb(213, 212, 212);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 380px;
+  text-align: center;
+}
+
+/* Title */
+h2 {
+  text-align: center;
+  color: #0057ff;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Form Fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  display: block;
+  margin-top:9px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 17px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Register Button */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 40px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0045cc;
+}
+
+/* Register Image Styling */
+.register-image {
+  background-color: transparent;
+}
+
+.register-image img {
+  width: 350px;
+  height: 500px;
+  object-fit: cover;
+  margin-right: 200px;
+}
+
+
+@media (max-width: 1024px) {
+  .register-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .register-image img {
+    width: 80%;
+    height: auto;
+    top: 0;
+  }
+
+  .register-container {
+    max-width: 90%;
+  }
+}
+
+
